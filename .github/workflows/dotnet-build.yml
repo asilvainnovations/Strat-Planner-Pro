@@ -1,0 +1,144 @@
+name: .NET Build
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "**/*.csproj"
+      - "**/*.sln"
+      - ".github/workflows/dotnet-build.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "**/*.csproj"
+      - "**/*.sln"
+
+jobs:
+  build:
+    name: .NET Build & Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        dotnet-version: ["7.0", "8.0"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+          source-url: ${{ secrets.NUGET_SOURCE_URL }}
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-dotnet-${{ matrix.dotnet-version }}
+          path: "**/TestResults"
+          retention-days: 30
+
+      - name: Upload coverage reports
+        if: success()
+        uses: codecov/codecov-action@v4
+        with:
+          files: "**/coverage.cobertura.xml"
+          flags: dotnet-${{ matrix.dotnet-version }}
+          fail_ci_if_error: false
+
+  publish:
+    name: Publish NuGet Package
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0"
+          source-url: ${{ secrets.NUGET_SOURCE_URL }}
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build package
+        run: dotnet pack --configuration Release --output nupkg
+
+      - name: Publish to NuGet
+        run: dotnet nuget push nupkg/*.nupkg --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }}
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages
+          path: nupkg/
+          retention-days: 30
+
+  security:
+    name: .NET Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0"
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run security analysis
+        run: |
+          dotnet add package Microsoft.CodeAnalysis.NetAnalyzers
+          dotnet build /p:EnableNETAnalyzers=true /p:AnalysisTreatWarningsAsErrors=false
+        continue-on-error: true
+
+      - name: Check for vulnerable packages
+        run: dotnet list package --vulnerable
+        continue-on-error: true
