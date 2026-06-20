@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg 
+  version="1.1" 
+  xmlns="http://www.w3.org/2000/svg" 
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="1024" 
+  height="1024" 
+  viewBox="0 0 1024 1024"
+  preserveAspectRatio="xMidYMid meet"
+>
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A2463"/>
+      <stop offset="50%" stop-color="#0D3B66"/>
+      <stop offset="100%" stop-color="#00B4D8"/>
+    </linearGradient>
+    
+    <!-- Ring Accent Gradient -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00B4D8"/>
+      <stop offset="100%" stop-color="#0A2463"/>
+    </linearGradient>
+    
+    <!-- Blob Gradient (Cyan to Deep Blue) -->
+    <linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="40%" stop-color="#00B4D8"/>
+      <stop offset="100%" stop-color="#0A2463"/>
+    </linearGradient>
+    
+    <!-- Triangle Stroke Gradient -->
+    <linearGradient id="triangleGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#00E5FF"/>
+    </linearGradient>
+    
+    <!-- Drop Shadow for Main Circle -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="15"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.3"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Soft Glow for Icon -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Triangle Glow -->
+    <filter id="triGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="512" cy="512" r="480" fill="url(#brandGradient)" filter="url(#dropShadow)"/>
+  
+  <!-- Inner Decorative Ring -->
+  <circle cx="512" cy="512" r="440" fill="none" stroke="url(#accentGradient)" stroke-width="8" opacity="0.6"/>
+  
+  <!-- ==================== CIRCULAR ICON ==================== -->
+  <g transform="translate(512, 460)" filter="url(#softGlow)">
+    
+    <!-- 5-Lobed Blob Shape (Vector Recreation) -->
+    <path 
+      d="M 0,-190 
+         C 125,-217 167,-186 181,-59 
+         C 245,52 228,102 112,154 
+         C 26,248 -26,248 -112,154 
+         C -228,102 -245,52 -181,-59 
+         C -167,-186 -125,-217 0,-190 
+         Z" 
+      fill="url(#blobGradient)"
+    />
+    
+    <!-- Center Dark Cutout (creates depth) -->
+    <circle cx="0" cy="0" r="105" fill="#0A2463" opacity="0.95"/>
+    
+    <!-- Three Nested Triangles -->
+    <path 
+      d="M 0,-70 L -81,35 L 81,35 Z" 
+      fill="none" 
+      stroke="url(#triangleGradient)" 
+      stroke-width="6" 
+      stroke-linejoin="round"
+      filter="url(#triGlow)"
+    />
+    <path 
+      d="M 0,-50 L -58,25 L 58,25 Z" 
+      fill="none" 
+      stroke="url(#triangleGradient)" 
+      stroke-width="5" 
+      stroke-linejoin="round"
+      filter="url(#triGlow)"
+    />
+    <path 
+      d="M 0,-30 L -35,15 L 35,15 Z" 
+      fill="none" 
+      stroke="url(#triangleGradient)" 
+      stroke-width="4" 
+      stroke-linejoin="round"
+      filter="url(#triGlow)"
+    />
+    
+  </g>
+  
+  <!-- ==================== BRAND TEXT ==================== -->
+  
+  <!-- Brand Name -->
+  <text 
+    x="512" 
+    y="820" 
+    font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+    font-size="64" 
+    font-weight="800" 
+    text-anchor="middle" 
+    fill="white"
+    letter-spacing="-1"
+  >
+    <tspan x="512" dy="0">ASilva</tspan>
+  </text>
+  
+  <text 
+    x="512" 
+    y="890" 
+    font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+    font-size="42" 
+    font-weight="600" 
+    text-anchor="middle" 
+    fill="rgba(255,255,255,0.95)"
+    letter-spacing="2"
+  >
+    <tspan x="512" dy="0">Innovations</tspan>
+  </text>
+  
+  <!-- Tagline -->
+  <text 
+    x="512" 
+    y="950" 
+    font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+    font-size="24" 
+    font-weight="400" 
+    text-anchor="middle" 
+    fill="rgba(255,255,255,0.8)"
+    letter-spacing="3"
+  >
+    <tspan x="512" dy="0">TRANSFORMING ORGANIZATIONS</tspan>
+  </text>
+  
+  <!-- ==================== DECORATIVE ELEMENTS ==================== -->
+  
+  <!-- Dashed Outer Ring -->
+  <circle cx="512" cy="512" r="460" fill="none" stroke="white" stroke-width="2" opacity="0.2" stroke-dasharray="15,15"/>
+  
+  <!-- Corner Accents -->
+  <g opacity="0.25">
+    <circle cx="180" cy="180" r="20" fill="white"/>
+    <circle cx="844" cy="180" r="20" fill="white"/>
+    <circle cx="180" cy="844" r="20" fill="white"/>
+    <circle cx="844" cy="844" r="20" fill="white"/>
+  </g>
+  
+  <!-- Subtle Top Highlight -->
+  <ellipse cx="512" cy="280" rx="200" ry="80" fill="white" opacity="0.05"/>
+  
+</svg>
