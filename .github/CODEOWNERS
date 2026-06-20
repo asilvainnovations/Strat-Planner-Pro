@@ -1,0 +1,39 @@
+# CODEOWNERS
+
+# Core team owns root configuration files
+*.json @asilvainnovations
+*.yml @asilvainnovations
+*.yaml @asilvainnovations
+tsconfig*.json @asilvainnovations
+vite.config.ts @asilvainnovations
+tailwind.config.ts @asilvainnovations
+
+# Frontend components
+/src/components/ @asilvainnovations
+/src/components/strategic/ @asilvainnovations
+/src/components/settings/ @asilvainnovations
+/src/pages/ @asilvainnovations
+
+# Hooks and utilities
+/src/hooks/ @asilvainnovations
+/src/lib/ @asilvainnovations
+/src/utils/ @asilvainnovations
+
+# Types and schemas
+/src/types/ @asilvainnovations
+/src/schemas/ @asilvainnovations
+
+# Database and migrations
+/supabase/migrations/ @asilvainnovations
+/supabase/functions/ @asilvainnovations
+
+# CI/CD and infrastructure
+.github/workflows/ @asilvainnovations
+Dockerfile @asilvainnovations
+docker-compose.yml @asilvainnovations
+
+# Documentation
+/docs/ @asilvainnovations
+*.md @asilvainnovations
+SECURITY.md @asilvainnovations
+CONTRIBUTING.md @asilvainnovations
