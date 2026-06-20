@@ -1,55 +1,231 @@
-name: Deploy to GitHub Pages
+name: Deploy
 
 on:
   push:
     branches: [main]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-        
-      - name: Setup Node
+
+      - name: Setup Node.js with caching
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
-          
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
+          node-version: 20.x
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Restore npm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
       - name: Install dependencies
         run: npm ci
-        
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Run tests
+        run: npm run test -- --run
+
+      - name: Cache build outputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            dist
+            .next
+            .vite
+          key: ${{ runner.os }}-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+
       - name: Build
+        run: npm run build
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-        run: npm run build
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
+          VITE_PWA_EXTERNAL_URL: ${{ secrets.VITE_PWA_EXTERNAL_URL }}
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: dist
+          retention-days: 5
+
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          cname: strat-planner-pro.example.com
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const deployment = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.ref,
+              environment: 'production',
+              required_contexts: [],
+              auto_merge: false
+            });
+            
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.data.id,
+              state: 'success',
+              environment_url: 'https://strat-planner-pro.example.com',
+              description: 'Production deployment successful'
+            });
+
+      - name: Notify Slack (Success)
+        if: success()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "✅ Strat Planner Pro deployed successfully",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*✅ Production Deployment Successful*\n*Commit:* <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n*Branch:* ${{ github.ref_name }}\n*Author:* ${{ github.actor }}"
+                  }
+                }
+              ]
+            }
+
+      - name: Notify Slack (Failure)
+        if: failure()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "❌ Strat Planner Pro deployment failed",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*❌ Production Deployment Failed*\n*Commit:* <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n*Branch:* ${{ github.ref_name }}\n*Author:* ${{ github.actor }}"
+                  }
+                }
+              ]
+            }
+
+  lighthouse-audit:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js with caching
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Restore npm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache build outputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            dist
+            .next
+            .vite
+          key: ${{ runner.os }}-build-${{ github.sha }}
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+        continue-on-error: true
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: ./lhr
+          retention-days: 30
+        continue-on-error: true
+
+  performance-check:
+    name: Performance Check
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js with caching
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Restore npm cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Analyze bundle size
+        run: |
+          SIZE=$(du -sh dist | cut -f1)
+          echo "📦 Build size: $SIZE"
+          
+          # Fail if bundle exceeds 5MB
+          BYTES=$(du -sb dist | cut -f1)
+          MAX_BYTES=$((5 * 1024 * 1024))
+          if [ $BYTES -gt $MAX_BYTES ]; then
+            echo "❌ Build size exceeds 5MB"
+            exit 1
+          fi
+
+      - name: Check dependency sizes
+        run: npm ls --depth=0 || true
