@@ -1,0 +1,782 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* Glass Material Colors */
+    --glass-background: 0 0% 100%;
+    --glass-background-alpha: 0.7;
+    --glass-border: 0 0% 100%;
+    --glass-border-alpha: 0.2;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary */
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Muted */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent */
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders & Inputs */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    /* Radius */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* Shadows - Liquid Glass depth */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+
+    /* Blur values */
+    --blur-sm: 4px;
+    --blur-md: 12px;
+    --blur-lg: 16px;
+    --blur-xl: 24px;
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Sidebar */
+    --sidebar-background: 220 23% 95%;
+    --sidebar-foreground: 215 25% 27%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 90%;
+    --sidebar-accent-foreground: 215 25% 27%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    /* Core Colors */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    /* Glass Material Colors */
+    --glass-background: 222.2 84% 8%;
+    --glass-background-alpha: 0.6;
+    --glass-border: 210 40% 98%;
+    --glass-border-alpha: 0.1;
+
+    /* Card */
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    /* Popover */
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary */
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    /* Secondary */
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    /* Accent */
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Destructive */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders & Inputs */
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    /* Shadows - Enhanced for dark mode */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.7);
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
+    /* Sidebar */
+    --sidebar-background: 215 28% 17%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 25% 27%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 25% 27%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color var(--transition-base), color var(--transition-base);
+  }
+
+  pre, code {
+    @apply font-mono;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection colors */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer components {
+  @layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color var(--transition-base), color var(--transition-base);
+  }
+
+  /* ðŸ”§ FIX: Ensure all text inputs have visible text color */
+  input,
+  textarea,
+  select,
+  button,
+  [contenteditable="true"],
+  [contenteditable=""],
+  .ProseMirror,
+  .CodeMirror,
+  .monaco-editor,
+  .ace_editor {
+    @apply text-foreground;
+    caret-color: hsl(var(--primary));
+  }
+
+  /* Explicit input styles for better visibility */
+  input::placeholder,
+  textarea::placeholder {
+    @apply text-muted-foreground;
+  }
+
+  input:-ms-input-placeholder,
+  textarea:-ms-input-placeholder {
+    @apply text-muted-foreground;
+  }
+
+  input::-ms-input-placeholder,
+  textarea::-ms-input-placeholder {
+    @apply text-muted-foreground;
+  }
+
+  /* Fix for markdown editor specifically */
+  .markdown-editor {
+    @apply text-foreground !important;
+    color: hsl(var(--foreground)) !important;
+  }
+
+  /* Fix for code editors and preformatted text in inputs */
+  pre,
+  code {
+    @apply font-mono text-foreground;
+  }
+
+  /* Ensure form controls always have visible text */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="time"],
+  input[type="month"],
+  input[type="week"],
+  textarea {
+    @apply bg-background text-foreground;
+    @apply border-border;
+    @apply placeholder:text-muted-foreground;
+  }
+
+  /* Fix for readonly/disabled states */
+  input:disabled,
+  textarea:disabled,
+  input[readonly],
+  textarea[readonly] {
+    @apply opacity-70 text-foreground;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection colors */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+  /* Liquid Glass Surface */
+  .glass {
+    background: hsla(var(--glass-background) / var(--glass-background-alpha));
+    backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+    border: 1px solid hsla(var(--glass-border) / var(--glass-border-alpha));
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-sm {
+    background: hsla(var(--glass-background) / calc(var(--glass-background-alpha) - 0.1));
+    backdrop-filter: blur(var(--blur-sm)) saturate(150%);
+    -webkit-backdrop-filter: blur(var(--blur-sm)) saturate(150%);
+    border: 1px solid hsla(var(--glass-border) / var(--glass-border-alpha));
+  }
+
+  .glass-md {
+    background: hsla(var(--glass-background) / var(--glass-background-alpha));
+    backdrop-filter: blur(var(--blur-md)) saturate(160%);
+    -webkit-backdrop-filter: blur(var(--blur-md)) saturate(160%);
+    border: 1px solid hsla(var(--glass-border) / var(--glass-border-alpha));
+    box-shadow: var(--shadow-md);
+  }
+
+  .glass-lg {
+    background: hsla(var(--glass-background) / var(--glass-background-alpha));
+    backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+    -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(200%);
+    border: 1px solid hsla(var(--glass-border) / var(--glass-border-alpha));
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Glass Card */
+  .glass-card {
+    @apply glass rounded-[--radius-lg] p-6 transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* Vibrancy Effect */
+  .vibrancy {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vibrancy::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at center,
+      hsla(var(--primary) / 0.05) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .vibrancy:hover::before {
+    opacity: 1;
+  }
+
+  /* Depth Layers */
+  .layer-1 {
+    box-shadow: var(--shadow-sm);
+    z-index: 1;
+  }
+
+  .layer-2 {
+    box-shadow: var(--shadow-md);
+    z-index: 2;
+  }
+
+  .layer-3 {
+    box-shadow: var(--shadow-lg);
+    z-index: 3;
+  }
+
+  .layer-4 {
+    box-shadow: var(--shadow-xl);
+    z-index: 4;
+  }
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    transition: all var(--transition-base);
+  }
+
+  .transition-spring {
+    transition: all var(--transition-spring);
+  }
+
+  /* Interactive States */
+  .interactive {
+    @apply cursor-pointer transition-all duration-200;
+    will-change: transform, box-shadow;
+  }
+
+  .interactive:hover {
+    transform: scale(1.02);
+  }
+
+  .interactive:active {
+    transform: scale(0.98);
+  }
+
+  /* Frosted Glass Button */
+  .btn-glass {
+    @apply glass-md px-6 py-3 rounded-[--radius-md] font-medium;
+    @apply transition-all duration-200 cursor-pointer;
+    @apply hover:shadow-lg active:scale-95;
+  }
+
+  .btn-glass-primary {
+    @apply btn-glass bg-primary/80 text-primary-foreground;
+    @apply hover:bg-primary/90;
+  }
+
+  /* Material Surface */
+  .material {
+    @apply bg-card rounded-[--radius-lg] shadow-md;
+    @apply border border-border/50;
+    transition: all var(--transition-base);
+  }
+
+  .material:hover {
+    @apply shadow-lg border-border;
+  }
+
+  /* Elevated Surface */
+  .elevated {
+    @apply bg-card rounded-[--radius-lg];
+    box-shadow: var(--shadow-lg);
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+  }
+
+  .elevated:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px) translateZ(0);
+  }
+}
+
+@layer utilities {
+  /* Blur Utilities */
+  .blur-glass {
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
+  }
+
+  .blur-glass-sm {
+    backdrop-filter: blur(var(--blur-sm));
+    -webkit-backdrop-filter: blur(var(--blur-sm));
+  }
+
+  .blur-glass-md {
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+  }
+
+  .blur-glass-xl {
+    backdrop-filter: blur(var(--blur-xl));
+    -webkit-backdrop-filter: blur(var(--blur-xl));
+  }
+
+  /* Smooth Scroll */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Safe Area Padding (for mobile) */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Markdown Editor & Preview */
+.markdown-editor {
+  @apply font-mono text-base leading-relaxed;
+  @apply bg-transparent p-4 rounded-[--radius-md];
+  @apply border border-border/50 focus:border-primary/50;
+  @apply transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-primary/20;
+}
+
+.markdown-preview {
+  @apply prose max-w-none prose-blue dark:prose-invert;
+  @apply prose-headings:font-sans prose-headings:font-semibold;
+  @apply prose-a:text-primary prose-a:no-underline hover:prose-a:underline;
+  @apply prose-code:text-primary prose-code:bg-secondary/50;
+  @apply prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded;
+  @apply prose-code:before:content-none prose-code:after:content-none;
+}
+
+.markdown-preview pre {
+  @apply glass-md p-4 rounded-[--radius-md] overflow-x-auto;
+  @apply text-sm leading-relaxed;
+}
+
+.markdown-preview code {
+  @apply font-mono text-sm;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3,
+.markdown-preview h4,
+.markdown-preview h5,
+.markdown-preview h6 {
+  @apply font-sans font-semibold text-foreground;
+  @apply scroll-mt-20;
+}
+
+.markdown-preview ul,
+.markdown-preview ol {
+  @apply my-4 ml-6;
+}
+
+.markdown-preview blockquote {
+  @apply border-l-4 border-primary/30 pl-4 italic;
+  @apply bg-secondary/30 py-2 pr-4 rounded-r-[--radius-sm];
+}
+
+.markdown-preview table {
+  @apply w-full border-collapse;
+}
+
+.markdown-preview th {
+  @apply bg-secondary/50 font-semibold text-left p-3;
+  @apply border-b-2 border-border;
+}
+
+.markdown-preview td {
+  @apply p-3 border-b border-border/50;
+}
+
+.markdown-preview img {
+  @apply rounded-[--radius-md] shadow-md;
+  @apply transition-transform duration-300;
+}
+
+.markdown-preview img:hover {
+  @apply scale-[1.02] shadow-lg;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn var(--transition-base) ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--transition-base) ease-out;
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-background;
+  @apply rounded-[--radius-sm];
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .glass,
+  .glass-sm,
+  .glass-md,
+  .glass-lg {
+    border-width: 2px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: hsl(var(--card));
+  }
+}
+
+/* Print Styles */
+@media print {
+  .glass,
+  .glass-sm,
+  .glass-md,
+  .glass-lg {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: white;
+    border: 1px solid #e5e7eb;
+  }
+}
+/* ========================================
+   ðŸ›¡ï¸ ENHANCED PLATFORM BADGE REMOVAL
+   ======================================== */
+
+/* Primary Badge Selectors */
+#bolt-badge, 
+.bolt-badge,
+[data-bolt-badge],
+[id*="bolt"][id*="badge"],
+[class*="bolt"][class*="badge"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+/* Iframe-based badges */
+iframe[src*="bolt"],
+iframe[src*="badge"],
+iframe[title*="bolt"],
+iframe[title*="badge"],
+iframe[data-bolt],
+iframe.badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+/* Fixed position badges (common placement) */
+[style*="position: fixed"][style*="bottom"],
+[style*="position:fixed"][style*="bottom"],
+div[style*="z-index: 999"],
+div[style*="z-index:999"],
+div[style*="z-index: 9999"],
+a[href*="bolt.new"],
+a[href*="bolt.diy"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Additional common badge patterns */
+[data-badge="bolt"],
+[data-platform="bolt"],
+[data-branding="bolt"],
+.platform-badge,
+.builder-badge,
+.powered-by-badge,
+[class*="made-in"],
+[class*="powered-by"],
+[class*="built-with"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Bottom-right corner elements (typical badge placement) */
+body > div:last-child[style*="position: fixed"],
+body > div:last-child[style*="position:fixed"],
+body > a:last-child[style*="position: fixed"],
+body > a:last-child[style*="position:fixed"] {
+  display: none !important;
+}
+
+/* SVG-based badges */
+svg[data-badge],
+svg[class*="badge"],
+svg[id*="badge"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Watermark and attribution elements */
+[data-watermark],
+[data-attribution],
+.watermark,
+.attribution {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   THEME-AWARE COMPONENT UTILITIES
+   These ensure all module pages respond correctly to light/dark mode.
+   Use these classes instead of hard-coded dark-only color values.
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+
+/* Surface layers */
+.surface-base   { @apply bg-white dark:bg-slate-900; }
+.surface-raised { @apply bg-white dark:bg-slate-800; }
+.surface-sunken { @apply bg-slate-50 dark:bg-slate-950; }
+.surface-panel  { @apply bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/60; }
+
+/* Text layers */
+.text-primary-content   { @apply text-slate-900 dark:text-slate-50; }
+.text-secondary-content { @apply text-slate-600 dark:text-slate-400; }
+.text-tertiary-content  { @apply text-slate-400 dark:text-slate-500; }
+
+/* Border layers */
+.border-subtle  { @apply border-slate-200 dark:border-slate-700; }
+.border-strong  { @apply border-slate-300 dark:border-slate-600; }
+
+/* Input fields */
+.input-field {
+  @apply bg-white dark:bg-slate-800/50
+         text-slate-900 dark:text-slate-100
+         border-slate-300 dark:border-slate-600
+         placeholder:text-slate-400 dark:placeholder:text-slate-500
+         focus:ring-primary focus:border-primary;
+}
+
+/* Card surface */
+.card-surface {
+  @apply bg-white dark:bg-slate-800/60
+         border border-slate-200 dark:border-slate-700/60
+         rounded-xl shadow-sm;
+}
+
+/* Tab / pill navigation */
+.tab-bar { @apply bg-slate-100 dark:bg-slate-800 rounded-xl p-1; }
+.tab-item { @apply text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200; }
+.tab-item-active { @apply bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-slate-100; }
+
+/* Stat badges */
+.badge-neutral { @apply bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300; }
+
+/* CLD canvas background */
+.cld-canvas-bg {
+  @apply bg-gradient-to-br from-slate-50 via-white to-blue-50/40
+         dark:from-slate-900 dark:via-slate-800 dark:to-blue-950/20
+         border border-slate-200 dark:border-slate-700;
+}
+
+/* Panel overlays (used in analysis side panels, tooltips) */
+.panel-overlay {
+  @apply bg-white dark:bg-slate-900
+         border border-slate-200 dark:border-slate-700
+         shadow-xl;
+}
+
+/* Section header strip */
+.section-header {
+  @apply bg-gradient-to-r from-slate-50 to-slate-100
+         dark:from-slate-800 dark:to-slate-900
+         border-b border-slate-200 dark:border-slate-700;
+}
