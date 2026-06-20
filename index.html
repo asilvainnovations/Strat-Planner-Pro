@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strat Planner Pro</title>
+    
+    <!-- Meta Description -->
+    <meta 
+      name="description" 
+      content="Unlock Smarter Strategy with AI - An AI-powered platform designed for leaders and organizations to transform strategic planning into measurable success."
+    />
+
+    <!-- ==================== FAVICON & LOGO (CIRCULAR IMPLEMENTATION) ==================== -->
+    
+    <!-- Primary Favicon (Favors circular display on most browsers) -->
+    <link rel="icon" type="image/png" href="/src/assets/images/favicon.png" />
+    
+    <!-- Apple Touch Icon (iOS - Always rendered as rounded/circular on home screen) -->
+    <link rel="apple-touch-icon" href="https://paibpwwszlfpsyytdnal.databasepad.com/storage/v1/object/public/pending-tasks/public/Strat%20Planner%20Pro%20logo.png" />
+    
+    <!-- Windows Tile (515x150px for modern apps) -->
+    <link rel="icon" type="image/x-icon" href="https://paibpwwszlfpsyytdnal.databasepad.com/storage/v1/object/public/pending-tasks/public/Strat%20Planner%20Pro%20logo.png" />
+    
+    <!-- Android Home Screen Icon (Circular on most Android launchers) -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Preconnect for faster loading of external assets -->
+    <link rel="preconnect" href="https://paibpwwszlfpsyytdnal.databasepad.com" />
+
+    <!-- ==================== SOCIAL MEDIA PREVIEW (Open Graph & Twitter Cards) ==================== -->
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Strat Planner Pro" />
+    <meta 
+      property="og:description" 
+      content="An AI-powered platform designed for leaders and organizations to transform strategic planning into measurable success."
+    />
+    <meta property="og:type" content="website" />
+    <!-- Using your logo URL for OG image -->
+    <meta property="og:image" content="https://paibpwwszlfpsyytdnal.databasepad.com/storage/v1/object/public/pending-tasks/public/Strat%20Planner%20Pro%20logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://yourapp.com" />
+
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Strat Planner Pro" />
+    <meta 
+      name="twitter:description" 
+      content="Unlock Smarter Strategy with AI - Transform strategic planning with precision."
+    />
+    <meta name="twitter:image" content="https://paibpwwszlfpsyytdnal.databasepad.com/storage/v1/object/public/pending-tasks/public/Strat%20Planner%20Pro%20logo.png" />
+    <meta name="twitter:site" content="@stratplannerpro" />
+
+    <!-- Theme Color (Mobile browsers will use this for UI chrome) -->
+    <meta name="theme-color" content="#0A1628" />
+  </head>
+
+  <body>
+    <!-- App Container -->
+    <div id="root"></div>
+    
+    <!-- React Entry Point -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Additional Global Styles for Circular Icons (if logo displays inline) -->
+    <style>
+      /* Apply circular styling to any inline logo elements */
+      img.logo, img.icon, [class*="icon"], [class*="logo"] {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 48px;
+        height: 48px;
+      }
+    </style>
+  </body>
+</html>
