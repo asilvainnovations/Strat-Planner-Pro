@@ -1,0 +1,91 @@
+name: Java Build
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "java/**"
+      - ".github/workflows/java-build.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "java/**"
+
+jobs:
+  build:
+    name: Java Build & Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java-version: ["17", "21"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: "temurin"
+          cache: maven
+
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2-
+
+      - name: Build with Maven
+        run: mvn clean package
+
+      - name: Run tests
+        run: mvn test
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-java-${{ matrix.java-version }}
+          path: target/surefire-reports
+          retention-days: 30
+
+      - name: Upload coverage reports
+        if: success()
+        uses: codecov/codecov-action@v4
+        with:
+          files: target/site/jacoco/jacoco.xml
+          flags: java-${{ matrix.java-version }}
+          fail_ci_if_error: false
+
+  lint:
+    name: Java Linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: maven
+
+      - name: Cache Maven packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2-
+
+      - name: Run Checkstyle
+        run: mvn checkstyle:check || true
+
+      - name: Run SpotBugs
+        run: mvn spotbugs:check || true
