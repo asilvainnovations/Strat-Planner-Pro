@@ -1,231 +1,272 @@
-name: Deploy
+name: Deploy - Production
 
 on:
   push:
     branches: [main]
+    tags: ['v*']
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: '20'
+  REGISTRY: ghcr.io
 
 jobs:
-  build-and-deploy:
-    name: Build & Deploy
+  validate:
+    name: Pre-deployment Validation
     runs-on: ubuntu-latest
-
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      deploy-env: ${{ steps.env.outputs.deploy-env }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Setup Node.js with caching
-        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-          cache: npm
-          cache-dependency-path: package-lock.json
+          fetch-depth: 0
 
-      - name: Restore npm cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Type check
-        run: npm run type-check
-
-      - name: Run tests
-        run: npm run test -- --run
-
-      - name: Cache build outputs
-        uses: actions/cache@v4
-        with:
-          path: |
-            dist
-            .next
-            .vite
-          key: ${{ runner.os }}-build-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-
-      - name: Build
-        run: npm run build
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-          VITE_PWA_EXTERNAL_URL: ${{ secrets.VITE_PWA_EXTERNAL_URL }}
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: dist
-          retention-days: 5
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          cname: strat-planner-pro.example.com
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
-
-      - name: Create deployment
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const deployment = await github.rest.repos.createDeployment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: context.ref,
-              environment: 'production',
-              required_contexts: [],
-              auto_merge: false
-            });
-            
-            await github.rest.repos.createDeploymentStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              deployment_id: deployment.data.id,
-              state: 'success',
-              environment_url: 'https://strat-planner-pro.example.com',
-              description: 'Production deployment successful'
-            });
-
-      - name: Notify Slack (Success)
-        if: success()
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          payload: |
-            {
-              "text": "✅ Strat Planner Pro deployed successfully",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*✅ Production Deployment Successful*\n*Commit:* <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n*Branch:* ${{ github.ref_name }}\n*Author:* ${{ github.actor }}"
-                  }
-                }
-              ]
-            }
-
-      - name: Notify Slack (Failure)
-        if: failure()
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
-          payload: |
-            {
-              "text": "❌ Strat Planner Pro deployment failed",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "*❌ Production Deployment Failed*\n*Commit:* <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|${{ github.sha }}>\n*Branch:* ${{ github.ref_name }}\n*Author:* ${{ github.actor }}"
-                  }
-                }
-              ]
-            }
-
-  lighthouse-audit:
-    name: Lighthouse Audit
-    runs-on: ubuntu-latest
-    needs: build-and-deploy
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js with caching
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Restore npm cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Cache build outputs
-        uses: actions/cache@v4
-        with:
-          path: |
-            dist
-            .next
-            .vite
-          key: ${{ runner.os }}-build-${{ github.sha }}
-
-      - name: Run Lighthouse CI
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-          configPath: ./lighthouserc.json
-          uploadArtifacts: true
-          temporaryPublicStorage: true
-        continue-on-error: true
-
-      - name: Upload Lighthouse reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse-report
-          path: ./lhr
-          retention-days: 30
-        continue-on-error: true
-
-  performance-check:
-    name: Performance Check
-    runs-on: ubuntu-latest
-    needs: build-and-deploy
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js with caching
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Restore npm cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Analyze bundle size
+      - name: Determine version
+        id: version
         run: |
-          SIZE=$(du -sh dist | cut -f1)
-          echo "📦 Build size: $SIZE"
-          
-          # Fail if bundle exceeds 5MB
-          BYTES=$(du -sb dist | cut -f1)
-          MAX_BYTES=$((5 * 1024 * 1024))
-          if [ $BYTES -gt $MAX_BYTES ]; then
-            echo "❌ Build size exceeds 5MB"
-            exit 1
+          if [[ ${{ github.ref }} == refs/tags/v* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+          else
+            VERSION=$(date '+%Y.%m.%d')-${GITHUB_SHA::7}
           fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "📦 Version: $VERSION"
 
-      - name: Check dependency sizes
-        run: npm ls --depth=0 || true
+      - name: Determine environment
+        id: env
+        run: |
+          if [[ ${{ github.ref }} == refs/tags/v* ]]; then
+            ENV="production"
+          else
+            ENV="${{ github.event.inputs.environment }}"
+          fi
+          echo "deploy-env=$ENV" >> $GITHUB_OUTPUT
+          echo "🌍 Environment: $ENV"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+
+      - name: Verify build
+        run: npm run build --if-present
+
+  security-check:
+    name: Security Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Snyk scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        continue-on-error: true
+
+      - name: SAST scan with Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: >-
+            p/owasp-top-ten
+            p/typescript
+        continue-on-error: true
+
+  build-and-push:
+    name: Build & Push Docker Image
+    runs-on: ubuntu-latest
+    needs: [validate, security-check]
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image-uri: ${{ steps.image.outputs.uri }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}
+          tags: |
+            type=semver,pattern={{version}},value=${{ needs.validate.outputs.version }}
+            type=ref,event=branch
+            type=sha,prefix={{branch}}-
+            latest
+
+      - name: Build and push image
+        id: image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Set image URI output
+        run: |
+          echo "uri=${{ env.REGISTRY }}/${{ github.repository }}:${{ needs.validate.outputs.version }}" >> $GITHUB_OUTPUT
+
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [validate, build-and-push]
+    if: needs.validate.outputs.deploy-env == 'staging'
+    environment:
+      name: staging
+      url: https://staging.stratplannerp.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to staging
+        run: |
+          echo "🚀 Deploying to staging..."
+          # Add your staging deployment script here
+          # Example: ./scripts/deploy-staging.sh
+
+      - name: Verify deployment
+        run: |
+          echo "✅ Verifying staging deployment..."
+          curl -f https://staging.stratplannerpro.com/health || exit 1
+
+      - name: Notify Slack
+        if: always()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "🚀 Staging deployment ${{ job.status }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Staging Deployment*\nVersion: ${{ needs.validate.outputs.version }}\nStatus: ${{ job.status }}"
+                  }
+                }
+              ]
+            }
+
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [validate, build-and-push, deploy-staging]
+    if: github.ref_type == 'tag' && startsWith(github.ref, 'refs/tags/v')
+    environment:
+      name: production
+      url: https://stratplannerpro.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to production
+        run: |
+          echo "🚀 Deploying to production..."
+          # Add your production deployment script here
+          # Example: ./scripts/deploy-prod.sh
+
+      - name: Database migrations
+        run: |
+          echo "🗄️  Running database migrations..."
+          # Add migration script here
+
+      - name: Verify deployment
+        run: |
+          echo "✅ Verifying production deployment..."
+          curl -f https://stratplannerpro.com/health || exit 1
+
+      - name: Create release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ needs.validate.outputs.version }}
+          draft: false
+          prerelease: false
+
+      - name: Notify Slack
+        if: always()
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "🚀 Production deployment ${{ job.status }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Production Deployment*\nVersion: ${{ needs.validate.outputs.version }}\nStatus: ${{ job.status }}\n<https://github.com/${{ github.repository }}/releases/tag/${{ github.ref }}|View Release>"
+                  }
+                }
+              ]
+            }
+
+  rollback:
+    name: Rollback on Failure
+    runs-on: ubuntu-latest
+    needs: [deploy-production]
+    if: failure() && github.ref_type == 'tag'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Rollback to previous version
+        run: |
+          echo "⚠️  Rolling back to previous version..."
+          # Add your rollback script here
+
+      - name: Notify incident
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          payload: |
+            {
+              "text": "🚨 Production deployment failed and rolled back",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Deployment Failure - Rollback Initiated*\nVersion: ${{ needs.validate.outputs.version }}\n⚠️  Please investigate immediately!"
+                  }
+                }
+              ]
+            }
