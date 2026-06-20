@@ -1,10 +1,23 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || "https://gyjjkdfkaumfxpohtasn.supabase.co";
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd5amprZGZrYXVtZnhwb2h0YXNuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4MDMxMjQsImV4cCI6MjA4NjM3OTEyNH0.kLugJ71wuFjGbTU2WKQ_NxKwkW7veNvNnV67FA0HOH0";
 
-// Initialize database client
-const supabaseUrl = 'https://paibpwwszlfpsyytdnal.databasepad.com';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImUzOGRiMjYzLWRhNjctNGMyYi1hZTRjLWEzNTRmOWRlYjRhNCJ9.eyJwcm9qZWN0SWQiOiJwYWlicHd3c3psZnBzeXl0ZG5hbCIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzY4ODQwNzE0LCJleHAiOjIwODQyMDA3MTQsImlzcyI6ImZhbW91cy5kYXRhYmFzZXBhZCIsImF1ZCI6ImZhbW91cy5jbGllbnRzIn0.DDKtu48q2M4cAEfdnFqD0SQoXR_ZycL62CRx59zqcUY';
-const supabase = createClient(supabaseUrl, supabaseKey);
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error(
+    "Missing required environment variables: VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY"
+  );
+}
 
-
-export { supabase };
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
+  },
+  global: {
+    headers: {
+      "x-application": "strat-planner-pro",
+    },
+  },
+});
