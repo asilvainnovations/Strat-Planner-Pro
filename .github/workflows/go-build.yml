@@ -1,0 +1,133 @@
+name: Go Build
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "go/**"
+      - ".github/workflows/go-build.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "go/**"
+
+jobs:
+  build:
+    name: Go Build & Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        go-version: ["1.21", "1.22"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: ${{ matrix.go-version }}
+          cache: true
+          cache-dependency-path: go/go.sum
+
+      - name: Cache Go modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Download Go modules
+        run: |
+          cd go
+          go mod download
+
+      - name: Build
+        run: |
+          cd go
+          go build -v ./...
+
+      - name: Run tests
+        run: |
+          cd go
+          go test -v -race -coverprofile=coverage.out ./...
+
+      - name: Upload coverage reports
+        if: success()
+        uses: codecov/codecov-action@v4
+        with:
+          files: go/coverage.out
+          flags: go-${{ matrix.go-version }}
+          fail_ci_if_error: false
+
+  lint:
+    name: Go Linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.22
+          cache: true
+          cache-dependency-path: go/go.sum
+
+      - name: Cache Go modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
+          working-directory: go
+
+  security:
+    name: Go Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: 1.22
+          cache: true
+          cache-dependency-path: go/go.sum
+
+      - name: Cache Go modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Run Gosec Security Scanner
+        uses: securego/gosec@master
+        with:
+          args: "-no-fail -fmt sarif -out results.sarif ./go/..."
+        continue-on-error: true
+
+      - name: Upload Gosec results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
+        continue-on-error: true
