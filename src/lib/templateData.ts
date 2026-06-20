@@ -71,7 +71,6 @@ export const INDUSTRY_OPTIONS = [
 ];
 
 export const BUILTIN_TEMPLATES: PlanTemplate[] = [
-
   // ===== 1. HEALTHCARE =====
   {
     id: 'tmpl-healthcare-transformation',
@@ -93,25 +92,21 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
       mission: 'To improve health outcomes and quality of life by delivering accessible, evidence-based, and patient-centered care through an engaged and resilient workforce.',
       strategicIntent: 'Achieve top-quartile clinical quality scores, reduce cost-per-episode by 18%, expand digital health access to 75% of patients, and attain 90%+ patient satisfaction within 3 years through the Value-Based Care Transformation framework.',
       swotItems: [
-        // Strengths
         { category: 'strength', description: 'Established clinical reputation with Magnet-designated nursing excellence and Joint Commission accreditation', impactScore: 5, likelihoodScore: 5 },
         { category: 'strength', description: 'Integrated EHR system (Epic) enabling data-driven clinical decisions and care coordination', impactScore: 4, likelihoodScore: 5 },
         { category: 'strength', description: 'Strong community relationships, primary care network of 42 clinics, and broad geographic coverage', impactScore: 4, likelihoodScore: 5 },
         { category: 'strength', description: 'Financial reserves and credit rating supporting capital investment in infrastructure and technology', impactScore: 4, likelihoodScore: 4 },
         { category: 'strength', description: 'Robust graduate medical education programs attracting top clinical talent pipelines', impactScore: 3, likelihoodScore: 4 },
-        // Weaknesses
         { category: 'weakness', description: 'Critical nursing and specialist shortage — 18% vacancy rate driving agency staffing costs up 34%', impactScore: 5, likelihoodScore: 5 },
         { category: 'weakness', description: 'Fragmented care transitions between inpatient, outpatient, and post-acute settings causing readmissions', impactScore: 5, likelihoodScore: 4 },
         { category: 'weakness', description: 'Slow digital adoption among clinical staff; telehealth utilization at only 12% of eligible visits', impactScore: 4, likelihoodScore: 4 },
         { category: 'weakness', description: 'High administrative burden consuming 30% of physician time on documentation and billing', impactScore: 4, likelihoodScore: 5 },
         { category: 'weakness', description: 'Limited population health analytics capability inhibiting proactive disease management programs', impactScore: 4, likelihoodScore: 4 },
-        // Opportunities
         { category: 'opportunity', description: 'Value-based care contracts growth — CMS transitioning 100% of Medicare payments to value-based models by 2030', impactScore: 5, likelihoodScore: 5 },
         { category: 'opportunity', description: 'Remote patient monitoring and AI-assisted diagnostics reducing cost while improving chronic disease management', impactScore: 5, likelihoodScore: 4 },
         { category: 'opportunity', description: 'Behavioral health integration demand surge — 1 in 5 adults with unmet mental health needs post-pandemic', impactScore: 4, likelihoodScore: 5 },
         { category: 'opportunity', description: 'Strategic partnerships with payers for shared-savings programs and care management incentives', impactScore: 4, likelihoodScore: 4 },
         { category: 'opportunity', description: 'Underserved community expansion funded by HRSA grants and 340B drug pricing program', impactScore: 4, likelihoodScore: 4 },
-        // Threats
         { category: 'threat', description: 'Physician group consolidation by private equity creating competing employed networks and price pressure', impactScore: 5, likelihoodScore: 5 },
         { category: 'threat', description: 'Payer reimbursement cuts and prior authorization expansion eroding operating margins below 2%', impactScore: 5, likelihoodScore: 4 },
         { category: 'threat', description: 'Cybersecurity vulnerabilities — healthcare sector averaged $10.9M per breach in 2024', impactScore: 5, likelihoodScore: 4 },
@@ -129,89 +124,41 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'Behavioral Health Integration Strategy', description: 'Co-locate behavioral health clinicians in primary care and create stepped care pathways reducing ED behavioral health boarding by 40%', priorityScore: 4, feasibilityScore: 3, selected: false },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Achieve Sustainable Operating Margin',
-          description: 'Transition revenue mix toward value-based contracts while reducing agency staffing and administrative costs to sustain ≥3.5% operating margin',
-          weight: 1.5,
-          kpis: [
-            { name: 'Operating Margin', description: 'Net operating income as percentage of total revenue', baselineValue: 1.8, targetValue: 3.5, currentValue: 1.8, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
-            { name: 'Agency Staffing Cost Ratio', description: 'Agency labor cost as % of total labor expense', baselineValue: 18, targetValue: 8, currentValue: 18, unit: '%', frequency: 'monthly', owner: 'CHRO', status: 'at-risk' },
-            { name: 'Value-Based Revenue Share', description: 'Percentage of net patient revenue from value-based contracts', baselineValue: 22, targetValue: 55, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Reduce Cost Per Episode',
-          description: 'Improve care efficiency across high-volume DRGs through protocol standardization and care variation reduction',
-          weight: 1.3,
-          kpis: [
-            { name: 'Cost Per Episode (Top 10 DRGs)', description: 'Average total cost per admission for top 10 DRGs vs peer benchmark', baselineValue: 112, targetValue: 92, currentValue: 112, unit: '% of benchmark', frequency: 'quarterly', owner: 'CMO', status: 'at-risk' },
-            { name: '30-Day Readmission Rate', description: 'All-cause readmission within 30 days of discharge', baselineValue: 14.2, targetValue: 10.5, currentValue: 14.2, unit: '%', frequency: 'monthly', owner: 'CMO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Elevate Patient Experience',
-          description: 'Deliver consistently excellent patient-centered care achieving top-decile HCAHPS scores across all service lines',
-          weight: 1.4,
-          kpis: [
-            { name: 'HCAHPS Overall Rating', description: 'Percentage of patients rating hospital 9 or 10 out of 10', baselineValue: 68, targetValue: 82, currentValue: 68, unit: '%', frequency: 'monthly', owner: 'CNO', status: 'at-risk' },
-            { name: 'Patient Net Promoter Score', description: 'Net Promoter Score across all care settings', baselineValue: 42, targetValue: 65, currentValue: 42, unit: 'NPS', frequency: 'quarterly', owner: 'Chief Patient Experience Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Expand Access and Health Equity',
-          description: 'Remove barriers to care for underserved populations through telehealth, extended hours, and community health worker programs',
-          weight: 1.3,
-          kpis: [
-            { name: 'Telehealth Visit Rate', description: 'Telehealth as percentage of total ambulatory visits', baselineValue: 12, targetValue: 35, currentValue: 12, unit: '%', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'on-track' },
-            { name: 'Health Disparity Index', description: 'Gap in clinical outcomes between highest and lowest income patient quartiles', baselineValue: 24, targetValue: 12, currentValue: 24, unit: 'index points', frequency: 'annually', owner: 'Chief Health Equity Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Optimize Clinical Quality and Safety',
-          description: 'Achieve zero preventable harm events and top-quartile clinical quality metrics through evidence-based protocols and safety culture',
-          weight: 1.5,
-          kpis: [
-            { name: 'Serious Safety Events', description: 'Preventable serious safety events per 10,000 patient days', baselineValue: 3.2, targetValue: 0.8, currentValue: 3.2, unit: 'events/10K days', frequency: 'monthly', owner: 'CNO', status: 'at-risk' },
-            { name: 'Clinical Quality Composite Score', description: 'Weighted composite of core measure performance vs national benchmark', baselineValue: 72, targetValue: 90, currentValue: 72, unit: 'percentile', frequency: 'quarterly', owner: 'CMO', status: 'at-risk' },
-            { name: 'Sepsis Bundle Compliance', description: 'Percentage of sepsis patients receiving 3-hour bundle within 1 hour', baselineValue: 61, targetValue: 85, currentValue: 61, unit: '%', frequency: 'monthly', owner: 'CMO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Streamline Operations and Reduce Waste',
-          description: 'Apply lean methodology and AI tools to eliminate administrative burden, reduce wait times, and optimize OR and bed utilization',
-          weight: 1.2,
-          kpis: [
-            { name: 'OR First Case On-Time Start', description: 'Percentage of first surgical cases starting on time', baselineValue: 62, targetValue: 85, currentValue: 62, unit: '%', frequency: 'monthly', owner: 'COO', status: 'at-risk' },
-            { name: 'ED Door-to-Provider Time', description: 'Median minutes from ED arrival to provider evaluation', baselineValue: 38, targetValue: 20, currentValue: 38, unit: 'minutes', frequency: 'monthly', owner: 'COO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build a Resilient and Engaged Workforce',
-          description: 'Recruit, develop, and retain top clinical talent through competitive compensation, career pathways, and wellbeing programs',
-          weight: 1.4,
-          kpis: [
-            { name: 'Nurse Vacancy Rate', description: 'Percentage of budgeted RN positions currently vacant', baselineValue: 18, targetValue: 7, currentValue: 18, unit: '%', frequency: 'monthly', owner: 'CHRO', status: 'at-risk' },
-            { name: 'Physician Engagement Score', description: 'Annual physician engagement survey percentile vs peer benchmark', baselineValue: 45, targetValue: 75, currentValue: 45, unit: 'percentile', frequency: 'annually', owner: 'CMO', status: 'at-risk' },
-            { name: 'Annual Voluntary Turnover Rate', description: 'All-staff voluntary turnover rate', baselineValue: 22, targetValue: 12, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Accelerate Digital Capability',
-          description: 'Build organizational AI literacy, data analytics capability, and digital health innovation culture across all levels',
-          weight: 1.2,
-          kpis: [
-            { name: 'Digital Health Literacy Score', description: 'Staff digital competency assessment score (100-point scale)', baselineValue: 42, targetValue: 75, currentValue: 42, unit: 'score', frequency: 'annually', owner: 'Chief Digital Officer', status: 'on-track' },
-            { name: 'AI Use Cases Deployed', description: 'Number of clinical AI tools in active production use', baselineValue: 3, targetValue: 15, currentValue: 3, unit: 'tools', frequency: 'quarterly', owner: 'CIO', status: 'on-track' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Achieve Sustainable Operating Margin', description: 'Transition revenue mix toward value-based contracts while reducing agency staffing and administrative costs to sustain ≥3.5% operating margin', weight: 1.5, kpis: [
+          { name: 'Operating Margin', description: 'Net operating income as percentage of total revenue', baselineValue: 1.8, targetValue: 3.5, currentValue: 1.8, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
+          { name: 'Agency Staffing Cost Ratio', description: 'Agency labor cost as % of total labor expense', baselineValue: 18, targetValue: 8, currentValue: 18, unit: '%', frequency: 'monthly', owner: 'CHRO', status: 'at-risk' },
+          { name: 'Value-Based Revenue Share', description: 'Percentage of net patient revenue from value-based contracts', baselineValue: 22, targetValue: 55, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'on-track' },
+        ]},
+        { perspective: 'financial', objective: 'Reduce Cost Per Episode', description: 'Improve care efficiency across high-volume DRGs through protocol standardization and care variation reduction', weight: 1.3, kpis: [
+          { name: 'Cost Per Episode (Top 10 DRGs)', description: 'Average total cost per admission for top 10 DRGs vs peer benchmark', baselineValue: 112, targetValue: 92, currentValue: 112, unit: '% of benchmark', frequency: 'quarterly', owner: 'CMO', status: 'at-risk' },
+          { name: '30-Day Readmission Rate', description: 'All-cause readmission within 30 days of discharge', baselineValue: 14.2, targetValue: 10.5, currentValue: 14.2, unit: '%', frequency: 'monthly', owner: 'CMO', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Elevate Patient Experience', description: 'Deliver consistently excellent patient-centered care achieving top-decile HCAHPS scores across all service lines', weight: 1.4, kpis: [
+          { name: 'HCAHPS Overall Rating', description: 'Percentage of patients rating hospital 9 or 10 out of 10', baselineValue: 68, targetValue: 82, currentValue: 68, unit: '%', frequency: 'monthly', owner: 'CNO', status: 'at-risk' },
+          { name: 'Patient Net Promoter Score', description: 'Net Promoter Score across all care settings', baselineValue: 42, targetValue: 65, currentValue: 42, unit: 'NPS', frequency: 'quarterly', owner: 'Chief Patient Experience Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Expand Access and Health Equity', description: 'Remove barriers to care for underserved populations through telehealth, extended hours, and community health worker programs', weight: 1.3, kpis: [
+          { name: 'Telehealth Visit Rate', description: 'Telehealth as percentage of total ambulatory visits', baselineValue: 12, targetValue: 35, currentValue: 12, unit: '%', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'on-track' },
+          { name: 'Health Disparity Index', description: 'Gap in clinical outcomes between highest and lowest income patient quartiles', baselineValue: 24, targetValue: 12, currentValue: 24, unit: 'index points', frequency: 'annually', owner: 'Chief Health Equity Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Optimize Clinical Quality and Safety', description: 'Achieve zero preventable harm events and top-quartile clinical quality metrics through evidence-based protocols and safety culture', weight: 1.5, kpis: [
+          { name: 'Serious Safety Events', description: 'Preventable serious safety events per 10,000 patient days', baselineValue: 3.2, targetValue: 0.8, currentValue: 3.2, unit: 'events/10K days', frequency: 'monthly', owner: 'CNO', status: 'at-risk' },
+          { name: 'Clinical Quality Composite Score', description: 'Weighted composite of core measure performance vs national benchmark', baselineValue: 72, targetValue: 90, currentValue: 72, unit: 'percentile', frequency: 'quarterly', owner: 'CMO', status: 'at-risk' },
+          { name: 'Sepsis Bundle Compliance', description: 'Percentage of sepsis patients receiving 3-hour bundle within 1 hour', baselineValue: 61, targetValue: 85, currentValue: 61, unit: '%', frequency: 'monthly', owner: 'CMO', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Streamline Operations and Reduce Waste', description: 'Apply lean methodology and AI tools to eliminate administrative burden, reduce wait times, and optimize OR and bed utilization', weight: 1.2, kpis: [
+          { name: 'OR First Case On-Time Start', description: 'Percentage of first surgical cases starting on time', baselineValue: 62, targetValue: 85, currentValue: 62, unit: '%', frequency: 'monthly', owner: 'COO', status: 'at-risk' },
+          { name: 'ED Door-to-Provider Time', description: 'Median minutes from ED arrival to provider evaluation', baselineValue: 38, targetValue: 20, currentValue: 38, unit: 'minutes', frequency: 'monthly', owner: 'COO', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build a Resilient and Engaged Workforce', description: 'Recruit, develop, and retain top clinical talent through competitive compensation, career pathways, and wellbeing programs', weight: 1.4, kpis: [
+          { name: 'Nurse Vacancy Rate', description: 'Percentage of budgeted RN positions currently vacant', baselineValue: 18, targetValue: 7, currentValue: 18, unit: '%', frequency: 'monthly', owner: 'CHRO', status: 'at-risk' },
+          { name: 'Physician Engagement Score', description: 'Annual physician engagement survey percentile vs peer benchmark', baselineValue: 45, targetValue: 75, currentValue: 45, unit: 'percentile', frequency: 'annually', owner: 'CMO', status: 'at-risk' },
+          { name: 'Annual Voluntary Turnover Rate', description: 'All-staff voluntary turnover rate', baselineValue: 22, targetValue: 12, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Accelerate Digital Capability', description: 'Build organizational AI literacy, data analytics capability, and digital health innovation culture across all levels', weight: 1.2, kpis: [
+          { name: 'Digital Health Literacy Score', description: 'Staff digital competency assessment score (100-point scale)', baselineValue: 42, targetValue: 75, currentValue: 42, unit: 'score', frequency: 'annually', owner: 'Chief Digital Officer', status: 'on-track' },
+          { name: 'AI Use Cases Deployed', description: 'Number of clinical AI tools in active production use', baselineValue: 3, targetValue: 15, currentValue: 3, unit: 'tools', frequency: 'quarterly', owner: 'CIO', status: 'on-track' },
+        ]},
       ],
     },
     created_at: '2026-01-10T00:00:00Z',
@@ -250,7 +197,7 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { category: 'weakness', description: 'International presence minimal — only 8% of ARR from outside North America despite product suitability', impactScore: 4, likelihoodScore: 4 },
         { category: 'weakness', description: 'Customer success team under-resourced — 1 CSM per 185 accounts vs industry benchmark of 1:80', impactScore: 4, likelihoodScore: 5 },
         { category: 'opportunity', description: 'AI integration wave: customers willing to pay 40–60% premium for AI-native workflow features vs legacy tools', impactScore: 5, likelihoodScore: 5 },
-        { category: 'opportunity', description: 'Enterprise upmarket expansion: 1,200 enterprise-qualified accounts in CRM with no active outreach', impactScore: 5, likelihoodScore: 5, likelihoodScore: 5 },
+        { category: 'opportunity', description: 'Enterprise upmarket expansion: 1,200 enterprise-qualified accounts in CRM with no active outreach', impactScore: 5, likelihoodScore: 5 },
         { category: 'opportunity', description: 'Developer ecosystem and API marketplace — platform-layer strategy to generate partner-sourced ARR', impactScore: 5, likelihoodScore: 4 },
         { category: 'opportunity', description: 'Vertical SaaS consolidation: 3 complementary tools in adjacent space available for tuck-in acquisition at 4–6x ARR', impactScore: 4, likelihoodScore: 4 },
         { category: 'opportunity', description: 'EMEA market entry via channel partner program with 12 pre-qualified regional partners', impactScore: 4, likelihoodScore: 4 },
@@ -271,89 +218,41 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'International Channel Partner Program', description: 'Enter EMEA via pre-qualified channel partners to grow international ARR to 25% without enterprise-level investment', priorityScore: 4, feasibilityScore: 4, selected: true },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Achieve Hyper-Growth ARR Trajectory',
-          description: 'Grow ARR from $85M to $300M through expansion revenue, enterprise new business, and ecosystem-sourced deals',
-          weight: 1.5,
-          kpis: [
-            { name: 'Annual Recurring Revenue (ARR)', description: 'Total ARR at end of period', baselineValue: 85, targetValue: 300, currentValue: 85, unit: '$M', frequency: 'monthly', owner: 'CFO', status: 'on-track' },
-            { name: 'Net Revenue Retention (NRR)', description: 'Net revenue retention including expansion, contraction, and churn', baselineValue: 125, targetValue: 135, currentValue: 125, unit: '%', frequency: 'monthly', owner: 'Chief Customer Officer', status: 'on-track' },
-            { name: 'Enterprise ARR Share', description: 'ARR from customers $100K+ ACV as % of total ARR', baselineValue: 18, targetValue: 45, currentValue: 18, unit: '%', frequency: 'quarterly', owner: 'CRO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Achieve Efficient Growth (Rule of 40)',
-          description: 'Balance growth investment with improving unit economics to achieve Rule of 40 score and extend runway to profitability',
-          weight: 1.3,
-          kpis: [
-            { name: 'Rule of 40 Score', description: 'Revenue growth rate + FCF margin', baselineValue: 28, targetValue: 42, currentValue: 28, unit: 'score', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
-            { name: 'CAC Payback Period', description: 'Months to recover customer acquisition cost', baselineValue: 18, targetValue: 12, currentValue: 18, unit: 'months', frequency: 'quarterly', owner: 'CRO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Drive Product Stickiness and Expansion',
-          description: 'Increase platform depth and daily active usage to create switching costs and natural expansion pathways',
-          weight: 1.4,
-          kpis: [
-            { name: 'Daily Active Users / Monthly Active Users', description: 'DAU/MAU ratio indicating product habituation', baselineValue: 42, targetValue: 65, currentValue: 42, unit: '%', frequency: 'weekly', owner: 'CPO', status: 'at-risk' },
-            { name: 'Features Adopted Per Account', description: 'Average number of platform features used per customer account', baselineValue: 3.2, targetValue: 6.5, currentValue: 3.2, unit: 'features', frequency: 'monthly', owner: 'CPO', status: 'on-track' },
-            { name: 'Customer Net Promoter Score', description: 'NPS across all customer segments', baselineValue: 58, targetValue: 70, currentValue: 58, unit: 'NPS', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Win and Retain Enterprise Accounts',
-          description: 'Build the enterprise motion and customer success capacity to win, onboard, and grow strategic accounts',
-          weight: 1.3,
-          kpis: [
-            { name: 'Enterprise Gross Logo Churn', description: 'Annual gross churn rate for $100K+ ACV accounts', baselineValue: 8, targetValue: 3, currentValue: 8, unit: '%', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
-            { name: 'Enterprise Win Rate', description: 'Competitive win rate in enterprise $100K+ ACV deals', baselineValue: 28, targetValue: 45, currentValue: 28, unit: '%', frequency: 'quarterly', owner: 'CRO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Accelerate AI-Driven Product Innovation',
-          description: 'Ship AI-native features at a pace that competitors cannot match by leveraging proprietary data and engineering culture',
-          weight: 1.5,
-          kpis: [
-            { name: 'AI Feature Adoption Rate', description: 'Percentage of active accounts using at least 1 AI feature', baselineValue: 8, targetValue: 60, currentValue: 8, unit: '%', frequency: 'monthly', owner: 'CPO', status: 'on-track' },
-            { name: 'Time-to-Feature Delivery', description: 'Median days from feature spec-complete to production release', baselineValue: 42, targetValue: 21, currentValue: 42, unit: 'days', frequency: 'monthly', owner: 'CTO', status: 'at-risk' },
-            { name: 'Technical Debt Ratio', description: 'Engineering sprint capacity consumed by tech debt vs new features', baselineValue: 35, targetValue: 15, currentValue: 35, unit: '%', frequency: 'monthly', owner: 'CTO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Scale Revenue Engine',
-          description: 'Build repeatable, data-driven sales and marketing motions that scale efficiently without founder dependency',
-          weight: 1.2,
-          kpis: [
-            { name: 'Pipeline Coverage Ratio', description: 'Qualified pipeline value vs quarterly ARR target', baselineValue: 2.8, targetValue: 4.0, currentValue: 2.8, unit: 'x', frequency: 'monthly', owner: 'CRO', status: 'at-risk' },
-            { name: 'Partner-Sourced ARR %', description: 'Percentage of new ARR influenced or sourced by ecosystem partners', baselineValue: 4, targetValue: 30, currentValue: 4, unit: '%', frequency: 'quarterly', owner: 'VP Partnerships', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build World-Class Engineering Team',
-          description: 'Attract, retain, and develop elite engineering talent in AI/ML, platform, and security domains',
-          weight: 1.4,
-          kpis: [
-            { name: 'Engineering Offer Acceptance Rate', description: 'Percentage of engineering offers accepted', baselineValue: 58, targetValue: 80, currentValue: 58, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
-            { name: 'Regrettable Engineering Attrition', description: 'Percentage of high-performer engineers leaving annually', baselineValue: 16, targetValue: 6, currentValue: 16, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Foster Data-Driven Culture',
-          description: 'Embed data literacy and experimentation mindset across product, sales, and customer success teams',
-          weight: 1.1,
-          kpis: [
-            { name: 'A/B Tests Run Per Quarter', description: 'Number of product A/B experiments completed per quarter', baselineValue: 12, targetValue: 45, currentValue: 12, unit: 'tests', frequency: 'quarterly', owner: 'CPO', status: 'on-track' },
-            { name: 'Data Literacy Assessment Score', description: 'Average data literacy score across all departments (100-point scale)', baselineValue: 48, targetValue: 78, currentValue: 48, unit: 'score', frequency: 'annually', owner: 'Chief Data Officer', status: 'on-track' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Achieve Hyper-Growth ARR Trajectory', description: 'Grow ARR from $85M to $300M through expansion revenue, enterprise new business, and ecosystem-sourced deals', weight: 1.5, kpis: [
+          { name: 'Annual Recurring Revenue (ARR)', description: 'Total ARR at end of period', baselineValue: 85, targetValue: 300, currentValue: 85, unit: '$M', frequency: 'monthly', owner: 'CFO', status: 'on-track' },
+          { name: 'Net Revenue Retention (NRR)', description: 'Net revenue retention including expansion, contraction, and churn', baselineValue: 125, targetValue: 135, currentValue: 125, unit: '%', frequency: 'monthly', owner: 'Chief Customer Officer', status: 'on-track' },
+          { name: 'Enterprise ARR Share', description: 'ARR from customers $100K+ ACV as % of total ARR', baselineValue: 18, targetValue: 45, currentValue: 18, unit: '%', frequency: 'quarterly', owner: 'CRO', status: 'at-risk' },
+        ]},
+        { perspective: 'financial', objective: 'Achieve Efficient Growth (Rule of 40)', description: 'Balance growth investment with improving unit economics to achieve Rule of 40 score and extend runway to profitability', weight: 1.3, kpis: [
+          { name: 'Rule of 40 Score', description: 'Revenue growth rate + FCF margin', baselineValue: 28, targetValue: 42, currentValue: 28, unit: 'score', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
+          { name: 'CAC Payback Period', description: 'Months to recover customer acquisition cost', baselineValue: 18, targetValue: 12, currentValue: 18, unit: 'months', frequency: 'quarterly', owner: 'CRO', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Drive Product Stickiness and Expansion', description: 'Increase platform depth and daily active usage to create switching costs and natural expansion pathways', weight: 1.4, kpis: [
+          { name: 'Daily Active Users / Monthly Active Users', description: 'DAU/MAU ratio indicating product habituation', baselineValue: 42, targetValue: 65, currentValue: 42, unit: '%', frequency: 'weekly', owner: 'CPO', status: 'at-risk' },
+          { name: 'Features Adopted Per Account', description: 'Average number of platform features used per customer account', baselineValue: 3.2, targetValue: 6.5, currentValue: 3.2, unit: 'features', frequency: 'monthly', owner: 'CPO', status: 'on-track' },
+          { name: 'Customer Net Promoter Score', description: 'NPS across all customer segments', baselineValue: 58, targetValue: 70, currentValue: 58, unit: 'NPS', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'on-track' },
+        ]},
+        { perspective: 'customer', objective: 'Win and Retain Enterprise Accounts', description: 'Build the enterprise motion and customer success capacity to win, onboard, and grow strategic accounts', weight: 1.3, kpis: [
+          { name: 'Enterprise Gross Logo Churn', description: 'Annual gross churn rate for $100K+ ACV accounts', baselineValue: 8, targetValue: 3, currentValue: 8, unit: '%', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
+          { name: 'Enterprise Win Rate', description: 'Competitive win rate in enterprise $100K+ ACV deals', baselineValue: 28, targetValue: 45, currentValue: 28, unit: '%', frequency: 'quarterly', owner: 'CRO', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Accelerate AI-Driven Product Innovation', description: 'Ship AI-native features at a pace that competitors cannot match by leveraging proprietary data and engineering culture', weight: 1.5, kpis: [
+          { name: 'AI Feature Adoption Rate', description: 'Percentage of active accounts using at least 1 AI feature', baselineValue: 8, targetValue: 60, currentValue: 8, unit: '%', frequency: 'monthly', owner: 'CPO', status: 'on-track' },
+          { name: 'Time-to-Feature Delivery', description: 'Median days from feature spec-complete to production release', baselineValue: 42, targetValue: 21, currentValue: 42, unit: 'days', frequency: 'monthly', owner: 'CTO', status: 'at-risk' },
+          { name: 'Technical Debt Ratio', description: 'Engineering sprint capacity consumed by tech debt vs new features', baselineValue: 35, targetValue: 15, currentValue: 35, unit: '%', frequency: 'monthly', owner: 'CTO', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Scale Revenue Engine', description: 'Build repeatable, data-driven sales and marketing motions that scale efficiently without founder dependency', weight: 1.2, kpis: [
+          { name: 'Pipeline Coverage Ratio', description: 'Qualified pipeline value vs quarterly ARR target', baselineValue: 2.8, targetValue: 4.0, currentValue: 2.8, unit: 'x', frequency: 'monthly', owner: 'CRO', status: 'at-risk' },
+          { name: 'Partner-Sourced ARR %', description: 'Percentage of new ARR influenced or sourced by ecosystem partners', baselineValue: 4, targetValue: 30, currentValue: 4, unit: '%', frequency: 'quarterly', owner: 'VP Partnerships', status: 'on-track' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build World-Class Engineering Team', description: 'Attract, retain, and develop elite engineering talent in AI/ML, platform, and security domains', weight: 1.4, kpis: [
+          { name: 'Engineering Offer Acceptance Rate', description: 'Percentage of engineering offers accepted', baselineValue: 58, targetValue: 80, currentValue: 58, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
+          { name: 'Regrettable Engineering Attrition', description: 'Percentage of high-performer engineers leaving annually', baselineValue: 16, targetValue: 6, currentValue: 16, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Foster Data-Driven Culture', description: 'Embed data literacy and experimentation mindset across product, sales, and customer success teams', weight: 1.1, kpis: [
+          { name: 'A/B Tests Run Per Quarter', description: 'Number of product A/B experiments completed per quarter', baselineValue: 12, targetValue: 45, currentValue: 12, unit: 'tests', frequency: 'quarterly', owner: 'CPO', status: 'on-track' },
+          { name: 'Data Literacy Assessment Score', description: 'Average data literacy score across all departments (100-point scale)', baselineValue: 48, targetValue: 78, currentValue: 48, unit: 'score', frequency: 'annually', owner: 'Chief Data Officer', status: 'on-track' },
+        ]},
       ],
     },
     created_at: '2026-01-15T00:00:00Z',
@@ -413,90 +312,42 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'Administrative Consolidation Program', description: 'Reduce overhead ratio by consolidating duplicated administrative functions across colleges, funding reallocation to student-facing services', priorityScore: 4, feasibilityScore: 3, selected: false },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Diversify Revenue and Reduce Tuition Dependency',
-          description: 'Grow non-tuition revenue streams including micro-credentials, research commercialization, corporate training, and philanthropy to 20% of total revenue',
-          weight: 1.4,
-          kpis: [
-            { name: 'Non-Tuition Revenue Share', description: 'Non-tuition revenue as % of total operating budget', baselineValue: 9, targetValue: 20, currentValue: 9, unit: '%', frequency: 'annually', owner: 'VP Finance', status: 'at-risk' },
-            { name: 'Micro-Credential Revenue', description: 'Annual revenue from micro-credential and continuing education programs', baselineValue: 1.2, targetValue: 8.5, currentValue: 1.2, unit: '$M', frequency: 'quarterly', owner: 'Dean of Innovation', status: 'on-track' },
-            { name: 'Research Commercialization Revenue', description: 'Annual revenue from licensing, contracts, and spin-out equity', baselineValue: 0.8, targetValue: 5.0, currentValue: 0.8, unit: '$M', frequency: 'annually', owner: 'VP Research', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Achieve Administrative Cost Efficiency',
-          description: 'Reduce cost-per-student through process digitization and administrative consolidation to redirect savings to student-facing investment',
-          weight: 1.2,
-          kpis: [
-            { name: 'Cost Per Student (vs sector median)', description: 'Institutional cost per FTE student as % of sector median', baselineValue: 122, targetValue: 103, currentValue: 122, unit: '% of median', frequency: 'annually', owner: 'Provost', status: 'at-risk' },
-            { name: 'Admin Process Digitization Rate', description: 'Percentage of core administrative processes fully digitized', baselineValue: 38, targetValue: 80, currentValue: 38, unit: '%', frequency: 'quarterly', owner: 'CIO', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Maximize Graduate Employability and Outcomes',
-          description: 'Ensure graduates enter the workforce with the skills, credentials, and networks employers demand, achieving top-quartile outcomes data',
-          weight: 1.5,
-          kpis: [
-            { name: 'Graduate Employment Rate (6 months)', description: 'Percentage of graduates employed or enrolled in further study within 6 months', baselineValue: 79, targetValue: 92, currentValue: 79, unit: '%', frequency: 'annually', owner: 'VP Student Affairs', status: 'at-risk' },
-            { name: 'Graduate Earnings Premium', description: 'Median graduate salary vs regional median salary at 2 years post-graduation', baselineValue: 118, targetValue: 135, currentValue: 118, unit: '% of regional median', frequency: 'annually', owner: 'VP Academic Affairs', status: 'at-risk' },
-            { name: 'Student Net Promoter Score', description: 'NPS of current students and recent graduates', baselineValue: 22, targetValue: 48, currentValue: 22, unit: 'NPS', frequency: 'semester', owner: 'VP Student Affairs', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Grow Enrollment Through Market Diversification',
-          description: 'Counter demographic decline by accessing new student markets — adult learners, international students, and employer-sponsored professionals',
-          weight: 1.3,
-          kpis: [
-            { name: 'Total Headcount Enrollment', description: 'Total student headcount across all modalities and programs', baselineValue: 12400, targetValue: 13800, currentValue: 12400, unit: 'students', frequency: 'semester', owner: 'VP Enrollment Management', status: 'at-risk' },
-            { name: 'Non-Traditional Learner Share', description: 'Percentage of enrollment from students over 25 or employer-sponsored', baselineValue: 18, targetValue: 32, currentValue: 18, unit: '%', frequency: 'annually', owner: 'VP Enrollment Management', status: 'on-track' },
-            { name: 'Online Program Enrollment', description: 'Students enrolled in 100% online degree programs', baselineValue: 1200, targetValue: 3500, currentValue: 1200, unit: 'students', frequency: 'semester', owner: 'Dean of Online Learning', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Accelerate Curriculum Responsiveness',
-          description: 'Redesign curriculum governance to enable rapid market-responsive program development and continuous industry alignment',
-          weight: 1.5,
-          kpis: [
-            { name: 'Curriculum Development Cycle Time', description: 'Average months from program concept approval to first student enrollment', baselineValue: 18, targetValue: 6, currentValue: 18, unit: 'months', frequency: 'quarterly', owner: 'Provost', status: 'critical' },
-            { name: 'Industry Co-Designed Programs', description: 'Number of programs with active industry co-design and advisory board governance', baselineValue: 2, targetValue: 15, currentValue: 2, unit: 'programs', frequency: 'annually', owner: 'VP Academic Affairs', status: 'on-track' },
-            { name: 'Skills Alignment Index', description: 'Percentage of program learning outcomes mapped to top 50 employer-demanded skills', baselineValue: 31, targetValue: 80, currentValue: 31, unit: '%', frequency: 'annually', owner: 'Provost', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Achieve Completion and Retention Excellence',
-          description: 'Improve student retention and 6-year completion rates through early alert systems, financial aid optimization, and academic support scaling',
-          weight: 1.3,
-          kpis: [
-            { name: '6-Year Graduation Rate', description: 'Percentage of first-time, full-time students completing degree within 6 years', baselineValue: 58, targetValue: 72, currentValue: 58, unit: '%', frequency: 'annually', owner: 'VP Academic Affairs', status: 'at-risk' },
-            { name: 'First-Year Retention Rate', description: 'Percentage of first-year students returning for second year', baselineValue: 74, targetValue: 84, currentValue: 74, unit: '%', frequency: 'annually', owner: 'VP Student Affairs', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build Faculty Digital and Pedagogical Excellence',
-          description: 'Develop faculty capacity in hybrid learning design, AI-assisted pedagogy, and evidence-based teaching to elevate educational quality and online capability',
-          weight: 1.3,
-          kpis: [
-            { name: 'Faculty Digital Readiness Score', description: 'Percentage of faculty meeting hybrid/online teaching competency standards', baselineValue: 34, targetValue: 80, currentValue: 34, unit: '%', frequency: 'annually', owner: 'Center for Teaching & Learning', status: 'critical' },
-            { name: 'Hybrid Course Delivery Rate', description: 'Percentage of courses offered in hybrid or fully online format', baselineValue: 22, targetValue: 55, currentValue: 22, unit: '%', frequency: 'semester', owner: 'Provost', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Cultivate Innovation and Entrepreneurship Culture',
-          description: 'Foster an institutional culture of experimentation, partnership, and entrepreneurship across faculty, staff, and students',
-          weight: 1.1,
-          kpis: [
-            { name: 'Student Startup Launches', description: 'Student ventures launched via university incubator programs annually', baselineValue: 8, targetValue: 30, currentValue: 8, unit: 'ventures', frequency: 'annually', owner: 'VP Research & Innovation', status: 'on-track' },
-            { name: 'Industry Partnership Revenue', description: 'Revenue from corporate training, research contracts, and consulting', baselineValue: 2.1, targetValue: 8.0, currentValue: 2.1, unit: '$M', frequency: 'annually', owner: 'VP Academic Affairs', status: 'at-risk' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Diversify Revenue and Reduce Tuition Dependency', description: 'Grow non-tuition revenue streams including micro-credentials, research commercialization, corporate training, and philanthropy to 20% of total revenue', weight: 1.4, kpis: [
+          { name: 'Non-Tuition Revenue Share', description: 'Non-tuition revenue as % of total operating budget', baselineValue: 9, targetValue: 20, currentValue: 9, unit: '%', frequency: 'annually', owner: 'VP Finance', status: 'at-risk' },
+          { name: 'Micro-Credential Revenue', description: 'Annual revenue from micro-credential and continuing education programs', baselineValue: 1.2, targetValue: 8.5, currentValue: 1.2, unit: '$M', frequency: 'quarterly', owner: 'Dean of Innovation', status: 'on-track' },
+          { name: 'Research Commercialization Revenue', description: 'Annual revenue from licensing, contracts, and spin-out equity', baselineValue: 0.8, targetValue: 5.0, currentValue: 0.8, unit: '$M', frequency: 'annually', owner: 'VP Research', status: 'at-risk' },
+        ]},
+        { perspective: 'financial', objective: 'Achieve Administrative Cost Efficiency', description: 'Reduce cost-per-student through process digitization and administrative consolidation to redirect savings to student-facing investment', weight: 1.2, kpis: [
+          { name: 'Cost Per Student (vs sector median)', description: 'Institutional cost per FTE student as % of sector median', baselineValue: 122, targetValue: 103, currentValue: 122, unit: '% of median', frequency: 'annually', owner: 'Provost', status: 'at-risk' },
+          { name: 'Admin Process Digitization Rate', description: 'Percentage of core administrative processes fully digitized', baselineValue: 38, targetValue: 80, currentValue: 38, unit: '%', frequency: 'quarterly', owner: 'CIO', status: 'on-track' },
+        ]},
+        { perspective: 'customer', objective: 'Maximize Graduate Employability and Outcomes', description: 'Ensure graduates enter the workforce with the skills, credentials, and networks employers demand, achieving top-quartile outcomes data', weight: 1.5, kpis: [
+          { name: 'Graduate Employment Rate (6 months)', description: 'Percentage of graduates employed or enrolled in further study within 6 months', baselineValue: 79, targetValue: 92, currentValue: 79, unit: '%', frequency: 'annually', owner: 'VP Student Affairs', status: 'at-risk' },
+          { name: 'Graduate Earnings Premium', description: 'Median graduate salary vs regional median salary at 2 years post-graduation', baselineValue: 118, targetValue: 135, currentValue: 118, unit: '% of regional median', frequency: 'annually', owner: 'VP Academic Affairs', status: 'at-risk' },
+          { name: 'Student Net Promoter Score', description: 'NPS of current students and recent graduates', baselineValue: 22, targetValue: 48, currentValue: 22, unit: 'NPS', frequency: 'semester', owner: 'VP Student Affairs', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Grow Enrollment Through Market Diversification', description: 'Counter demographic decline by accessing new student markets — adult learners, international students, and employer-sponsored professionals', weight: 1.3, kpis: [
+          { name: 'Total Headcount Enrollment', description: 'Total student headcount across all modalities and programs', baselineValue: 12400, targetValue: 13800, currentValue: 12400, unit: 'students', frequency: 'semester', owner: 'VP Enrollment Management', status: 'at-risk' },
+          { name: 'Non-Traditional Learner Share', description: 'Percentage of enrollment from students over 25 or employer-sponsored', baselineValue: 18, targetValue: 32, currentValue: 18, unit: '%', frequency: 'annually', owner: 'VP Enrollment Management', status: 'on-track' },
+          { name: 'Online Program Enrollment', description: 'Students enrolled in 100% online degree programs', baselineValue: 1200, targetValue: 3500, currentValue: 1200, unit: 'students', frequency: 'semester', owner: 'Dean of Online Learning', status: 'on-track' },
+        ]},
+        { perspective: 'internal_process', objective: 'Accelerate Curriculum Responsiveness', description: 'Redesign curriculum governance to enable rapid market-responsive program development and continuous industry alignment', weight: 1.5, kpis: [
+          { name: 'Curriculum Development Cycle Time', description: 'Average months from program concept approval to first student enrollment', baselineValue: 18, targetValue: 6, currentValue: 18, unit: 'months', frequency: 'quarterly', owner: 'Provost', status: 'critical' },
+          { name: 'Industry Co-Designed Programs', description: 'Number of programs with active industry co-design and advisory board governance', baselineValue: 2, targetValue: 15, currentValue: 2, unit: 'programs', frequency: 'annually', owner: 'VP Academic Affairs', status: 'on-track' },
+          { name: 'Skills Alignment Index', description: 'Percentage of program learning outcomes mapped to top 50 employer-demanded skills', baselineValue: 31, targetValue: 80, currentValue: 31, unit: '%', frequency: 'annually', owner: 'Provost', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Achieve Completion and Retention Excellence', description: 'Improve student retention and 6-year completion rates through early alert systems, financial aid optimization, and academic support scaling', weight: 1.3, kpis: [
+          { name: '6-Year Graduation Rate', description: 'Percentage of first-time, full-time students completing degree within 6 years', baselineValue: 58, targetValue: 72, currentValue: 58, unit: '%', frequency: 'annually', owner: 'VP Academic Affairs', status: 'at-risk' },
+          { name: 'First-Year Retention Rate', description: 'Percentage of first-year students returning for second year', baselineValue: 74, targetValue: 84, currentValue: 74, unit: '%', frequency: 'annually', owner: 'VP Student Affairs', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build Faculty Digital and Pedagogical Excellence', description: 'Develop faculty capacity in hybrid learning design, AI-assisted pedagogy, and evidence-based teaching to elevate educational quality and online capability', weight: 1.3, kpis: [
+          { name: 'Faculty Digital Readiness Score', description: 'Percentage of faculty meeting hybrid/online teaching competency standards', baselineValue: 34, targetValue: 80, currentValue: 34, unit: '%', frequency: 'annually', owner: 'Center for Teaching & Learning', status: 'critical' },
+          { name: 'Hybrid Course Delivery Rate', description: 'Percentage of courses offered in hybrid or fully online format', baselineValue: 22, targetValue: 55, currentValue: 22, unit: '%', frequency: 'semester', owner: 'Provost', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Cultivate Innovation and Entrepreneurship Culture', description: 'Foster an institutional culture of experimentation, partnership, and entrepreneurship across faculty, staff, and students', weight: 1.1, kpis: [
+          { name: 'Student Startup Launches', description: 'Student ventures launched via university incubator programs annually', baselineValue: 8, targetValue: 30, currentValue: 8, unit: 'ventures', frequency: 'annually', owner: 'VP Research & Innovation', status: 'on-track' },
+          { name: 'Industry Partnership Revenue', description: 'Revenue from corporate training, research contracts, and consulting', baselineValue: 2.1, targetValue: 8.0, currentValue: 2.1, unit: '$M', frequency: 'annually', owner: 'VP Academic Affairs', status: 'at-risk' },
+        ]},
       ],
     },
     created_at: '2026-01-20T00:00:00Z',
@@ -556,90 +407,42 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'OT Cybersecurity Hardening', description: 'Implement OT/IT network segmentation, anomaly detection, and incident response to protect production continuity from escalating cyberattack risk', priorityScore: 4, feasibilityScore: 4, selected: false },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Improve Gross Margin Through Operational Efficiency',
-          description: 'Reduce cost-of-goods-sold through OEE improvement, scrap reduction, and automation offsetting labor and material cost inflation',
-          weight: 1.5,
-          kpis: [
-            { name: 'Gross Margin', description: 'Gross profit as percentage of net revenue', baselineValue: 24, targetValue: 32, currentValue: 24, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
-            { name: 'Cost of Poor Quality (COPQ)', description: 'Total cost of internal and external quality failures as % of revenue', baselineValue: 4.8, targetValue: 2.2, currentValue: 4.8, unit: '% revenue', frequency: 'monthly', owner: 'VP Quality', status: 'at-risk' },
-            { name: 'Labor Cost Per Unit', description: 'Direct labor cost per unit produced vs prior year benchmark', baselineValue: 100, targetValue: 78, currentValue: 100, unit: 'index', frequency: 'monthly', owner: 'VP Operations', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Grow Revenue Through New Capability and Markets',
-          description: 'Win reshoring contracts and develop EV-adjacent product lines to diversify revenue and reduce ICE dependency',
-          weight: 1.3,
-          kpis: [
-            { name: 'Reshoring Contract Revenue', description: 'Annual revenue from newly won domestic reshoring contracts', baselineValue: 8, targetValue: 35, currentValue: 8, unit: '$M', frequency: 'quarterly', owner: 'VP Sales', status: 'on-track' },
-            { name: 'EV Product Revenue Share', description: 'Revenue from EV-adjacent products as % of total revenue', baselineValue: 3, targetValue: 20, currentValue: 3, unit: '%', frequency: 'annually', owner: 'VP Product Development', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Achieve Delivery and Quality Excellence',
-          description: 'Meet or exceed customer expectations on delivery, quality, and responsiveness to become preferred sole-source supplier',
-          weight: 1.5,
-          kpis: [
-            { name: 'On-Time Delivery Rate', description: 'Percentage of customer orders delivered on agreed date', baselineValue: 87, targetValue: 98, currentValue: 87, unit: '%', frequency: 'monthly', owner: 'VP Operations', status: 'at-risk' },
-            { name: 'Customer PPM (Parts Per Million defects)', description: 'Customer-reported defective parts per million shipped', baselineValue: 245, targetValue: 25, currentValue: 245, unit: 'PPM', frequency: 'monthly', owner: 'VP Quality', status: 'at-risk' },
-            { name: 'Customer Satisfaction Score', description: 'Annual customer satisfaction rating (1-10) across key OEM accounts', baselineValue: 7.2, targetValue: 9.0, currentValue: 7.2, unit: 'score', frequency: 'annually', owner: 'VP Sales', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Earn Green Manufacturing Recognition',
-          description: 'Achieve sustainability certifications and validated carbon reporting to meet OEM customer sustainability mandates and earn premium positioning',
-          weight: 1.2,
-          kpis: [
-            { name: 'ISO 14064 Certification Status', description: 'Achievement of carbon inventory verification (milestone)', baselineValue: 0, targetValue: 1, currentValue: 0, unit: 'certified', frequency: 'annually', owner: 'VP Sustainability', status: 'on-track' },
-            { name: 'OEM Sustainability Scorecard Rating', description: 'Average sustainability rating across top 5 OEM customer scorecards', baselineValue: 62, targetValue: 88, currentValue: 62, unit: 'score', frequency: 'annually', owner: 'VP Sustainability', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Achieve World-Class Equipment Effectiveness',
-          description: 'Deploy smart factory technologies and disciplined maintenance programs to reach 85% OEE across all critical production assets',
-          weight: 1.5,
-          kpis: [
-            { name: 'Overall Equipment Effectiveness (OEE)', description: 'Composite measure of availability, performance, and quality', baselineValue: 67, targetValue: 85, currentValue: 67, unit: '%', frequency: 'weekly', owner: 'VP Operations', status: 'at-risk' },
-            { name: 'Unplanned Downtime Rate', description: 'Unplanned downtime as % of scheduled production time', baselineValue: 12, targetValue: 3, currentValue: 12, unit: '%', frequency: 'weekly', owner: 'VP Maintenance', status: 'at-risk' },
-            { name: 'IIoT Asset Connectivity Rate', description: 'Percentage of critical production assets connected to real-time monitoring', baselineValue: 28, targetValue: 90, currentValue: 28, unit: '%', frequency: 'quarterly', owner: 'CTO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Reduce Scope 1 & 2 Emissions',
-          description: 'Execute energy efficiency, renewable energy, and process decarbonization to achieve Science Based Targets and reduce carbon cost exposure',
-          weight: 1.3,
-          kpis: [
-            { name: 'Scope 1 & 2 Carbon Intensity', description: 'tCO₂e per million USD of revenue', baselineValue: 84, targetValue: 55, currentValue: 84, unit: 'tCO₂e/$M', frequency: 'quarterly', owner: 'VP Sustainability', status: 'at-risk' },
-            { name: 'Renewable Energy Share', description: 'Percentage of electricity from verified renewable sources', baselineValue: 12, targetValue: 60, currentValue: 12, unit: '%', frequency: 'quarterly', owner: 'VP Facilities', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build Digital Manufacturing Workforce',
-          description: 'Develop trades apprenticeship pipeline and upskill existing workforce in automation, data analytics, and CNC programming for smart factory operations',
-          weight: 1.4,
-          kpis: [
-            { name: 'Apprenticeship Enrollment', description: 'Number of active registered apprentices in trades programs', baselineValue: 18, targetValue: 75, currentValue: 18, unit: 'apprentices', frequency: 'quarterly', owner: 'CHRO', status: 'on-track' },
-            { name: 'Workforce Digital Skills Certification', description: 'Percentage of production workforce with Industry 4.0 skills certification', baselineValue: 8, targetValue: 65, currentValue: 8, unit: '%', frequency: 'annually', owner: 'CHRO', status: 'at-risk' },
-            { name: 'Internal Promotion Rate', description: 'Percentage of supervisor and above positions filled internally', baselineValue: 48, targetValue: 72, currentValue: 48, unit: '%', frequency: 'annually', owner: 'CHRO', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Embed Continuous Improvement and Innovation Culture',
-          description: 'Sustain and advance Kaizen culture while adding digital innovation capability to drive ongoing efficiency and product development breakthroughs',
-          weight: 1.2,
-          kpis: [
-            { name: 'Kaizen Ideas Implemented Per Employee', description: 'Average improvement ideas implemented per employee per year', baselineValue: 4.2, targetValue: 8.0, currentValue: 4.2, unit: 'ideas/employee', frequency: 'annually', owner: 'VP Operations', status: 'on-track' },
-            { name: 'Innovation Investment Rate', description: 'R&D and technology investment as % of revenue', baselineValue: 1.8, targetValue: 3.5, currentValue: 1.8, unit: '%', frequency: 'annually', owner: 'CFO', status: 'at-risk' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Improve Gross Margin Through Operational Efficiency', description: 'Reduce cost-of-goods-sold through OEE improvement, scrap reduction, and automation offsetting labor and material cost inflation', weight: 1.5, kpis: [
+          { name: 'Gross Margin', description: 'Gross profit as percentage of net revenue', baselineValue: 24, targetValue: 32, currentValue: 24, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
+          { name: 'Cost of Poor Quality (COPQ)', description: 'Total cost of internal and external quality failures as % of revenue', baselineValue: 4.8, targetValue: 2.2, currentValue: 4.8, unit: '% revenue', frequency: 'monthly', owner: 'VP Quality', status: 'at-risk' },
+          { name: 'Labor Cost Per Unit', description: 'Direct labor cost per unit produced vs prior year benchmark', baselineValue: 100, targetValue: 78, currentValue: 100, unit: 'index', frequency: 'monthly', owner: 'VP Operations', status: 'at-risk' },
+        ]},
+        { perspective: 'financial', objective: 'Grow Revenue Through New Capability and Markets', description: 'Win reshoring contracts and develop EV-adjacent product lines to diversify revenue and reduce ICE dependency', weight: 1.3, kpis: [
+          { name: 'Reshoring Contract Revenue', description: 'Annual revenue from newly won domestic reshoring contracts', baselineValue: 8, targetValue: 35, currentValue: 8, unit: '$M', frequency: 'quarterly', owner: 'VP Sales', status: 'on-track' },
+          { name: 'EV Product Revenue Share', description: 'Revenue from EV-adjacent products as % of total revenue', baselineValue: 3, targetValue: 20, currentValue: 3, unit: '%', frequency: 'annually', owner: 'VP Product Development', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Achieve Delivery and Quality Excellence', description: 'Meet or exceed customer expectations on delivery, quality, and responsiveness to become preferred sole-source supplier', weight: 1.5, kpis: [
+          { name: 'On-Time Delivery Rate', description: 'Percentage of customer orders delivered on agreed date', baselineValue: 87, targetValue: 98, currentValue: 87, unit: '%', frequency: 'monthly', owner: 'VP Operations', status: 'at-risk' },
+          { name: 'Customer PPM (Parts Per Million defects)', description: 'Customer-reported defective parts per million shipped', baselineValue: 245, targetValue: 25, currentValue: 245, unit: 'PPM', frequency: 'monthly', owner: 'VP Quality', status: 'at-risk' },
+          { name: 'Customer Satisfaction Score', description: 'Annual customer satisfaction rating (1-10) across key OEM accounts', baselineValue: 7.2, targetValue: 9.0, currentValue: 7.2, unit: 'score', frequency: 'annually', owner: 'VP Sales', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Earn Green Manufacturing Recognition', description: 'Achieve sustainability certifications and validated carbon reporting to meet OEM customer sustainability mandates and earn premium positioning', weight: 1.2, kpis: [
+          { name: 'ISO 14064 Certification Status', description: 'Achievement of carbon inventory verification (milestone)', baselineValue: 0, targetValue: 1, currentValue: 0, unit: 'certified', frequency: 'annually', owner: 'VP Sustainability', status: 'on-track' },
+          { name: 'OEM Sustainability Scorecard Rating', description: 'Average sustainability rating across top 5 OEM customer scorecards', baselineValue: 62, targetValue: 88, currentValue: 62, unit: 'score', frequency: 'annually', owner: 'VP Sustainability', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Achieve World-Class Equipment Effectiveness', description: 'Deploy smart factory technologies and disciplined maintenance programs to reach 85% OEE across all critical production assets', weight: 1.5, kpis: [
+          { name: 'Overall Equipment Effectiveness (OEE)', description: 'Composite measure of availability, performance, and quality', baselineValue: 67, targetValue: 85, currentValue: 67, unit: '%', frequency: 'weekly', owner: 'VP Operations', status: 'at-risk' },
+          { name: 'Unplanned Downtime Rate', description: 'Unplanned downtime as % of scheduled production time', baselineValue: 12, targetValue: 3, currentValue: 12, unit: '%', frequency: 'weekly', owner: 'VP Maintenance', status: 'at-risk' },
+          { name: 'IIoT Asset Connectivity Rate', description: 'Percentage of critical production assets connected to real-time monitoring', baselineValue: 28, targetValue: 90, currentValue: 28, unit: '%', frequency: 'quarterly', owner: 'CTO', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Reduce Scope 1 & 2 Emissions', description: 'Execute energy efficiency, renewable energy, and process decarbonization to achieve Science Based Targets and reduce carbon cost exposure', weight: 1.3, kpis: [
+          { name: 'Scope 1 & 2 Carbon Intensity', description: 'tCO₂e per million USD of revenue', baselineValue: 84, targetValue: 55, currentValue: 84, unit: 'tCO₂e/$M', frequency: 'quarterly', owner: 'VP Sustainability', status: 'at-risk' },
+          { name: 'Renewable Energy Share', description: 'Percentage of electricity from verified renewable sources', baselineValue: 12, targetValue: 60, currentValue: 12, unit: '%', frequency: 'quarterly', owner: 'VP Facilities', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build Digital Manufacturing Workforce', description: 'Develop trades apprenticeship pipeline and upskill existing workforce in automation, data analytics, and CNC programming for smart factory operations', weight: 1.4, kpis: [
+          { name: 'Apprenticeship Enrollment', description: 'Number of active registered apprentices in trades programs', baselineValue: 18, targetValue: 75, currentValue: 18, unit: 'apprentices', frequency: 'quarterly', owner: 'CHRO', status: 'on-track' },
+          { name: 'Workforce Digital Skills Certification', description: 'Percentage of production workforce with Industry 4.0 skills certification', baselineValue: 8, targetValue: 65, currentValue: 8, unit: '%', frequency: 'annually', owner: 'CHRO', status: 'at-risk' },
+          { name: 'Internal Promotion Rate', description: 'Percentage of supervisor and above positions filled internally', baselineValue: 48, targetValue: 72, currentValue: 48, unit: '%', frequency: 'annually', owner: 'CHRO', status: 'on-track' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Embed Continuous Improvement and Innovation Culture', description: 'Sustain and advance Kaizen culture while adding digital innovation capability to drive ongoing efficiency and product development breakthroughs', weight: 1.2, kpis: [
+          { name: 'Kaizen Ideas Implemented Per Employee', description: 'Average improvement ideas implemented per employee per year', baselineValue: 4.2, targetValue: 8.0, currentValue: 4.2, unit: 'ideas/employee', frequency: 'annually', owner: 'VP Operations', status: 'on-track' },
+          { name: 'Innovation Investment Rate', description: 'R&D and technology investment as % of revenue', baselineValue: 1.8, targetValue: 3.5, currentValue: 1.8, unit: '%', frequency: 'annually', owner: 'CFO', status: 'at-risk' },
+        ]},
       ],
     },
     created_at: '2026-02-01T00:00:00Z',
@@ -699,90 +502,42 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'Social Enterprise Launch', description: 'Develop mission-aligned earned revenue through social enterprise (workforce training placement fees, consulting, facility rental) generating unrestricted operating income', priorityScore: 4, feasibilityScore: 3, selected: false },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Achieve Financial Resilience Through Diversification',
-          description: 'Reduce grant dependency and build diverse revenue portfolio ensuring organizational sustainability through funding cycles',
-          weight: 1.5,
-          kpis: [
-            { name: 'Grant Revenue Concentration', description: 'Revenue from top 2 grants as % of total operating revenue', baselineValue: 48, targetValue: 20, currentValue: 48, unit: '%', frequency: 'annually', owner: 'CFO', status: 'at-risk' },
-            { name: 'Individual Giving Revenue', description: 'Total annual revenue from individual donors', baselineValue: 0.8, targetValue: 2.8, currentValue: 0.8, unit: '$M', frequency: 'quarterly', owner: 'VP Development', status: 'at-risk' },
-            { name: 'Operating Reserves Ratio', description: 'Months of operating expenses held in unrestricted reserves', baselineValue: 1.8, targetValue: 4.0, currentValue: 1.8, unit: 'months', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Grow Earned and Corporate Revenue',
-          description: 'Develop social enterprise and strategic corporate partnership income generating unrestricted funding for mission delivery',
-          weight: 1.2,
-          kpis: [
-            { name: 'Corporate Partnership Revenue', description: 'Annual revenue from strategic corporate partnerships', baselineValue: 320, targetValue: 1200, currentValue: 320, unit: '$K', frequency: 'quarterly', owner: 'VP Development', status: 'on-track' },
-            { name: 'Government Contract Revenue', description: 'Revenue from local and state government service delivery contracts', baselineValue: 0.5, targetValue: 2.0, currentValue: 0.5, unit: '$M', frequency: 'annually', owner: 'Executive Director', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Maximize Mission Impact at Scale',
-          description: 'Deliver measurable, evidence-based outcomes for growing numbers of community members across all program areas',
-          weight: 1.5,
-          kpis: [
-            { name: 'Annual Participants Served', description: 'Unduplicated individuals receiving direct program services annually', baselineValue: 14200, targetValue: 25000, currentValue: 14200, unit: 'participants', frequency: 'quarterly', owner: 'VP Programs', status: 'on-track' },
-            { name: 'Positive Outcome Achievement Rate', description: 'Percentage of participants achieving defined program outcome within 12 months', baselineValue: 68, targetValue: 82, currentValue: 68, unit: '%', frequency: 'quarterly', owner: 'VP Programs', status: 'at-risk' },
-            { name: 'Participant Satisfaction Score', description: 'Participant satisfaction with services received (1-10 scale)', baselineValue: 8.4, targetValue: 9.2, currentValue: 8.4, unit: 'score', frequency: 'quarterly', owner: 'VP Programs', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Deepen Donor and Partner Engagement',
-          description: 'Build long-term relationships with funders, partners, and volunteers who are deeply connected to mission impact and organizational community',
-          weight: 1.3,
-          kpis: [
-            { name: 'Donor Retention Rate', description: 'Percentage of prior-year donors giving again in current year', baselineValue: 58, targetValue: 72, currentValue: 58, unit: '%', frequency: 'annually', owner: 'VP Development', status: 'at-risk' },
-            { name: 'Major Gift Donor Count ($10K+)', description: 'Number of active donors giving $10,000 or more annually', baselineValue: 42, targetValue: 120, currentValue: 42, unit: 'donors', frequency: 'annually', owner: 'VP Development', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Build World-Class Impact Measurement Capability',
-          description: 'Deploy integrated data systems and outcome measurement frameworks enabling real-time program performance monitoring and funder-grade impact reporting',
-          weight: 1.5,
-          kpis: [
-            { name: 'Real-Time Outcome Dashboard Coverage', description: 'Percentage of programs with real-time outcome data available in dashboard', baselineValue: 10, targetValue: 85, currentValue: 10, unit: '%', frequency: 'quarterly', owner: 'Director of Impact', status: 'at-risk' },
-            { name: 'Data Collection Completeness Rate', description: 'Percentage of required participant data fields completed at 30 days', baselineValue: 54, targetValue: 90, currentValue: 54, unit: '%', frequency: 'monthly', owner: 'Director of Impact', status: 'at-risk' },
-            { name: 'Impact Reports Published', description: 'Annual and quarterly stakeholder impact reports produced and distributed', baselineValue: 1, targetValue: 5, currentValue: 1, unit: 'reports/year', frequency: 'quarterly', owner: 'Communications Director', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Scale Program Delivery Excellence',
-          description: 'Standardize and replicate high-performing program models while maintaining quality and cultural responsiveness at greater scale',
-          weight: 1.3,
-          kpis: [
-            { name: 'Program Fidelity Score', description: 'Adherence to evidence-based program model elements (100-point scale)', baselineValue: 72, targetValue: 92, currentValue: 72, unit: 'score', frequency: 'quarterly', owner: 'VP Programs', status: 'at-risk' },
-            { name: 'New Site Launches', description: 'Number of new program sites or service delivery locations activated', baselineValue: 0, targetValue: 4, currentValue: 0, unit: 'sites', frequency: 'annually', owner: 'VP Programs', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Develop Mission-Driven Leadership Bench',
-          description: 'Build leadership depth, succession readiness, and distributed decision-making capacity to sustain mission through leadership transitions',
-          weight: 1.4,
-          kpis: [
-            { name: 'Succession Plan Completion', description: 'Percentage of senior leadership positions with documented succession and development plan', baselineValue: 20, targetValue: 100, currentValue: 20, unit: '%', frequency: 'annually', owner: 'Executive Director', status: 'at-risk' },
-            { name: 'Staff Promotion Rate', description: 'Percentage of open positions filled by internal promotion', baselineValue: 32, targetValue: 60, currentValue: 32, unit: '%', frequency: 'annually', owner: 'HR Director', status: 'at-risk' },
-            { name: 'Annual Staff Turnover Rate', description: 'Voluntary staff separation rate', baselineValue: 18, targetValue: 10, currentValue: 18, unit: '%', frequency: 'annually', owner: 'HR Director', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build Organizational Learning and Adaptive Capacity',
-          description: 'Foster culture of continuous learning, community listening, and evidence-informed program adaptation to remain effective as community needs evolve',
-          weight: 1.1,
-          kpis: [
-            { name: 'Community Needs Assessments Conducted', description: 'Annual formal community needs assessment cycles completed', baselineValue: 1, targetValue: 2, currentValue: 1, unit: 'assessments', frequency: 'annually', owner: 'Director of Impact', status: 'on-track' },
-            { name: 'Program Adaptations Based on Data', description: 'Number of evidence-informed program modifications implemented annually', baselineValue: 3, targetValue: 12, currentValue: 3, unit: 'adaptations', frequency: 'annually', owner: 'VP Programs', status: 'on-track' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Achieve Financial Resilience Through Diversification', description: 'Reduce grant dependency and build diverse revenue portfolio ensuring organizational sustainability through funding cycles', weight: 1.5, kpis: [
+          { name: 'Grant Revenue Concentration', description: 'Revenue from top 2 grants as % of total operating revenue', baselineValue: 48, targetValue: 20, currentValue: 48, unit: '%', frequency: 'annually', owner: 'CFO', status: 'at-risk' },
+          { name: 'Individual Giving Revenue', description: 'Total annual revenue from individual donors', baselineValue: 0.8, targetValue: 2.8, currentValue: 0.8, unit: '$M', frequency: 'quarterly', owner: 'VP Development', status: 'at-risk' },
+          { name: 'Operating Reserves Ratio', description: 'Months of operating expenses held in unrestricted reserves', baselineValue: 1.8, targetValue: 4.0, currentValue: 1.8, unit: 'months', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
+        ]},
+        { perspective: 'financial', objective: 'Grow Earned and Corporate Revenue', description: 'Develop social enterprise and strategic corporate partnership income generating unrestricted funding for mission delivery', weight: 1.2, kpis: [
+          { name: 'Corporate Partnership Revenue', description: 'Annual revenue from strategic corporate partnerships', baselineValue: 320, targetValue: 1200, currentValue: 320, unit: '$K', frequency: 'quarterly', owner: 'VP Development', status: 'on-track' },
+          { name: 'Government Contract Revenue', description: 'Revenue from local and state government service delivery contracts', baselineValue: 0.5, targetValue: 2.0, currentValue: 0.5, unit: '$M', frequency: 'annually', owner: 'Executive Director', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Maximize Mission Impact at Scale', description: 'Deliver measurable, evidence-based outcomes for growing numbers of community members across all program areas', weight: 1.5, kpis: [
+          { name: 'Annual Participants Served', description: 'Unduplicated individuals receiving direct program services annually', baselineValue: 14200, targetValue: 25000, currentValue: 14200, unit: 'participants', frequency: 'quarterly', owner: 'VP Programs', status: 'on-track' },
+          { name: 'Positive Outcome Achievement Rate', description: 'Percentage of participants achieving defined program outcome within 12 months', baselineValue: 68, targetValue: 82, currentValue: 68, unit: '%', frequency: 'quarterly', owner: 'VP Programs', status: 'at-risk' },
+          { name: 'Participant Satisfaction Score', description: 'Participant satisfaction with services received (1-10 scale)', baselineValue: 8.4, targetValue: 9.2, currentValue: 8.4, unit: 'score', frequency: 'quarterly', owner: 'VP Programs', status: 'on-track' },
+        ]},
+        { perspective: 'customer', objective: 'Deepen Donor and Partner Engagement', description: 'Build long-term relationships with funders, partners, and volunteers who are deeply connected to mission impact and organizational community', weight: 1.3, kpis: [
+          { name: 'Donor Retention Rate', description: 'Percentage of prior-year donors giving again in current year', baselineValue: 58, targetValue: 72, currentValue: 58, unit: '%', frequency: 'annually', owner: 'VP Development', status: 'at-risk' },
+          { name: 'Major Gift Donor Count ($10K+)', description: 'Number of active donors giving $10,000 or more annually', baselineValue: 42, targetValue: 120, currentValue: 42, unit: 'donors', frequency: 'annually', owner: 'VP Development', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Build World-Class Impact Measurement Capability', description: 'Deploy integrated data systems and outcome measurement frameworks enabling real-time program performance monitoring and funder-grade impact reporting', weight: 1.5, kpis: [
+          { name: 'Real-Time Outcome Dashboard Coverage', description: 'Percentage of programs with real-time outcome data available in dashboard', baselineValue: 10, targetValue: 85, currentValue: 10, unit: '%', frequency: 'quarterly', owner: 'Director of Impact', status: 'at-risk' },
+          { name: 'Data Collection Completeness Rate', description: 'Percentage of required participant data fields completed at 30 days', baselineValue: 54, targetValue: 90, currentValue: 54, unit: '%', frequency: 'monthly', owner: 'Director of Impact', status: 'at-risk' },
+          { name: 'Impact Reports Published', description: 'Annual and quarterly stakeholder impact reports produced and distributed', baselineValue: 1, targetValue: 5, currentValue: 1, unit: 'reports/year', frequency: 'quarterly', owner: 'Communications Director', status: 'on-track' },
+        ]},
+        { perspective: 'internal_process', objective: 'Scale Program Delivery Excellence', description: 'Standardize and replicate high-performing program models while maintaining quality and cultural responsiveness at greater scale', weight: 1.3, kpis: [
+          { name: 'Program Fidelity Score', description: 'Adherence to evidence-based program model elements (100-point scale)', baselineValue: 72, targetValue: 92, currentValue: 72, unit: 'score', frequency: 'quarterly', owner: 'VP Programs', status: 'at-risk' },
+          { name: 'New Site Launches', description: 'Number of new program sites or service delivery locations activated', baselineValue: 0, targetValue: 4, currentValue: 0, unit: 'sites', frequency: 'annually', owner: 'VP Programs', status: 'on-track' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Develop Mission-Driven Leadership Bench', description: 'Build leadership depth, succession readiness, and distributed decision-making capacity to sustain mission through leadership transitions', weight: 1.4, kpis: [
+          { name: 'Succession Plan Completion', description: 'Percentage of senior leadership positions with documented succession and development plan', baselineValue: 20, targetValue: 100, currentValue: 20, unit: '%', frequency: 'annually', owner: 'Executive Director', status: 'at-risk' },
+          { name: 'Staff Promotion Rate', description: 'Percentage of open positions filled by internal promotion', baselineValue: 32, targetValue: 60, currentValue: 32, unit: '%', frequency: 'annually', owner: 'HR Director', status: 'at-risk' },
+          { name: 'Annual Staff Turnover Rate', description: 'Voluntary staff separation rate', baselineValue: 18, targetValue: 10, currentValue: 18, unit: '%', frequency: 'annually', owner: 'HR Director', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build Organizational Learning and Adaptive Capacity', description: 'Foster culture of continuous learning, community listening, and evidence-informed program adaptation to remain effective as community needs evolve', weight: 1.1, kpis: [
+          { name: 'Community Needs Assessments Conducted', description: 'Annual formal community needs assessment cycles completed', baselineValue: 1, targetValue: 2, currentValue: 1, unit: 'assessments', frequency: 'annually', owner: 'Director of Impact', status: 'on-track' },
+          { name: 'Program Adaptations Based on Data', description: 'Number of evidence-informed program modifications implemented annually', baselineValue: 3, targetValue: 12, currentValue: 3, unit: 'adaptations', frequency: 'annually', owner: 'VP Programs', status: 'on-track' },
+        ]},
       ],
     },
     created_at: '2026-02-10T00:00:00Z',
@@ -842,90 +597,42 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'Tariff Resilience and Domestic Sourcing', description: 'Reduce tariff exposure and D2C threat by accelerating domestic supplier development and private label sourcing diversification', priorityScore: 4, feasibilityScore: 3, selected: false },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Grow Total Revenue and Improve Margin Mix',
-          description: 'Accelerate total revenue growth through digital channel expansion, retail media, and private label while improving gross margin mix',
-          weight: 1.5,
-          kpis: [
-            { name: 'Total Revenue Growth Rate', description: 'Year-over-year total net revenue growth', baselineValue: 3.2, targetValue: 8.5, currentValue: 3.2, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
-            { name: 'Digital Revenue Share', description: 'E-commerce and digital channel as % of total net revenue', baselineValue: 14, targetValue: 28, currentValue: 14, unit: '%', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'on-track' },
-            { name: 'Retail Media Revenue', description: 'Annual revenue from retail media advertising network', baselineValue: 4, targetValue: 80, currentValue: 4, unit: '$M', frequency: 'quarterly', owner: 'VP Retail Media', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Defend and Improve Gross Margin',
-          description: 'Expand private label, improve fulfillment cost efficiency, and reduce markdown waste to protect and grow gross margin in a competitive price environment',
-          weight: 1.3,
-          kpis: [
-            { name: 'Gross Margin Rate', description: 'Gross profit as % of net revenue', baselineValue: 32.4, targetValue: 35.8, currentValue: 32.4, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
-            { name: 'Private Label GMV Share', description: 'Private label as % of total gross merchandise value', baselineValue: 24, targetValue: 30, currentValue: 24, unit: '%', frequency: 'quarterly', owner: 'VP Merchandising', status: 'on-track' },
-            { name: 'Last-Mile Fulfillment Cost Rate', description: 'Last-mile delivery cost as % of digital revenue', baselineValue: 18, targetValue: 12, currentValue: 18, unit: '%', frequency: 'monthly', owner: 'VP Supply Chain', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Maximize Customer Lifetime Value',
-          description: 'Deepen loyalty relationships, increase purchase frequency, and expand basket size through personalization and loyalty program enhancement',
-          weight: 1.5,
-          kpis: [
-            { name: 'Customer Lifetime Value (CLV)', description: 'Average CLV of loyalty program members vs prior year', baselineValue: 100, targetValue: 135, currentValue: 100, unit: 'index', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
-            { name: 'Loyalty Active Rate', description: 'Percentage of loyalty members making a purchase in past 90 days', baselineValue: 38, targetValue: 52, currentValue: 38, unit: '%', frequency: 'monthly', owner: 'VP Loyalty', status: 'at-risk' },
-            { name: 'Customer NPS', description: 'Net Promoter Score across all shopping channels', baselineValue: 38, targetValue: 55, currentValue: 38, unit: 'NPS', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Deliver Seamless Omnichannel Experience',
-          description: 'Ensure consistent, frictionless shopping experience across store, web, app, and social channels with unified inventory and profile visibility',
-          weight: 1.3,
-          kpis: [
-            { name: 'BOPIS Order Fulfillment Rate (2hr)', description: 'Buy Online Pick Up In Store orders ready within 2 hours of order placement', baselineValue: 72, targetValue: 95, currentValue: 72, unit: '%', frequency: 'monthly', owner: 'VP Store Operations', status: 'at-risk' },
-            { name: 'Cross-Channel Customer Rate', description: 'Percentage of customers shopping both in-store and online in 90-day period', baselineValue: 22, targetValue: 42, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'Chief Digital Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Achieve Supply Chain and Inventory Excellence',
-          description: 'Eliminate channel inventory silos, optimize replenishment, and build fulfillment hub network to compete on speed and availability',
-          weight: 1.4,
-          kpis: [
-            { name: 'In-Stock Rate (Top 500 SKUs)', description: 'In-stock availability of top 500 highest-velocity SKUs', baselineValue: 88, targetValue: 97, currentValue: 88, unit: '%', frequency: 'weekly', owner: 'VP Supply Chain', status: 'at-risk' },
-            { name: 'Inventory Turn Rate', description: 'Annual inventory turnover cycles', baselineValue: 5.2, targetValue: 7.8, currentValue: 5.2, unit: 'turns/year', frequency: 'monthly', owner: 'VP Merchandising', status: 'at-risk' },
-            { name: 'Store-as-Hub Fulfillment Centers Activated', description: 'Number of stores configured as local fulfillment hubs', baselineValue: 12, targetValue: 200, currentValue: 12, unit: 'stores', frequency: 'quarterly', owner: 'VP Supply Chain', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Deploy AI-Powered Personalization and Merchandising',
-          description: 'Implement AI-driven product recommendations, dynamic pricing, and assortment optimization to lift conversion and basket across channels',
-          weight: 1.3,
-          kpis: [
-            { name: 'Personalized Recommendation Revenue Lift', description: 'Revenue attributable to AI product recommendation engine', baselineValue: 0, targetValue: 8, currentValue: 0, unit: '% of revenue', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'on-track' },
-            { name: 'Markdown Rate', description: 'Clearance markdowns as % of total sales', baselineValue: 8.4, targetValue: 5.2, currentValue: 8.4, unit: '%', frequency: 'monthly', owner: 'VP Merchandising', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build Digital and Data Capability',
-          description: 'Develop organizational AI literacy, e-commerce capability, and data-driven decision making across merchandising, marketing, and store operations',
-          weight: 1.3,
-          kpis: [
-            { name: 'Data Literacy Score (Staff)', description: 'Average data literacy assessment score across all department heads and managers', baselineValue: 38, targetValue: 72, currentValue: 38, unit: 'score', frequency: 'annually', owner: 'Chief Digital Officer', status: 'at-risk' },
-            { name: 'Digital-First Decisions Rate', description: 'Percentage of merchandising and marketing decisions informed by digital analytics', baselineValue: 28, targetValue: 75, currentValue: 28, unit: '%', frequency: 'quarterly', owner: 'Chief Data Officer', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Develop High-Performance Store Culture',
-          description: 'Reduce associate turnover, elevate engagement, and build customer service excellence capability that differentiates the in-store experience',
-          weight: 1.2,
-          kpis: [
-            { name: 'Store Associate Voluntary Turnover', description: 'Annual voluntary turnover rate for hourly store associates', baselineValue: 42, targetValue: 25, currentValue: 42, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
-            { name: 'Associate Engagement Score', description: 'Store associate engagement percentile vs retail benchmark', baselineValue: 35, targetValue: 65, currentValue: 35, unit: 'percentile', frequency: 'annually', owner: 'CHRO', status: 'at-risk' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Grow Total Revenue and Improve Margin Mix', description: 'Accelerate total revenue growth through digital channel expansion, retail media, and private label while improving gross margin mix', weight: 1.5, kpis: [
+          { name: 'Total Revenue Growth Rate', description: 'Year-over-year total net revenue growth', baselineValue: 3.2, targetValue: 8.5, currentValue: 3.2, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
+          { name: 'Digital Revenue Share', description: 'E-commerce and digital channel as % of total net revenue', baselineValue: 14, targetValue: 28, currentValue: 14, unit: '%', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'on-track' },
+          { name: 'Retail Media Revenue', description: 'Annual revenue from retail media advertising network', baselineValue: 4, targetValue: 80, currentValue: 4, unit: '$M', frequency: 'quarterly', owner: 'VP Retail Media', status: 'at-risk' },
+        ]},
+        { perspective: 'financial', objective: 'Defend and Improve Gross Margin', description: 'Expand private label, improve fulfillment cost efficiency, and reduce markdown waste to protect and grow gross margin in a competitive price environment', weight: 1.3, kpis: [
+          { name: 'Gross Margin Rate', description: 'Gross profit as % of net revenue', baselineValue: 32.4, targetValue: 35.8, currentValue: 32.4, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
+          { name: 'Private Label GMV Share', description: 'Private label as % of total gross merchandise value', baselineValue: 24, targetValue: 30, currentValue: 24, unit: '%', frequency: 'quarterly', owner: 'VP Merchandising', status: 'on-track' },
+          { name: 'Last-Mile Fulfillment Cost Rate', description: 'Last-mile delivery cost as % of digital revenue', baselineValue: 18, targetValue: 12, currentValue: 18, unit: '%', frequency: 'monthly', owner: 'VP Supply Chain', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Maximize Customer Lifetime Value', description: 'Deepen loyalty relationships, increase purchase frequency, and expand basket size through personalization and loyalty program enhancement', weight: 1.5, kpis: [
+          { name: 'Customer Lifetime Value (CLV)', description: 'Average CLV of loyalty program members vs prior year', baselineValue: 100, targetValue: 135, currentValue: 100, unit: 'index', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
+          { name: 'Loyalty Active Rate', description: 'Percentage of loyalty members making a purchase in past 90 days', baselineValue: 38, targetValue: 52, currentValue: 38, unit: '%', frequency: 'monthly', owner: 'VP Loyalty', status: 'at-risk' },
+          { name: 'Customer NPS', description: 'Net Promoter Score across all shopping channels', baselineValue: 38, targetValue: 55, currentValue: 38, unit: 'NPS', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Deliver Seamless Omnichannel Experience', description: 'Ensure consistent, frictionless shopping experience across store, web, app, and social channels with unified inventory and profile visibility', weight: 1.3, kpis: [
+          { name: 'BOPIS Order Fulfillment Rate (2hr)', description: 'Buy Online Pick Up In Store orders ready within 2 hours of order placement', baselineValue: 72, targetValue: 95, currentValue: 72, unit: '%', frequency: 'monthly', owner: 'VP Store Operations', status: 'at-risk' },
+          { name: 'Cross-Channel Customer Rate', description: 'Percentage of customers shopping both in-store and online in 90-day period', baselineValue: 22, targetValue: 42, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'Chief Digital Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Achieve Supply Chain and Inventory Excellence', description: 'Eliminate channel inventory silos, optimize replenishment, and build fulfillment hub network to compete on speed and availability', weight: 1.4, kpis: [
+          { name: 'In-Stock Rate (Top 500 SKUs)', description: 'In-stock availability of top 500 highest-velocity SKUs', baselineValue: 88, targetValue: 97, currentValue: 88, unit: '%', frequency: 'weekly', owner: 'VP Supply Chain', status: 'at-risk' },
+          { name: 'Inventory Turn Rate', description: 'Annual inventory turnover cycles', baselineValue: 5.2, targetValue: 7.8, currentValue: 5.2, unit: 'turns/year', frequency: 'monthly', owner: 'VP Merchandising', status: 'at-risk' },
+          { name: 'Store-as-Hub Fulfillment Centers Activated', description: 'Number of stores configured as local fulfillment hubs', baselineValue: 12, targetValue: 200, currentValue: 12, unit: 'stores', frequency: 'quarterly', owner: 'VP Supply Chain', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Deploy AI-Powered Personalization and Merchandising', description: 'Implement AI-driven product recommendations, dynamic pricing, and assortment optimization to lift conversion and basket across channels', weight: 1.3, kpis: [
+          { name: 'Personalized Recommendation Revenue Lift', description: 'Revenue attributable to AI product recommendation engine', baselineValue: 0, targetValue: 8, currentValue: 0, unit: '% of revenue', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'on-track' },
+          { name: 'Markdown Rate', description: 'Clearance markdowns as % of total sales', baselineValue: 8.4, targetValue: 5.2, currentValue: 8.4, unit: '%', frequency: 'monthly', owner: 'VP Merchandising', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build Digital and Data Capability', description: 'Develop organizational AI literacy, e-commerce capability, and data-driven decision making across merchandising, marketing, and store operations', weight: 1.3, kpis: [
+          { name: 'Data Literacy Score (Staff)', description: 'Average data literacy assessment score across all department heads and managers', baselineValue: 38, targetValue: 72, currentValue: 38, unit: 'score', frequency: 'annually', owner: 'Chief Digital Officer', status: 'at-risk' },
+          { name: 'Digital-First Decisions Rate', description: 'Percentage of merchandising and marketing decisions informed by digital analytics', baselineValue: 28, targetValue: 75, currentValue: 28, unit: '%', frequency: 'quarterly', owner: 'Chief Data Officer', status: 'on-track' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Develop High-Performance Store Culture', description: 'Reduce associate turnover, elevate engagement, and build customer service excellence capability that differentiates the in-store experience', weight: 1.2, kpis: [
+          { name: 'Store Associate Voluntary Turnover', description: 'Annual voluntary turnover rate for hourly store associates', baselineValue: 42, targetValue: 25, currentValue: 42, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
+          { name: 'Associate Engagement Score', description: 'Store associate engagement percentile vs retail benchmark', baselineValue: 35, targetValue: 65, currentValue: 35, unit: 'percentile', frequency: 'annually', owner: 'CHRO', status: 'at-risk' },
+        ]},
       ],
     },
     created_at: '2026-02-15T00:00:00Z',
@@ -985,80 +692,38 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'ESG Disclosure and Investor Engagement', description: 'Proactively publish credible net-zero roadmap and climate scenario analysis to retain institutional investor confidence during transition', priorityScore: 4, feasibilityScore: 5, selected: true },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Maintain Financial Strength Through Transition',
-          description: 'Sustain investment-grade credit rating and dividend while funding renewable capex through disciplined capital allocation and green financing',
-          weight: 1.4,
-          kpis: [
-            { name: 'EBITDA Margin', description: 'Adjusted EBITDA as percentage of total revenue', baselineValue: 31, targetValue: 28, currentValue: 31, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'on-track' },
-            { name: 'Renewable Capex Share', description: 'Renewable energy capital expenditure as % of total capex', baselineValue: 8, targetValue: 40, currentValue: 8, unit: '%', frequency: 'annually', owner: 'CFO', status: 'at-risk' },
-            { name: 'Green Bond Issuance', description: 'Cumulative green bond proceeds raised for renewable projects', baselineValue: 0, targetValue: 2.0, currentValue: 0, unit: '$B', frequency: 'annually', owner: 'CFO', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Grow Clean Energy Revenue Streams',
-          description: 'Develop renewable PPA, battery storage, and new energy services revenue to replace retiring fossil generation revenue',
-          weight: 1.3,
-          kpis: [
-            { name: 'Renewable Energy Revenue Share', description: 'Revenue from renewable energy sources as % of total revenue', baselineValue: 12, targetValue: 38, currentValue: 12, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
-            { name: 'Corporate PPA Portfolio', description: 'Total contracted corporate PPA capacity in GW', baselineValue: 0.3, targetValue: 2.0, currentValue: 0.3, unit: 'GW', frequency: 'quarterly', owner: 'VP Commercial', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Achieve Grid Reliability and Clean Energy Service Excellence',
-          description: 'Maintain top-decile reliability while expanding clean energy products meeting customer scope 2 demand',
-          weight: 1.4,
-          kpis: [
-            { name: 'Grid Reliability (SAIDI)', description: 'System Average Interruption Duration Index in minutes per customer', baselineValue: 112, targetValue: 65, currentValue: 112, unit: 'minutes/customer', frequency: 'monthly', owner: 'VP Grid Operations', status: 'at-risk' },
-            { name: 'Clean Energy Product Customers', description: 'Commercial and industrial customers with renewable energy products', baselineValue: 120, targetValue: 850, currentValue: 120, unit: 'customers', frequency: 'quarterly', owner: 'VP Commercial', status: 'on-track' },
-            { name: 'Customer Satisfaction Score', description: 'J.D. Power overall satisfaction score vs utility average', baselineValue: 682, targetValue: 740, currentValue: 682, unit: 'points', frequency: 'annually', owner: 'Chief Customer Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Accelerate Renewable Project Development',
-          description: 'Build renewable project development pipeline and execution capability to commission 2 GW by Y3 and 5 GW by Y6',
-          weight: 1.5,
-          kpis: [
-            { name: 'Renewable Capacity Commissioned', description: 'Cumulative new renewable generation capacity commissioned in GW', baselineValue: 0.4, targetValue: 2.0, currentValue: 0.4, unit: 'GW', frequency: 'quarterly', owner: 'VP Project Development', status: 'at-risk' },
-            { name: 'Development Pipeline (MW)', description: 'Total MW in active development pipeline (permitted or under construction)', baselineValue: 800, targetValue: 4000, currentValue: 800, unit: 'MW', frequency: 'quarterly', owner: 'VP Project Development', status: 'at-risk' },
-            { name: 'Project Delivery On-Budget Rate', description: 'Percentage of renewable projects delivered within 10% of approved budget', baselineValue: 72, targetValue: 90, currentValue: 72, unit: '%', frequency: 'quarterly', owner: 'VP Engineering', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Reduce Carbon Intensity and Meet Climate Commitments',
-          description: 'Execute systematic emissions reductions aligned with Science Based Targets and regulatory requirements, retiring coal assets on schedule',
-          weight: 1.5,
-          kpis: [
-            { name: 'Carbon Intensity (tCO₂e/MWh)', description: 'Scope 1 CO₂ equivalent per MWh of electricity generated', baselineValue: 0.58, targetValue: 0.38, currentValue: 0.58, unit: 'tCO₂e/MWh', frequency: 'quarterly', owner: 'Chief Sustainability Officer', status: 'at-risk' },
-            { name: 'Coal Capacity Retired', description: 'Cumulative coal generation capacity retired in GW', baselineValue: 0, targetValue: 2.4, currentValue: 0, unit: 'GW', frequency: 'annually', owner: 'VP Asset Management', status: 'on-track' },
-            { name: 'ESG Rating (MSCI)', description: 'MSCI ESG rating category', baselineValue: 0, targetValue: 1, currentValue: 0, unit: 'BBB to AA', frequency: 'annually', owner: 'Chief Sustainability Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build Renewable Energy Workforce Capability',
-          description: 'Retrain fossil fuel workforce and hire renewable, storage, and grid software talent to execute the clean energy buildout',
-          weight: 1.3,
-          kpis: [
-            { name: 'Workforce Retrained in Renewables', description: 'Number of existing employees successfully retrained for renewable energy roles', baselineValue: 120, targetValue: 1200, currentValue: 120, unit: 'employees', frequency: 'annually', owner: 'CHRO', status: 'at-risk' },
-            { name: 'Renewable Skills Certification Rate', description: 'Percentage of operations staff with relevant renewable energy certification', baselineValue: 8, targetValue: 55, currentValue: 8, unit: '%', frequency: 'annually', owner: 'CHRO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Cultivate Innovation and Technology Leadership',
-          description: 'Build internal innovation capability and external partnerships to stay at the frontier of clean energy technology and grid software',
-          weight: 1.1,
-          kpis: [
-            { name: 'Clean Energy Innovation Investment', description: 'Annual investment in R&D and technology innovation programs', baselineValue: 28, targetValue: 120, currentValue: 28, unit: '$M', frequency: 'annually', owner: 'CTO', status: 'at-risk' },
-            { name: 'University and Startup Partnerships', description: 'Active research and pilot technology partnerships', baselineValue: 4, targetValue: 18, currentValue: 4, unit: 'partnerships', frequency: 'annually', owner: 'CTO', status: 'on-track' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Maintain Financial Strength Through Transition', description: 'Sustain investment-grade credit rating and dividend while funding renewable capex through disciplined capital allocation and green financing', weight: 1.4, kpis: [
+          { name: 'EBITDA Margin', description: 'Adjusted EBITDA as percentage of total revenue', baselineValue: 31, targetValue: 28, currentValue: 31, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'on-track' },
+          { name: 'Renewable Capex Share', description: 'Renewable energy capital expenditure as % of total capex', baselineValue: 8, targetValue: 40, currentValue: 8, unit: '%', frequency: 'annually', owner: 'CFO', status: 'at-risk' },
+          { name: 'Green Bond Issuance', description: 'Cumulative green bond proceeds raised for renewable projects', baselineValue: 0, targetValue: 2.0, currentValue: 0, unit: '$B', frequency: 'annually', owner: 'CFO', status: 'on-track' },
+        ]},
+        { perspective: 'financial', objective: 'Grow Clean Energy Revenue Streams', description: 'Develop renewable PPA, battery storage, and new energy services revenue to replace retiring fossil generation revenue', weight: 1.3, kpis: [
+          { name: 'Renewable Energy Revenue Share', description: 'Revenue from renewable energy sources as % of total revenue', baselineValue: 12, targetValue: 38, currentValue: 12, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
+          { name: 'Corporate PPA Portfolio', description: 'Total contracted corporate PPA capacity in GW', baselineValue: 0.3, targetValue: 2.0, currentValue: 0.3, unit: 'GW', frequency: 'quarterly', owner: 'VP Commercial', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Achieve Grid Reliability and Clean Energy Service Excellence', description: 'Maintain top-decile reliability while expanding clean energy products meeting customer scope 2 demand', weight: 1.4, kpis: [
+          { name: 'Grid Reliability (SAIDI)', description: 'System Average Interruption Duration Index in minutes per customer', baselineValue: 112, targetValue: 65, currentValue: 112, unit: 'minutes/customer', frequency: 'monthly', owner: 'VP Grid Operations', status: 'at-risk' },
+          { name: 'Clean Energy Product Customers', description: 'Commercial and industrial customers with renewable energy products', baselineValue: 120, targetValue: 850, currentValue: 120, unit: 'customers', frequency: 'quarterly', owner: 'VP Commercial', status: 'on-track' },
+          { name: 'Customer Satisfaction Score', description: 'J.D. Power overall satisfaction score vs utility average', baselineValue: 682, targetValue: 740, currentValue: 682, unit: 'points', frequency: 'annually', owner: 'Chief Customer Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Accelerate Renewable Project Development', description: 'Build renewable project development pipeline and execution capability to commission 2 GW by Y3 and 5 GW by Y6', weight: 1.5, kpis: [
+          { name: 'Renewable Capacity Commissioned', description: 'Cumulative new renewable generation capacity commissioned in GW', baselineValue: 0.4, targetValue: 2.0, currentValue: 0.4, unit: 'GW', frequency: 'quarterly', owner: 'VP Project Development', status: 'at-risk' },
+          { name: 'Development Pipeline (MW)', description: 'Total MW in active development pipeline (permitted or under construction)', baselineValue: 800, targetValue: 4000, currentValue: 800, unit: 'MW', frequency: 'quarterly', owner: 'VP Project Development', status: 'at-risk' },
+          { name: 'Project Delivery On-Budget Rate', description: 'Percentage of renewable projects delivered within 10% of approved budget', baselineValue: 72, targetValue: 90, currentValue: 72, unit: '%', frequency: 'quarterly', owner: 'VP Engineering', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Reduce Carbon Intensity and Meet Climate Commitments', description: 'Execute systematic emissions reductions aligned with Science Based Targets and regulatory requirements, retiring coal assets on schedule', weight: 1.5, kpis: [
+          { name: 'Carbon Intensity (tCO₂e/MWh)', description: 'Scope 1 CO₂ equivalent per MWh of electricity generated', baselineValue: 0.58, targetValue: 0.38, currentValue: 0.58, unit: 'tCO₂e/MWh', frequency: 'quarterly', owner: 'Chief Sustainability Officer', status: 'at-risk' },
+          { name: 'Coal Capacity Retired', description: 'Cumulative coal generation capacity retired in GW', baselineValue: 0, targetValue: 2.4, currentValue: 0, unit: 'GW', frequency: 'annually', owner: 'VP Asset Management', status: 'on-track' },
+          { name: 'ESG Rating (MSCI)', description: 'MSCI ESG rating category', baselineValue: 0, targetValue: 1, currentValue: 0, unit: 'BBB to AA', frequency: 'annually', owner: 'Chief Sustainability Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build Renewable Energy Workforce Capability', description: 'Retrain fossil fuel workforce and hire renewable, storage, and grid software talent to execute the clean energy buildout', weight: 1.3, kpis: [
+          { name: 'Workforce Retrained in Renewables', description: 'Number of existing employees successfully retrained for renewable energy roles', baselineValue: 120, targetValue: 1200, currentValue: 120, unit: 'employees', frequency: 'annually', owner: 'CHRO', status: 'at-risk' },
+          { name: 'Renewable Skills Certification Rate', description: 'Percentage of operations staff with relevant renewable energy certification', baselineValue: 8, targetValue: 55, currentValue: 8, unit: '%', frequency: 'annually', owner: 'CHRO', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Cultivate Innovation and Technology Leadership', description: 'Build internal innovation capability and external partnerships to stay at the frontier of clean energy technology and grid software', weight: 1.1, kpis: [
+          { name: 'Clean Energy Innovation Investment', description: 'Annual investment in R&D and technology innovation programs', baselineValue: 28, targetValue: 120, currentValue: 28, unit: '$M', frequency: 'annually', owner: 'CTO', status: 'at-risk' },
+          { name: 'University and Startup Partnerships', description: 'Active research and pilot technology partnerships', baselineValue: 4, targetValue: 18, currentValue: 4, unit: 'partnerships', frequency: 'annually', owner: 'CTO', status: 'on-track' },
+        ]},
       ],
     },
     created_at: '2026-02-20T00:00:00Z',
@@ -1118,90 +783,42 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'Branch Network Optimization', description: 'Right-size branch network from 340 to 220 over 3 years — reinvesting savings into digital capability and redeploying staff to advisory and small business roles', priorityScore: 4, feasibilityScore: 3, selected: false },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Achieve Sustainable Profitability Improvement',
-          description: 'Drive ROE above cost of equity through cost reduction, revenue diversification, and portfolio quality management',
-          weight: 1.5,
-          kpis: [
-            { name: 'Return on Equity (ROE)', description: 'Net income as % of average shareholders equity', baselineValue: 11.2, targetValue: 13.5, currentValue: 11.2, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
-            { name: 'Cost-to-Income Ratio', description: 'Operating expenses as % of net revenue', baselineValue: 68, targetValue: 55, currentValue: 68, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
-            { name: 'Fee Income Share', description: 'Non-interest fee income as % of total revenue', baselineValue: 22, targetValue: 35, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Maintain Credit Quality and Capital Efficiency',
-          description: 'Sustain best-in-class credit discipline while deploying capital efficiently across growing digital and green finance portfolios',
-          weight: 1.3,
-          kpis: [
-            { name: 'Non-Performing Loan Ratio', description: 'NPL as % of gross loan portfolio', baselineValue: 3.1, targetValue: 2.2, currentValue: 3.1, unit: '%', frequency: 'monthly', owner: 'Chief Risk Officer', status: 'at-risk' },
-            { name: 'Net Interest Margin (NIM)', description: 'Net interest income as % of average earning assets', baselineValue: 3.2, targetValue: 3.6, currentValue: 3.2, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Win and Deepen Digital Customer Relationships',
-          description: 'Grow digital active users, increase products per household, and achieve top-quartile NPS by delivering superior digital banking experiences',
-          weight: 1.4,
-          kpis: [
-            { name: 'Digital Active User Rate', description: 'Percentage of retail customers active on digital channels monthly', baselineValue: 48, targetValue: 75, currentValue: 48, unit: '%', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'at-risk' },
-            { name: 'Retail Banking NPS', description: 'Net Promoter Score for retail banking segment', baselineValue: 18, targetValue: 48, currentValue: 18, unit: 'NPS', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
-            { name: 'Products Per Household', description: 'Average number of products held per retail banking household', baselineValue: 2.3, targetValue: 3.8, currentValue: 2.3, unit: 'products', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Capture SME and Corporate Digital Lending Market',
-          description: 'Win SME market share through fast, digital-first credit decisions and relationship banking that combines speed with trust',
-          weight: 1.4,
-          kpis: [
-            { name: 'SME Loan Portfolio Growth', description: 'Year-over-year growth in SME loan portfolio', baselineValue: 4, targetValue: 22, currentValue: 4, unit: '%', frequency: 'quarterly', owner: 'Head of SME Banking', status: 'at-risk' },
-            { name: 'SME Digital Lending Market Share', description: 'Market share of SME loans under $500K in service geography', baselineValue: 5, targetValue: 15, currentValue: 5, unit: '%', frequency: 'annually', owner: 'Head of SME Banking', status: 'at-risk' },
-            { name: 'SME Loan Approval Time', description: 'Median days from application to credit decision for SME loans', baselineValue: 18, targetValue: 2, currentValue: 18, unit: 'days', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Complete Core Banking Modernization',
-          description: 'Execute multi-year core banking replacement enabling API connectivity, real-time processing, and cloud-native product development velocity',
-          weight: 1.5,
-          kpis: [
-            { name: 'Core Banking Migration Completion', description: 'Percentage of accounts migrated to modern core banking platform', baselineValue: 0, targetValue: 100, currentValue: 0, unit: '%', frequency: 'quarterly', owner: 'CTO', status: 'at-risk' },
-            { name: 'API Endpoints Published', description: 'Number of live, documented API endpoints available to partners', baselineValue: 8, targetValue: 120, currentValue: 8, unit: 'endpoints', frequency: 'quarterly', owner: 'CTO', status: 'on-track' },
-            { name: 'Digital Product Time-to-Market', description: 'Average weeks from product concept to customer launch', baselineValue: 24, targetValue: 8, currentValue: 24, unit: 'weeks', frequency: 'quarterly', owner: 'Chief Digital Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Strengthen Risk, Fraud, and Compliance Automation',
-          description: 'Deploy AI-driven risk and fraud detection while automating compliance processes to reduce operational risk and regulatory burden',
-          weight: 1.2,
-          kpis: [
-            { name: 'Fraud Loss Rate', description: 'Fraud losses as % of transaction volume', baselineValue: 0.18, targetValue: 0.08, currentValue: 0.18, unit: '%', frequency: 'monthly', owner: 'Chief Risk Officer', status: 'at-risk' },
-            { name: 'Compliance Process Automation Rate', description: 'Percentage of compliance monitoring processes automated', baselineValue: 28, targetValue: 72, currentValue: 28, unit: '%', frequency: 'quarterly', owner: 'Chief Compliance Officer', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build Digital Banking and AI Talent Engine',
-          description: 'Rapidly develop data science, software engineering, product management, and AI capability to close the digital talent gap vs fintech competitors',
-          weight: 1.4,
-          kpis: [
-            { name: 'Data Science and ML Team Size', description: 'Total FTEs in data science, machine learning, and AI roles', baselineValue: 8, targetValue: 45, currentValue: 8, unit: 'FTEs', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
-            { name: 'Technology Talent Retention Rate', description: 'Annual retention rate for technology and data roles', baselineValue: 72, targetValue: 88, currentValue: 72, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Embed Agile and Innovation Culture',
-          description: 'Transition from waterfall project delivery to agile product development mindset enabling rapid experimentation and continuous customer feedback loops',
-          weight: 1.1,
-          kpis: [
-            { name: 'Agile Team Coverage', description: 'Percentage of technology projects delivered using agile methodology', baselineValue: 22, targetValue: 85, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'CTO', status: 'at-risk' },
-            { name: 'Innovation Lab Experiments', description: 'Number of fintech partnership pilots and innovation experiments per year', baselineValue: 3, targetValue: 18, currentValue: 3, unit: 'experiments', frequency: 'annually', owner: 'Chief Innovation Officer', status: 'on-track' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Achieve Sustainable Profitability Improvement', description: 'Drive ROE above cost of equity through cost reduction, revenue diversification, and portfolio quality management', weight: 1.5, kpis: [
+          { name: 'Return on Equity (ROE)', description: 'Net income as % of average shareholders equity', baselineValue: 11.2, targetValue: 13.5, currentValue: 11.2, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
+          { name: 'Cost-to-Income Ratio', description: 'Operating expenses as % of net revenue', baselineValue: 68, targetValue: 55, currentValue: 68, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
+          { name: 'Fee Income Share', description: 'Non-interest fee income as % of total revenue', baselineValue: 22, targetValue: 35, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'CFO', status: 'on-track' },
+        ]},
+        { perspective: 'financial', objective: 'Maintain Credit Quality and Capital Efficiency', description: 'Sustain best-in-class credit discipline while deploying capital efficiently across growing digital and green finance portfolios', weight: 1.3, kpis: [
+          { name: 'Non-Performing Loan Ratio', description: 'NPL as % of gross loan portfolio', baselineValue: 3.1, targetValue: 2.2, currentValue: 3.1, unit: '%', frequency: 'monthly', owner: 'Chief Risk Officer', status: 'at-risk' },
+          { name: 'Net Interest Margin (NIM)', description: 'Net interest income as % of average earning assets', baselineValue: 3.2, targetValue: 3.6, currentValue: 3.2, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Win and Deepen Digital Customer Relationships', description: 'Grow digital active users, increase products per household, and achieve top-quartile NPS by delivering superior digital banking experiences', weight: 1.4, kpis: [
+          { name: 'Digital Active User Rate', description: 'Percentage of retail customers active on digital channels monthly', baselineValue: 48, targetValue: 75, currentValue: 48, unit: '%', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'at-risk' },
+          { name: 'Retail Banking NPS', description: 'Net Promoter Score for retail banking segment', baselineValue: 18, targetValue: 48, currentValue: 18, unit: 'NPS', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
+          { name: 'Products Per Household', description: 'Average number of products held per retail banking household', baselineValue: 2.3, targetValue: 3.8, currentValue: 2.3, unit: 'products', frequency: 'quarterly', owner: 'Chief Customer Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Capture SME and Corporate Digital Lending Market', description: 'Win SME market share through fast, digital-first credit decisions and relationship banking that combines speed with trust', weight: 1.4, kpis: [
+          { name: 'SME Loan Portfolio Growth', description: 'Year-over-year growth in SME loan portfolio', baselineValue: 4, targetValue: 22, currentValue: 4, unit: '%', frequency: 'quarterly', owner: 'Head of SME Banking', status: 'at-risk' },
+          { name: 'SME Digital Lending Market Share', description: 'Market share of SME loans under $500K in service geography', baselineValue: 5, targetValue: 15, currentValue: 5, unit: '%', frequency: 'annually', owner: 'Head of SME Banking', status: 'at-risk' },
+          { name: 'SME Loan Approval Time', description: 'Median days from application to credit decision for SME loans', baselineValue: 18, targetValue: 2, currentValue: 18, unit: 'days', frequency: 'monthly', owner: 'Chief Digital Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Complete Core Banking Modernization', description: 'Execute multi-year core banking replacement enabling API connectivity, real-time processing, and cloud-native product development velocity', weight: 1.5, kpis: [
+          { name: 'Core Banking Migration Completion', description: 'Percentage of accounts migrated to modern core banking platform', baselineValue: 0, targetValue: 100, currentValue: 0, unit: '%', frequency: 'quarterly', owner: 'CTO', status: 'at-risk' },
+          { name: 'API Endpoints Published', description: 'Number of live, documented API endpoints available to partners', baselineValue: 8, targetValue: 120, currentValue: 8, unit: 'endpoints', frequency: 'quarterly', owner: 'CTO', status: 'on-track' },
+          { name: 'Digital Product Time-to-Market', description: 'Average weeks from product concept to customer launch', baselineValue: 24, targetValue: 8, currentValue: 24, unit: 'weeks', frequency: 'quarterly', owner: 'Chief Digital Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Strengthen Risk, Fraud, and Compliance Automation', description: 'Deploy AI-driven risk and fraud detection while automating compliance processes to reduce operational risk and regulatory burden', weight: 1.2, kpis: [
+          { name: 'Fraud Loss Rate', description: 'Fraud losses as % of transaction volume', baselineValue: 0.18, targetValue: 0.08, currentValue: 0.18, unit: '%', frequency: 'monthly', owner: 'Chief Risk Officer', status: 'at-risk' },
+          { name: 'Compliance Process Automation Rate', description: 'Percentage of compliance monitoring processes automated', baselineValue: 28, targetValue: 72, currentValue: 28, unit: '%', frequency: 'quarterly', owner: 'Chief Compliance Officer', status: 'on-track' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build Digital Banking and AI Talent Engine', description: 'Rapidly develop data science, software engineering, product management, and AI capability to close the digital talent gap vs fintech competitors', weight: 1.4, kpis: [
+          { name: 'Data Science and ML Team Size', description: 'Total FTEs in data science, machine learning, and AI roles', baselineValue: 8, targetValue: 45, currentValue: 8, unit: 'FTEs', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
+          { name: 'Technology Talent Retention Rate', description: 'Annual retention rate for technology and data roles', baselineValue: 72, targetValue: 88, currentValue: 72, unit: '%', frequency: 'quarterly', owner: 'CHRO', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Embed Agile and Innovation Culture', description: 'Transition from waterfall project delivery to agile product development mindset enabling rapid experimentation and continuous customer feedback loops', weight: 1.1, kpis: [
+          { name: 'Agile Team Coverage', description: 'Percentage of technology projects delivered using agile methodology', baselineValue: 22, targetValue: 85, currentValue: 22, unit: '%', frequency: 'quarterly', owner: 'CTO', status: 'at-risk' },
+          { name: 'Innovation Lab Experiments', description: 'Number of fintech partnership pilots and innovation experiments per year', baselineValue: 3, targetValue: 18, currentValue: 3, unit: 'experiments', frequency: 'annually', owner: 'Chief Innovation Officer', status: 'on-track' },
+        ]},
       ],
     },
     created_at: '2026-03-01T00:00:00Z',
@@ -1261,297 +878,176 @@ export const BUILTIN_TEMPLATES: PlanTemplate[] = [
         { optionType: 'WT', title: 'Carbon Border Adjustment Compliance', description: 'Proactively develop product carbon footprint documentation and CBAM reporting capability ahead of full implementation, avoiding compliance penalties and customer churn', priorityScore: 4, feasibilityScore: 4, selected: false },
       ],
       objectives: [
-        {
-          perspective: 'financial',
-          objective: 'Grow Export Revenue and Market Diversification',
-          description: 'Achieve 25% revenue growth through new market entry, increased volume in existing markets, and FTA tariff savings reinvested in competitive pricing',
-          weight: 1.5,
-          kpis: [
-            { name: 'Total Export Revenue', description: 'Annual total net export revenue', baselineValue: 145, targetValue: 181, currentValue: 145, unit: '$M', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
-            { name: 'New Market Revenue Share', description: 'Revenue from markets entered in past 24 months as % of total', baselineValue: 6, targetValue: 20, currentValue: 6, unit: '%', frequency: 'quarterly', owner: 'VP International Sales', status: 'on-track' },
-            { name: 'FTA Tariff Savings Realized', description: 'Annual tariff cost reduction through optimized FTA preference utilization', baselineValue: 0.9, targetValue: 8.0, currentValue: 0.9, unit: '$M', frequency: 'quarterly', owner: 'Head of Trade Compliance', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Improve Gross Margin Through FTA and Cost Efficiency',
-          description: 'Reduce logistics costs, tariff burden, and supply chain waste to protect and improve gross margins despite currency and commodity pressure',
-          weight: 1.3,
-          kpis: [
-            { name: 'Gross Margin Rate', description: 'Gross profit as percentage of net export revenue', baselineValue: 18, targetValue: 22, currentValue: 18, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
-            { name: 'Logistics Cost-to-Revenue Ratio', description: 'Total logistics cost including freight and customs as % of revenue', baselineValue: 13, targetValue: 9, currentValue: 13, unit: '%', frequency: 'monthly', owner: 'Chief Supply Chain Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Achieve Delivery and Service Excellence',
-          description: 'Deliver consistently on-time with zero compliance incidents, making the company the most reliable trade partner in its categories',
-          weight: 1.5,
-          kpis: [
-            { name: 'On-Time Delivery Rate (OTD)', description: 'Percentage of shipments delivered on agreed contractual date', baselineValue: 87, targetValue: 96, currentValue: 87, unit: '%', frequency: 'monthly', owner: 'Chief Supply Chain Officer', status: 'at-risk' },
-            { name: 'Repeat Buyer Rate', description: 'Percentage of buyers purchasing in both current and prior 12-month periods', baselineValue: 78, targetValue: 88, currentValue: 78, unit: '%', frequency: 'annually', owner: 'VP International Sales', status: 'on-track' },
-            { name: 'Trade Compliance Incident Rate', description: 'Number of compliance-related shipment holds, penalties, or rejections annually', baselineValue: 14, targetValue: 2, currentValue: 14, unit: 'incidents', frequency: 'quarterly', owner: 'Head of Trade Compliance', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Penetrate New Export Markets',
-          description: 'Execute disciplined new market entry across ASEAN and African markets using digital platforms and local partner ecosystem',
-          weight: 1.3,
-          kpis: [
-            { name: 'New Export Markets Entered', description: 'Number of distinct new country markets with at least $500K revenue in year 1', baselineValue: 0, targetValue: 4, currentValue: 0, unit: 'markets', frequency: 'annually', owner: 'VP International Sales', status: 'on-track' },
-            { name: 'ASEAN Revenue Growth', description: 'Year-over-year revenue growth from ASEAN destination markets', baselineValue: 8, targetValue: 35, currentValue: 8, unit: '%', frequency: 'quarterly', owner: 'Regional Director ASEAN', status: 'at-risk' },
-            { name: 'Digital Platform GMV', description: 'Gross merchandise value transacted through B2B digital trade platforms', baselineValue: 3.2, targetValue: 18.0, currentValue: 3.2, unit: '$M', frequency: 'quarterly', owner: 'Chief Digital Officer', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Build Supply Chain Resilience and Redundancy',
-          description: 'Eliminate single-country sourcing dependencies and build multi-corridor routing capability to protect delivery reliability against geopolitical and logistics disruption',
-          weight: 1.5,
-          kpis: [
-            { name: 'Supply Chain Concentration Index (HHI)', description: 'Herfindahl-Hirschman Index of sourcing country concentration (lower = more resilient)', baselineValue: 0.41, targetValue: 0.18, currentValue: 0.41, unit: 'index', frequency: 'quarterly', owner: 'Chief Supply Chain Officer', status: 'critical' },
-            { name: 'Dual-Sourced SKU Rate', description: 'Percentage of top-50 SKUs with at least 2 qualified source suppliers in different countries', baselineValue: 18, targetValue: 85, currentValue: 18, unit: '%', frequency: 'quarterly', owner: 'VP Procurement', status: 'at-risk' },
-            { name: 'Supply Chain Disruption Recovery Time', description: 'Average days to restore normal supply after a tier-1 disruption event', baselineValue: 42, targetValue: 14, currentValue: 42, unit: 'days', frequency: 'per incident', owner: 'Chief Supply Chain Officer', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Digitize Trade and Customs Operations',
-          description: 'Deploy digital trade documentation, automated compliance, and real-time shipment visibility across all key trade corridors',
-          weight: 1.3,
-          kpis: [
-            { name: 'FTA Utilization Rate', description: 'Percentage of FTA-eligible transactions claiming preferential tariff treatment', baselineValue: 31, targetValue: 80, currentValue: 31, unit: '%', frequency: 'quarterly', owner: 'Head of Trade Compliance', status: 'critical' },
-            { name: 'Digital Customs Clearance Rate', description: 'Percentage of shipments using fully electronic documentation and customs submission', baselineValue: 20, targetValue: 85, currentValue: 20, unit: '%', frequency: 'monthly', owner: 'CTO', status: 'at-risk' },
-            { name: 'Customs Clearance Cycle Time', description: 'Average days from port arrival to customs clearance completion', baselineValue: 5.2, targetValue: 1.0, currentValue: 5.2, unit: 'days', frequency: 'monthly', owner: 'Head of Trade Compliance', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Build Trade Intelligence and Geopolitical Capability',
-          description: 'Develop strategic market intelligence capability enabling proactive trade routing, market entry, and regulatory compliance ahead of policy changes',
-          weight: 1.2,
-          kpis: [
-            { name: 'Trade Intelligence Reports Produced', description: 'Proactive trade intelligence briefs issued to leadership per quarter', baselineValue: 2, targetValue: 12, currentValue: 2, unit: 'reports/quarter', frequency: 'quarterly', owner: 'VP Strategy', status: 'on-track' },
-            { name: 'Policy Change Lead Time', description: 'Average days advance notice of trade policy changes before effective date', baselineValue: 8, targetValue: 45, currentValue: 8, unit: 'days', frequency: 'per event', owner: 'Head of Trade Compliance', status: 'at-risk' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Develop Trade Finance and Digital Capability',
-          description: 'Build team capabilities in digital trade finance, e-commerce export, and currency risk management to support next-generation trade operations',
-          weight: 1.1,
-          kpis: [
-            { name: 'Staff FTA and Trade Compliance Certified', description: 'Number of staff with professional trade compliance certifications (CTCS, CCS)', baselineValue: 4, targetValue: 18, currentValue: 4, unit: 'staff', frequency: 'annually', owner: 'CHRO', status: 'on-track' },
-            { name: 'Digital Trade Platform Adoption', description: 'Percentage of export transactions initiated through digital trade platforms', baselineValue: 12, targetValue: 55, currentValue: 12, unit: '%', frequency: 'quarterly', owner: 'Chief Digital Officer', status: 'on-track' },
-          ],
-        },
+        { perspective: 'financial', objective: 'Grow Export Revenue and Market Diversification', description: 'Achieve 25% revenue growth through new market entry, increased volume in existing markets, and FTA tariff savings reinvested in competitive pricing', weight: 1.5, kpis: [
+          { name: 'Total Export Revenue', description: 'Annual total net export revenue', baselineValue: 145, targetValue: 181, currentValue: 145, unit: '$M', frequency: 'quarterly', owner: 'CFO', status: 'at-risk' },
+          { name: 'New Market Revenue Share', description: 'Revenue from markets entered in past 24 months as % of total', baselineValue: 6, targetValue: 20, currentValue: 6, unit: '%', frequency: 'quarterly', owner: 'VP International Sales', status: 'on-track' },
+          { name: 'FTA Tariff Savings Realized', description: 'Annual tariff cost reduction through optimized FTA preference utilization', baselineValue: 0.9, targetValue: 8.0, currentValue: 0.9, unit: '$M', frequency: 'quarterly', owner: 'Head of Trade Compliance', status: 'at-risk' },
+        ]},
+        { perspective: 'financial', objective: 'Improve Gross Margin Through FTA and Cost Efficiency', description: 'Reduce logistics costs, tariff burden, and supply chain waste to protect and improve gross margins despite currency and commodity pressure', weight: 1.3, kpis: [
+          { name: 'Gross Margin Rate', description: 'Gross profit as percentage of net export revenue', baselineValue: 18, targetValue: 22, currentValue: 18, unit: '%', frequency: 'monthly', owner: 'CFO', status: 'at-risk' },
+          { name: 'Logistics Cost-to-Revenue Ratio', description: 'Total logistics cost including freight and customs as % of revenue', baselineValue: 13, targetValue: 9, currentValue: 13, unit: '%', frequency: 'monthly', owner: 'Chief Supply Chain Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Achieve Delivery and Service Excellence', description: 'Deliver consistently on-time with zero compliance incidents, making the company the most reliable trade partner in its categories', weight: 1.5, kpis: [
+          { name: 'On-Time Delivery Rate (OTD)', description: 'Percentage of shipments delivered on agreed contractual date', baselineValue: 87, targetValue: 96, currentValue: 87, unit: '%', frequency: 'monthly', owner: 'Chief Supply Chain Officer', status: 'at-risk' },
+          { name: 'Repeat Buyer Rate', description: 'Percentage of buyers purchasing in both current and prior 12-month periods', baselineValue: 78, targetValue: 88, currentValue: 78, unit: '%', frequency: 'annually', owner: 'VP International Sales', status: 'on-track' },
+          { name: 'Trade Compliance Incident Rate', description: 'Number of compliance-related shipment holds, penalties, or rejections annually', baselineValue: 14, targetValue: 2, currentValue: 14, unit: 'incidents', frequency: 'quarterly', owner: 'Head of Trade Compliance', status: 'at-risk' },
+        ]},
+        { perspective: 'customer', objective: 'Penetrate New Export Markets', description: 'Execute disciplined new market entry across ASEAN and African markets using digital platforms and local partner ecosystem', weight: 1.3, kpis: [
+          { name: 'New Export Markets Entered', description: 'Number of distinct new country markets with at least $500K revenue in year 1', baselineValue: 0, targetValue: 4, currentValue: 0, unit: 'markets', frequency: 'annually', owner: 'VP International Sales', status: 'on-track' },
+          { name: 'ASEAN Revenue Growth', description: 'Year-over-year revenue growth from ASEAN destination markets', baselineValue: 8, targetValue: 35, currentValue: 8, unit: '%', frequency: 'quarterly', owner: 'Regional Director ASEAN', status: 'at-risk' },
+          { name: 'Digital Platform GMV', description: 'Gross merchandise value transacted through B2B digital trade platforms', baselineValue: 3.2, targetValue: 18.0, currentValue: 3.2, unit: '$M', frequency: 'quarterly', owner: 'Chief Digital Officer', status: 'on-track' },
+        ]},
+        { perspective: 'internal_process', objective: 'Build Supply Chain Resilience and Redundancy', description: 'Eliminate single-country sourcing dependencies and build multi-corridor routing capability to protect delivery reliability against geopolitical and logistics disruption', weight: 1.5, kpis: [
+          { name: 'Supply Chain Concentration Index (HHI)', description: 'Herfindahl-Hirschman Index of sourcing country concentration (lower = more resilient)', baselineValue: 0.41, targetValue: 0.18, currentValue: 0.41, unit: 'index', frequency: 'quarterly', owner: 'Chief Supply Chain Officer', status: 'critical' },
+          { name: 'Dual-Sourced SKU Rate', description: 'Percentage of top-50 SKUs with at least 2 qualified source suppliers in different countries', baselineValue: 18, targetValue: 85, currentValue: 18, unit: '%', frequency: 'quarterly', owner: 'VP Procurement', status: 'at-risk' },
+          { name: 'Supply Chain Disruption Recovery Time', description: 'Average days to restore normal supply after a tier-1 disruption event', baselineValue: 42, targetValue: 14, currentValue: 42, unit: 'days', frequency: 'per incident', owner: 'Chief Supply Chain Officer', status: 'at-risk' },
+        ]},
+        { perspective: 'internal_process', objective: 'Digitize Trade and Customs Operations', description: 'Deploy digital trade documentation, automated compliance, and real-time shipment visibility across all key trade corridors', weight: 1.3, kpis: [
+          { name: 'FTA Utilization Rate', description: 'Percentage of FTA-eligible transactions claiming preferential tariff treatment', baselineValue: 31, targetValue: 80, currentValue: 31, unit: '%', frequency: 'quarterly', owner: 'Head of Trade Compliance', status: 'critical' },
+          { name: 'Digital Customs Clearance Rate', description: 'Percentage of shipments using fully electronic documentation and customs submission', baselineValue: 20, targetValue: 85, currentValue: 20, unit: '%', frequency: 'monthly', owner: 'CTO', status: 'at-risk' },
+          { name: 'Customs Clearance Cycle Time', description: 'Average days from port arrival to customs clearance completion', baselineValue: 5.2, targetValue: 1.0, currentValue: 5.2, unit: 'days', frequency: 'monthly', owner: 'Head of Trade Compliance', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Build Trade Intelligence and Geopolitical Capability', description: 'Develop strategic market intelligence capability enabling proactive trade routing, market entry, and regulatory compliance ahead of policy changes', weight: 1.2, kpis: [
+          { name: 'Trade Intelligence Reports Produced', description: 'Proactive trade intelligence briefs issued to leadership per quarter', baselineValue: 2, targetValue: 12, currentValue: 2, unit: 'reports/quarter', frequency: 'quarterly', owner: 'VP Strategy', status: 'on-track' },
+          { name: 'Policy Change Lead Time', description: 'Average days advance notice of trade policy changes before effective date', baselineValue: 8, targetValue: 45, currentValue: 8, unit: 'days', frequency: 'per event', owner: 'Head of Trade Compliance', status: 'at-risk' },
+        ]},
+        { perspective: 'learning_growth', objective: 'Develop Trade Finance and Digital Capability', description: 'Build team capabilities in digital trade finance, e-commerce export, and currency risk management to support next-generation trade operations', weight: 1.1, kpis: [
+          { name: 'Staff FTA and Trade Compliance Certified', description: 'Number of staff with professional trade compliance certifications (CTCS, CCS)', baselineValue: 4, targetValue: 18, currentValue: 4, unit: 'staff', frequency: 'annually', owner: 'CHRO', status: 'on-track' },
+          { name: 'Digital Trade Platform Adoption', description: 'Percentage of export transactions initiated through digital trade platforms', baselineValue: 12, targetValue: 55, currentValue: 12, unit: '%', frequency: 'quarterly', owner: 'Chief Digital Officer', status: 'on-track' },
+        ]},
       ],
     },
     created_at: '2026-03-05T00:00:00Z',
     updated_at: '2026-04-10T00:00:00Z',
   },
 
-  // ===== 10. BANGSAMORO INVESTMENT ROADMAP (ORIGINAL - PRESERVED) =====
+  // ===== 10. BANGSAMORO INVESTMENT ROADMAP (UPDATED WITH HTML DATA) =====
   {
     id: 'tmpl-bangsamoro-investment',
     name: 'Bangsamoro Investment Roadmap 2026-2035',
-    description: 'Comprehensive strategic investment roadmap for regional development focusing on halal industry ecosystem excellence, infrastructure development, and governance strengthening. Based on the Integrated Halal-Driven Investment Strategy framework.',
+    description: 'Comprehensive strategic investment roadmap for regional development focusing on the Bangsamoro Economic & Investment Ecosystem (BEIE). Integrates halal industry ecosystem excellence, infrastructure-energy nexus, and moral governance through systems thinking (CLDs, Archetypes) and a 3-phase implementation architecture (Foundation, Acceleration, Consolidation).',
     industry: 'government',
     category: 'builtin',
     icon: 'Landmark',
     color: 'emerald',
-    tags: ['halal industry', 'investment promotion', 'BIMP-EAGA', 'moral governance', 'regional development', 'Islamic finance', 'peacebuilding'],
+    tags: ['halal industry', 'investment promotion', 'BIMP-EAGA', 'moral governance', 'regional development', 'Islamic finance', 'peacebuilding', 'systems thinking'],
     usage_count: 342,
     rating: 4.9,
     rating_count: 56,
     is_public: true,
     plan_data: {
       name: 'Bangsamoro Investment Roadmap 2026-2035',
-      organization: 'Bangsamoro Autonomous Regional Government',
-      vision: 'To position Bangsamoro as the Philippines\' premier halal production and certification hub—a center for resilient and ethical growth in the BIMP-EAGA region',
-      mission: 'To create an empowered, cohesive, and progressive Bangsamoro through moral governance, sustainable investment attraction, and inclusive economic development that consolidates peace and prosperity',
-      strategicIntent: 'Achieve PHP 50B in investment inflows, establish internationally recognized halal certification, 100% electrification, and 2,000 halal-certified enterprises by 2035 through the Integrated Halal-Driven Investment Strategy',
+      organization: 'Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)',
+      vision: '"The Emerging Bangsamoro: A Hub for Resilient and Ethical Growth" — transitioning from post-conflict recovery to the Philippines\' premier halal, agro-industrial, and sustainable investment destination.',
+      mission: 'To create an empowered, cohesive, and progressive Bangsamoro through moral governance, sustainable investment attraction, and inclusive economic development that consolidates peace and prosperity.',
+      strategicIntent: 'Achieve ₱550B GRDP by 2035, secure ₱15B in annual investment approvals, certify 5,000+ halal enterprises, and achieve 100% electrification and 85% broadband connectivity through the Integrated Halal-Driven Investment Strategy and Bangsamoro Economic & Investment Ecosystem (BEIE).',
       swotItems: [
-        { category: 'strength', description: 'Halal legitimacy and cultural credibility with predominantly Muslim population providing natural authenticity', impactScore: 5, likelihoodScore: 5 },
-        { category: 'strength', description: 'Strategic location in BIMP-EAGA (Brunei-Indonesia-Malaysia-Philippines East ASEAN Growth Area) with access to 70M+ consumers', impactScore: 5, likelihoodScore: 5 },
-        { category: 'strength', description: 'Strong agriculture base with extensive agricultural lands, fisheries, and natural resources', impactScore: 4, likelihoodScore: 5 },
-        { category: 'strength', description: 'Growing policy recognition and autonomy under Bangsamoro Organic Law (RA 11054) with 55 distinct powers', impactScore: 4, likelihoodScore: 4 },
-        { category: 'strength', description: 'Domestic halal demand and expanding local market for halal products and services', impactScore: 4, likelihoodScore: 5 },
-        { category: 'strength', description: 'Remarkable poverty reduction progress (55.9% in 2018 to 23.5% in 2023) demonstrating development capacity', impactScore: 4, likelihoodScore: 4 },
-        { category: 'weakness', description: 'Weak halal certification system lacking international accreditation and OIC/SMIIC alignment', impactScore: 5, likelihoodScore: 5 },
-        { category: 'weakness', description: 'Fragmented policy frameworks and limited inter-agency coordination', impactScore: 4, likelihoodScore: 4 },
-        { category: 'weakness', description: 'Limited infrastructure with electrification at only 39% (2024) and poor digital connectivity', impactScore: 5, likelihoodScore: 5 },
-        { category: 'weakness', description: 'Lack of halal experts and technical expertise in Islamic finance and certification', impactScore: 4, likelihoodScore: 5 },
-        { category: 'weakness', description: 'Insufficient local raw material production for halal manufacturing value chains', impactScore: 4, likelihoodScore: 4 },
-        { category: 'weakness', description: 'High import dependency (exports PHP 24.48B vs imports PHP 30.84B in 2023)', impactScore: 4, likelihoodScore: 4 },
-        { category: 'opportunity', description: 'Expanding global halal market valued at over USD 2 trillion with growing demand', impactScore: 5, likelihoodScore: 5 },
-        { category: 'opportunity', description: 'ASEAN integration facilitating regional trade and investment flows', impactScore: 4, likelihoodScore: 5 },
-        { category: 'opportunity', description: 'Islamic finance ecosystem development with 2028 target for Shariah-compliant financial system', impactScore: 5, likelihoodScore: 4 },
-        { category: 'opportunity', description: 'BIMP-EAGA market access with 70M+ Muslim consumers in neighboring regions', impactScore: 5, likelihoodScore: 4 },
-        { category: 'opportunity', description: 'Digital transformation enabling leapfrog development in e-government and fintech', impactScore: 4, likelihoodScore: 4 },
-        { category: 'opportunity', description: 'Government incentives through Bangsamoro Board of Investments (BBOI) and Economic Zone Authority (BEZA)', impactScore: 4, likelihoodScore: 4 },
-        { category: 'threat', description: 'Competition from established halal hubs (Malaysia, Indonesia, UAE)', impactScore: 5, likelihoodScore: 5 },
-        { category: 'threat', description: 'Standards recognition risks if OIC/SMIIC alignment not achieved', impactScore: 4, likelihoodScore: 5 },
-        { category: 'threat', description: 'Investment perception risks due to security concerns and political transition uncertainty', impactScore: 4, likelihoodScore: 4 },
-        { category: 'threat', description: 'Climate vulnerabilities including typhoons, flooding, and sea-level rise affecting agriculture', impactScore: 5, likelihoodScore: 4 },
-        { category: 'threat', description: 'Political transition uncertainty with extended BTA period and normalization delays', impactScore: 4, likelihoodScore: 4 },
-        { category: 'threat', description: 'Spoilers and security incidents threatening peace consolidation', impactScore: 4, likelihoodScore: 3 },
+        // Strengths
+        { category: 'strength', description: 'Halal Legitimacy & Cultural Credibility: Inherent authenticity derived from Islamic heritage and Moral Governance framework (RI: 5.0)', impactScore: 5, likelihoodScore: 5 },
+        { category: 'strength', description: 'Strategic Location in BIMP-EAGA: Permanent geographic asset serving as gateway to 70M+ ASEAN consumers (RI: 4.0)', impactScore: 5, likelihoodScore: 5 },
+        { category: 'strength', description: 'Strong Agriculture Base: Vast agricultural lands and fisheries contributing 32.4% of GRDP (PHP 97.2B)', impactScore: 4, likelihoodScore: 5 },
+        { category: 'strength', description: 'Growing Policy Recognition: Increasing legislative momentum under Bangsamoro Organic Law (BOL) with 55 autonomous powers', impactScore: 4, likelihoodScore: 4 },
+        { category: 'strength', description: 'Domestic Halal Demand: Rapidly expanding internal consumer base of 5.69M with specific religious consumption needs', impactScore: 5, likelihoodScore: 5 },
+        { category: 'strength', description: 'Moral Governance Framework: Emphasis on transparency, integrity, and accountability aligning with global ESG criteria', impactScore: 4, likelihoodScore: 4 },
+        // Weaknesses
+        { category: 'weakness', description: 'Weak Certification System: BHB lacks OIC/SMIIC recognition, limiting international market access (Risk: 20.0)', impactScore: 5, likelihoodScore: 5 },
+        { category: 'weakness', description: 'Critical Infrastructure Deficits: Only ~75% electrification and <30% broadband connectivity (Risk: 25.0)', impactScore: 5, likelihoodScore: 5 },
+        { category: 'weakness', description: 'Fragmented Policy Frameworks: Coordination gaps between 15 ministries slow investment facilitation', impactScore: 4, likelihoodScore: 4 },
+        { category: 'weakness', description: 'Lack of Halal Experts: Shortage of technical personnel, auditors, and skilled labor for certification', impactScore: 4, likelihoodScore: 5 },
+        { category: 'weakness', description: 'Skills Mismatch: 59.3% functional literacy rate (lowest nationally) creates human capital constraints', impactScore: 5, likelihoodScore: 4 },
+        { category: 'weakness', description: 'Insufficient Local Raw Materials: High dependency on imports limits competitiveness of halal manufacturing', impactScore: 4, likelihoodScore: 4 },
+        // Opportunities
+        { category: 'opportunity', description: 'Global Halal Market: Massive external demand in USD 2.3T+ global halal economy across food, cosmetics, pharma', impactScore: 5, likelihoodScore: 5 },
+        { category: 'opportunity', description: 'Islamic Finance Ecosystem: Development of Shariah-compliant capital sources (banking, Takaful, Sukuk) by 2028', impactScore: 5, likelihoodScore: 4 },
+        { category: 'opportunity', description: 'BIMP-EAGA Market Access: Subregional economic cooperation targeting 70M+ consumers through trade corridors', impactScore: 5, likelihoodScore: 4 },
+        { category: 'opportunity', description: 'Digital Transformation: Phased ICT expansion under BEGMP 2024–2033 targeting 85% broadband by 2035', impactScore: 4, likelihoodScore: 4 },
+        { category: 'opportunity', description: 'Green Economy & Carbon Markets: Monetizing forest endowments through REDD+ and Payment for Ecosystem Services', impactScore: 4, likelihoodScore: 4 },
+        { category: 'opportunity', description: 'Post-Conflict Reconstruction Funding: Access to ODA and international development funding for institution-building', impactScore: 4, likelihoodScore: 3 },
+        // Threats
+        { category: 'threat', description: 'Climate Change Vulnerabilities: Environmental shocks (typhoons, El Niño) threatening 4.2% AFF contraction (VI: 5.0)', impactScore: 5, likelihoodScore: 5 },
+        { category: 'threat', description: 'Competition from Established Halal Hubs: Malaysia, Indonesia, Thailand hold first-mover advantages (VI: 4.0)', impactScore: 5, likelihoodScore: 4 },
+        { category: 'threat', description: 'Standards Recognition Risks: Risk of non-acceptance by OIC/SMIIC undermines export market access (VI: 4.0)', impactScore: 5, likelihoodScore: 4 },
+        { category: 'threat', description: 'Investment Perception Risks: Residual negative reputation from historical conflict deters cautious investors', impactScore: 4, likelihoodScore: 4 },
+        { category: 'threat', description: 'Political Transition Uncertainty: Instability risks associated with shift from BTA to fully elected parliament', impactScore: 4, likelihoodScore: 4 },
+        { category: 'threat', description: 'Security Incidents: Sporadic events can trigger rapid investor caution, activating Security-Investment Tensions loop', impactScore: 4, likelihoodScore: 3 },
       ],
       strategicOptions: [
-        { optionType: 'SO', title: 'Premier Halal Hub Development', description: 'Leverage cultural credibility and strategic location to establish Bangsamoro Halal Park in Matanog as flagship ecozone for halal manufacturing, targeting OIC/SMIIC international accreditation', priorityScore: 5, feasibilityScore: 4, selected: true },
-        { optionType: 'SO', title: 'BIMP-EAGA Trade Corridor Initiative', description: 'Capitalize on strategic location and growing policy recognition to establish dedicated trade corridors with BIMP-EAGA partners, targeting PHP 50B intra-regional trade by 2035', priorityScore: 5, feasibilityScore: 4, selected: true },
-        { optionType: 'SO', title: 'Agri-Halal Value Chain Integration', description: 'Utilize strong agriculture base and domestic demand to build integrated halal value chains connecting smallholder producers to processing and export markets', priorityScore: 5, feasibilityScore: 4, selected: true },
-        { optionType: 'ST', title: 'Halal Certification Security & Standards', description: 'Strengthen Bangsamoro Halal Board (BHB) credibility and security to differentiate from established hubs while ensuring political transition stability through inclusive governance', priorityScore: 5, feasibilityScore: 4, selected: true },
-        { optionType: 'ST', title: 'Climate-Resilient Infrastructure', description: 'Address climate vulnerabilities while leveraging agriculture base through climate-smart agricultural practices and disaster-resilient infrastructure investment', priorityScore: 4, feasibilityScore: 4, selected: true },
-        { optionType: 'ST', title: 'Investor Confidence Assurance', description: 'Mitigate perception risks by leveraging policy recognition to provide transparent governance, clear regulatory frameworks, and sustained peace process commitment', priorityScore: 4, feasibilityScore: 4, selected: true },
-        { optionType: 'WO', title: 'Digital Infrastructure Leapfrogging', description: 'Address infrastructure gaps by leveraging digital transformation opportunities through BEGMP implementation, targeting 70% internet penetration by 2030', priorityScore: 5, feasibilityScore: 4, selected: true },
-        { optionType: 'WO', title: 'Islamic Finance Ecosystem Build-out', description: 'Overcome lack of experts by partnering with international Islamic finance institutions to establish Shariah-compliant banking and investment vehicles by 2028', priorityScore: 4, feasibilityScore: 3, selected: true },
-        { optionType: 'WO', title: 'Raw Material Production Scale-up', description: 'Address supply gaps by leveraging global halal market demand to incentivize local agriculture and manufacturing input production', priorityScore: 4, feasibilityScore: 4, selected: true },
-        { optionType: 'WT', title: 'Governance Capacity Building', description: 'Strengthen institutional capacity to address fragmentation and transition uncertainty through training, systems integration, and moral governance framework implementation', priorityScore: 5, feasibilityScore: 4, selected: true },
-        { optionType: 'WT', title: 'Security-Investment Safeguards', description: 'Mitigate security risks affecting investment perception through comprehensive risk management, insurance mechanisms, and peacebuilding integration', priorityScore: 4, feasibilityScore: 3, selected: false },
-        { optionType: 'WT', title: 'Sustainable Import Substitution', description: 'Reduce import dependency by developing local alternatives for critical inputs while building climate-resilient supply chains', priorityScore: 4, feasibilityScore: 4, selected: true },
+        // SO (Strengths-Opportunities)
+        { optionType: 'SO', title: 'Premier Halal Hub Development', description: 'Leverage cultural credibility and BIMP-EAGA location to establish Bangsamoro Halal Park in Matanog as flagship ecozone for halal manufacturing, targeting OIC/SMIIC international accreditation.', priorityScore: 5, feasibilityScore: 4, selected: true },
+        { optionType: 'SO', title: 'BIMP-EAGA Trade Corridor Initiative', description: 'Capitalize on strategic location to establish dedicated trade corridors with BIMP-EAGA partners, targeting PHP 50B intra-regional trade by 2035.', priorityScore: 5, feasibilityScore: 4, selected: true },
+        { optionType: 'SO', title: 'Agri-Halal Value Chain Integration', description: 'Utilize strong agriculture base (32.4% GRDP) and domestic demand to build integrated halal value chains connecting smallholder producers to processing and export markets.', priorityScore: 5, feasibilityScore: 4, selected: true },
+        // ST (Strengths-Threats)
+        { optionType: 'ST', title: 'Halal Certification Security & Standards', description: 'Strengthen Bangsamoro Halal Board (BHB) credibility and security to differentiate from established hubs while ensuring political transition stability through inclusive governance.', priorityScore: 5, feasibilityScore: 4, selected: true },
+        { optionType: 'ST', title: 'Climate-Resilient Infrastructure', description: 'Address climate vulnerabilities (VI: 5.0) while leveraging agriculture base through climate-smart agricultural practices and disaster-resilient infrastructure investment.', priorityScore: 4, feasibilityScore: 4, selected: true },
+        { optionType: 'ST', title: 'Investor Confidence Assurance', description: 'Mitigate perception risks by leveraging policy recognition to provide transparent governance, clear regulatory frameworks, and sustained peace process commitment.', priorityScore: 4, feasibilityScore: 4, selected: true },
+        // WO (Weaknesses-Opportunities)
+        { optionType: 'WO', title: 'Digital Infrastructure Leapfrogging', description: 'Address infrastructure gaps by leveraging digital transformation opportunities through BEGMP implementation, targeting 1-day digital business registration and 85% broadband by 2035.', priorityScore: 5, feasibilityScore: 4, selected: true },
+        { optionType: 'WO', title: 'Islamic Finance Ecosystem Build-out', description: 'Overcome lack of experts by partnering with international Islamic finance institutions to establish Shariah-compliant banking, Takaful, and microfinance vehicles by 2028.', priorityScore: 4, feasibilityScore: 3, selected: true },
+        { optionType: 'WO', title: 'Green Economy Framework Activation', description: 'Monetize environmental assets by enacting Bangsamoro Forestry Code and operationalizing Carbon Credits, PES, and Eco-tourism User Fees through MENRE-MILG JMC.', priorityScore: 5, feasibilityScore: 4, selected: true },
+        // WT (Weaknesses-Threats)
+        { optionType: 'WT', title: 'Governance Capacity Building (BICC)', description: 'Establish Bangsamoro Investment Command Center (BICC) for real-time tracking, cross-agency synchronization, and trigger-based budgeting to prevent fragmentation.', priorityScore: 5, feasibilityScore: 4, selected: true },
+        { optionType: 'WT', title: 'Security-Investment Safeguards', description: 'Mitigate security risks affecting investment perception through comprehensive risk management, insurance mechanisms, and peacebuilding integration.', priorityScore: 4, feasibilityScore: 3, selected: false },
+        { optionType: 'WT', title: 'Sustainable Import Substitution', description: 'Reduce import dependency by developing local alternatives for critical inputs while building climate-resilient supply chains and raw material production scale-up.', priorityScore: 4, feasibilityScore: 4, selected: true },
       ],
       objectives: [
         {
           perspective: 'financial',
-          objective: 'Accelerate Investment Inflows',
-          description: 'Grow both domestic and foreign direct investment to drive economic expansion and job creation, targeting PHP 50B by 2035',
+          objective: 'Accelerate Investment Inflows & Export Growth',
+          description: 'Grow both domestic and foreign direct investment to drive economic expansion, targeting ₱15B annual approvals and ₱40B+ in export value by 2035.',
           weight: 1.5,
           kpis: [
-            { name: 'Total Investment Generated', description: 'Cumulative investment inflows in PHP Billions', baselineValue: 3.5, targetValue: 50.0, currentValue: 3.5, unit: 'PHP B', frequency: 'quarterly', owner: 'BBOI Chair', status: 'on-track' },
-            { name: 'FDI Stock Growth Rate', description: 'Year-over-year growth in foreign direct investment stock', baselineValue: 5, targetValue: 15, currentValue: 5, unit: '%', frequency: 'annually', owner: 'BEZA Chief', status: 'on-track' },
-            { name: 'Halal Export Value', description: 'Total value of halal-certified product exports', baselineValue: 0.5, targetValue: 25.0, currentValue: 0.5, unit: 'PHP B', frequency: 'quarterly', owner: 'MTIT Minister', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'financial',
-          objective: 'Diversify Revenue Sources',
-          description: 'Reduce dependence on national government block grants through increased local revenue generation and sustainable financing',
-          weight: 1.3,
-          kpis: [
+            { name: 'Annual Investment Approvals', description: 'Total investment inflows approved annually', baselineValue: 5.1, targetValue: 15.0, currentValue: 5.1, unit: '₱B', frequency: 'annually', owner: 'BBOI Chair', status: 'on-track' },
+            { name: 'Total Export Value', description: 'Total value of halal-certified and agro-industrial exports', baselineValue: 10, targetValue: 40, currentValue: 10, unit: '₱B', frequency: 'annually', owner: 'MTIT Minister', status: 'at-risk' },
             { name: 'Local Revenue to Total Budget', description: 'Percentage of budget from local revenue sources vs block grants', baselineValue: 10, targetValue: 30, currentValue: 10, unit: '%', frequency: 'annually', owner: 'Minister of Finance', status: 'on-track' },
-            { name: 'Budget Execution Rate', description: 'Percentage of approved budget actually spent on development programs', baselineValue: 75, targetValue: 95, currentValue: 75, unit: '%', frequency: 'quarterly', owner: 'BPDA Executive Dir', status: 'on-track' },
           ],
         },
         {
           perspective: 'customer',
-          objective: 'Enhance Investor Satisfaction',
-          description: 'Provide world-class investment facilitation services that exceed investor expectations and ensure retention',
+          objective: 'Enhance Investor Satisfaction & Empower MSMEs',
+          description: 'Provide world-class investment facilitation services and build capacity for micro, small, and medium enterprises through halal certification and Islamic finance.',
           weight: 1.4,
           kpis: [
-            { name: 'Investor Satisfaction Score', description: 'Overall investor satisfaction rating (1-10 scale)', baselineValue: 6.0, targetValue: 8.5, currentValue: 6.0, unit: 'score', frequency: 'annually', owner: 'BBOI Chair', status: 'on-track' },
-            { name: 'Investment Project Retention Rate', description: 'Percentage of investors maintaining or expanding operations', baselineValue: 70, targetValue: 85, currentValue: 70, unit: '%', frequency: 'annually', owner: 'BEZA Chief', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Empower MSMEs and Local Communities',
-          description: 'Build capacity and market access for micro, small, and medium enterprises through halal certification and Islamic finance',
-          weight: 1.3,
-          kpis: [
-            { name: 'MSMEs with Halal Certification', description: 'Total number of certified micro, small, and medium enterprises', baselineValue: 50, targetValue: 2000, currentValue: 50, unit: 'enterprises', frequency: 'quarterly', owner: 'BHB Director', status: 'on-track' },
-            { name: 'MSMEs Accessing Islamic Finance', description: 'Number of small businesses using Shariah-compliant financing', baselineValue: 100, targetValue: 5000, currentValue: 100, unit: 'MSMEs', frequency: 'annually', owner: 'BBOI Chair', status: 'on-track' },
-            { name: 'Community Benefit Agreements', description: 'Number of investment projects with signed community benefit agreements', baselineValue: 5, targetValue: 100, currentValue: 5, unit: 'agreements', frequency: 'annually', owner: 'MPFD Minister', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'customer',
-          objective: 'Deepen BIMP-EAGA Integration',
-          description: 'Expand trade and investment linkages with subregional partners (Brunei, Indonesia, Malaysia, Philippines)',
-          weight: 1.2,
-          kpis: [
-            { name: 'Intra-EAGA Trade Value', description: 'Total trade value with BIMP-EAGA partner countries', baselineValue: 2, targetValue: 50, currentValue: 2, unit: 'PHP B', frequency: 'annually', owner: 'MTIT Minister', status: 'on-track' },
-            { name: 'Cross-Border Investment Projects', description: 'Joint ventures and investments from BIMP-EAGA partners', baselineValue: 3, targetValue: 50, currentValue: 3, unit: 'projects', frequency: 'annually', owner: 'BBOI Chair', status: 'on-track' },
+            { name: 'Investor Satisfaction Score', description: 'Overall investor satisfaction rating (1-10 scale)', baselineValue: 6.0, targetValue: 8.0, currentValue: 6.0, unit: 'score', frequency: 'annually', owner: 'BBOI Chair', status: 'on-track' },
+            { name: 'Halal-Certified Enterprises', description: 'Total number of certified micro, small, and medium enterprises', baselineValue: 500, targetValue: 5000, currentValue: 500, unit: 'enterprises', frequency: 'annually', owner: 'BHB Director', status: 'on-track' },
+            { name: 'Intra-EAGA Trade Value', description: 'Total trade value with BIMP-EAGA partner countries', baselineValue: 0, targetValue: 50, currentValue: 0, unit: '₱B', frequency: 'annually', owner: 'MTIT Minister', status: 'on-track' },
           ],
         },
         {
           perspective: 'internal_process',
-          objective: 'Streamline Investment Facilitation',
-          description: 'Reduce time, cost, and complexity of business registration and permitting to improve ease of doing business',
-          weight: 1.4,
-          kpis: [
-            { name: 'Business Registration Time', description: 'Days required to complete business name registration', baselineValue: 7, targetValue: 1, currentValue: 7, unit: 'days', frequency: 'monthly', owner: 'BBOI Chair', status: 'on-track' },
-            { name: 'Permit Processing Time', description: 'Days required to process investment permits', baselineValue: 30, targetValue: 7, currentValue: 30, unit: 'days', frequency: 'monthly', owner: 'BEZA Chief', status: 'on-track' },
-            { name: 'One-Stop Shop Coverage', description: 'Percentage of services available through one-stop investment centers', baselineValue: 40, targetValue: 95, currentValue: 40, unit: '%', frequency: 'quarterly', owner: 'BBOI Chair', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Strengthen Halal Certification System',
-          description: 'Build credible, internationally recognized halal certification capacity aligned with OIC/SMIIC standards',
+          objective: 'Streamline Facilitation & Strengthen Halal Standards',
+          description: 'Reduce time and complexity of business registration while achieving international OIC/SMIIC accreditation for the Bangsamoro Halal Board (BHB).',
           weight: 1.5,
           kpis: [
+            { name: 'Business Registration Time', description: 'Days required to complete digital business name registration', baselineValue: 7, targetValue: 1, currentValue: 7, unit: 'days', frequency: 'monthly', owner: 'BBOI Chair', status: 'on-track' },
             { name: 'BHB International Accreditation', description: 'Achievement of OIC/SMIIC accreditation status (binary milestone)', baselineValue: 0, targetValue: 1, currentValue: 0, unit: 'accredited', frequency: 'annually', owner: 'BHB Director', status: 'on-track' },
-            { name: 'Certification Processing Time', description: 'Average days to process halal certification applications', baselineValue: 45, targetValue: 14, currentValue: 45, unit: 'days', frequency: 'monthly', owner: 'BHB Director', status: 'on-track' },
-            { name: 'Mutual Recognition Agreements', description: 'Number of bilateral halal recognition agreements with OIC countries', baselineValue: 0, targetValue: 10, currentValue: 0, unit: 'agreements', frequency: 'annually', owner: 'MTIT Minister', status: 'on-track' },
+            { name: 'Budget Execution Rate', description: 'Percentage of approved budget actually spent on development programs', baselineValue: 80, targetValue: 90, currentValue: 80, unit: '%', frequency: 'quarterly', owner: 'BPDA Executive Dir', status: 'at-risk' },
           ],
         },
         {
           perspective: 'internal_process',
-          objective: 'Accelerate Infrastructure Delivery',
-          description: 'Expedite critical infrastructure projects supporting investment, particularly energy and connectivity',
+          objective: 'Accelerate Infrastructure & Digital Delivery',
+          description: 'Expedite critical infrastructure projects supporting investment, particularly energy (ZBIP) and digital connectivity (BEGMP).',
           weight: 1.3,
           kpis: [
-            { name: 'Electrification Rate', description: 'Percentage of households and businesses with electricity access', baselineValue: 39, targetValue: 100, currentValue: 39, unit: '%', frequency: 'annually', owner: 'MENRE Minister', status: 'on-track' },
-            { name: 'Internet Penetration Rate', description: 'Percentage of population with internet access', baselineValue: 25, targetValue: 70, currentValue: 25, unit: '%', frequency: 'annually', owner: 'MTIT Minister', status: 'on-track' },
-            { name: 'Infrastructure Projects Completed', description: 'Number of priority infrastructure projects delivered on time', baselineValue: 10, targetValue: 100, currentValue: 10, unit: 'projects', frequency: 'quarterly', owner: 'BPDA Executive Dir', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'internal_process',
-          objective: 'Enhance Policy Coordination',
-          description: 'Improve inter-agency coordination for coherent investment policy implementation through BEDC',
-          weight: 1.2,
-          kpis: [
-            { name: 'Inter-Agency Coordination Meetings', description: 'Quarterly BEDC meetings held with documented outcomes', baselineValue: 2, targetValue: 4, currentValue: 2, unit: 'meetings/year', frequency: 'quarterly', owner: 'BPDA Executive Dir', status: 'on-track' },
-            { name: 'Policy Harmonization Score', description: 'Percentage of investment policies aligned across ministries', baselineValue: 60, targetValue: 95, currentValue: 60, unit: '%', frequency: 'annually', owner: 'Chief Minister Office', status: 'on-track' },
+            { name: 'Electrification Rate', description: 'Percentage of households and businesses with electricity access', baselineValue: 75, targetValue: 100, currentValue: 75, unit: '%', frequency: 'annually', owner: 'MENRE Minister', status: 'on-track' },
+            { name: 'Broadband Connectivity', description: 'Percentage of population with high-speed internet access', baselineValue: 30, targetValue: 85, currentValue: 30, unit: '%', frequency: 'annually', owner: 'MTIT Minister', status: 'at-risk' },
           ],
         },
         {
           perspective: 'learning_growth',
-          objective: 'Build Halal Expertise',
-          description: 'Develop technical capacity in halal certification, Islamic finance, and related fields',
+          objective: 'Build Halal Expertise & Institutional Capacity',
+          description: 'Develop technical capacity in halal certification, establish the Bangsamoro Investment Command Center (BICC), and foster a data-driven culture.',
           weight: 1.2,
           kpis: [
             { name: 'Halal Certification Officers Trained', description: 'Number of professionally trained and accredited halal auditors', baselineValue: 10, targetValue: 100, currentValue: 10, unit: 'officers', frequency: 'annually', owner: 'BHB Director', status: 'on-track' },
+            { name: 'BICC Operationalization Status', description: 'Establishment and activation of Bangsamoro Investment Command Center', baselineValue: 0, targetValue: 1, currentValue: 0, unit: 'operational', frequency: 'annually', owner: 'BPDA Executive Dir', status: 'on-track' },
             { name: 'Islamic Finance Professionals', description: 'Number of certified Islamic finance practitioners in the region', baselineValue: 5, targetValue: 50, currentValue: 5, unit: 'professionals', frequency: 'annually', owner: 'BBOI Chair', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Strengthen Institutional Capacity',
-          description: 'Enhance skills and capabilities across investment promotion agencies (BBOI, BEZA, BHB)',
-          weight: 1.3,
-          kpis: [
-            { name: 'IPA Staff with Professional Certification', description: 'Percentage of investment promotion staff with relevant certifications', baselineValue: 30, targetValue: 80, currentValue: 30, unit: '%', frequency: 'annually', owner: 'CHRO', status: 'on-track' },
-            { name: 'Capacity Building Programs Completed', description: 'Number of training programs delivered to government staff', baselineValue: 5, targetValue: 50, currentValue: 5, unit: 'programs', frequency: 'annually', owner: 'CHRO', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Foster Innovation Culture',
-          description: 'Promote digital transformation and innovative approaches to investment promotion and governance',
-          weight: 1.1,
-          kpis: [
-            { name: 'Digital Services Launched', description: 'Number of new digital government services (BEGMP implementation)', baselineValue: 5, targetValue: 20, currentValue: 5, unit: 'services', frequency: 'quarterly', owner: 'MTIT Minister', status: 'on-track' },
-            { name: 'Innovation Partnerships', description: 'Academic and private sector collaborations for innovation', baselineValue: 2, targetValue: 10, currentValue: 2, unit: 'partnerships', frequency: 'annually', owner: 'BPDA Executive Dir', status: 'on-track' },
-          ],
-        },
-        {
-          perspective: 'learning_growth',
-          objective: 'Enhance Data-Driven Decision Making',
-          description: 'Build robust monitoring, evaluation, and learning systems aligned with Balanced Scorecard',
-          weight: 1.0,
-          kpis: [
-            { name: 'M&E Reports Published', description: 'Annual and quarterly monitoring and evaluation reports released', baselineValue: 1, targetValue: 4, currentValue: 1, unit: 'reports/year', frequency: 'quarterly', owner: 'BPDA Executive Dir', status: 'on-track' },
-            { name: 'Data-Driven Policy Decisions', description: 'Percentage of major policy decisions based on performance data', baselineValue: 40, targetValue: 90, currentValue: 40, unit: '%', frequency: 'annually', owner: 'Chief Minister Office', status: 'on-track' },
           ],
         },
       ],
     },
     created_at: '2026-04-14T00:00:00Z',
-    updated_at: '2026-04-14T00:00:00Z',
+    updated_at: '2026-06-20T00:00:00Z',
   },
 ];
 
