@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "github": {
+      "enabled": true
+    },
+    "sentry": {
+      "enabled": true
+    },
+    "vs_code": {
+      "enabled": false
+    },
+    "notion": {
+      "enabled": true
+    },
+    "resend": {
+      "enabled": true
+    },
+    "linear": {
+      "enabled": true
+    },
+    "miro": {
+      "enabled": true
+    }
+  }
+}
