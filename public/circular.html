@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Strat Planner Pro is the AI-powered strategic planning platform for LGUs transitioning to circular economies. Track waste reduction, green jobs, and environmental impact with systems thinking tools designed for Cagayan de Oro, Maasin, San Carlos, and Sorsogon Cities.">
+  <meta name="keywords" content="circular economy platform, LGU sustainability tools, waste management planning, green jobs tracking, plastic reduction software, organic waste management, environmental KPI dashboard, DENR DILG compliance, EU-PH Green Economy Partnership">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://stratplannerpro.app/">
+  <meta property="og:title"       content="Strat Planner Pro — Circular Economy Platform for LGUs">
+  <meta property="og:description" content="Empowering Local Government Units to lead inclusive circular economy transitions. Reduce plastic and organic waste, create green jobs, and build climate-resilient systems.">
+  <meta property="og:image"       content="https://appimize.app/assets/apps/user_1097/images/46fe704cc227_595_1097.png">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="twitter:title"      content="Strat Planner Pro — Circular Economy Platform for LGUs">
+  <meta name="twitter:description" content="Digital enabling platform for LGUs to plan, monitor, and manage circular economy transitions with measurable environmental impact.">
+
+  <link rel="canonical"   href="https://stratplannerpro.app/">
+  <link rel="icon"        href="/icons/icon-192.png" type="image/png">
+  <link rel="manifest"    href="/manifest.json">
+
+  <title>Strat Planner Pro | Circular Economy Platform for LGUs — Waste to Wealth</title>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Strat Planner Pro - Circular LGU Edition",
+    "applicationCategory": "GovernmentApplication",
+    "description": "AI-powered strategic planning platform for LGUs transitioning to circular economies. Features waste diversion tracking, green jobs monitoring, systems thinking maps for material flows, and DENR/DILG compliance reporting.",
+    "url": "https://stratplannerpro.app/",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free for EU-PH Green Economy Partnership LGUs"
+    },
+    "featureList": [
+      "Circular Economy MEL Dashboard",
+      "Waste Systems Mapping",
+      "Environmental KPI Tracking",
+      "Green Jobs Monitoring",
+      "Plastic Reduction Planning",
+      "Organic Waste Management",
+      "DENR/DILG Compliance Reports",
+      "Offline PWA for Field Teams"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:             #0A1628;
+      --bg-surface:     #0D1F3C;
+      --blue-900:       #0A1628;
+      --blue-700:       #1A3A6B;
+      --blue-600:       #1E4D9B;
+      --blue-500:       #2563EB;
+      --blue-400:       #3B82F6;
+      --blue-300:       #60A5FA;
+      --blue-200:       #93C5FD;
+      --cyan-500:       #06B6D4;
+      --emerald-400:    #34D399;
+      --emerald-500:    #10B981;
+      --indigo-400:     #818CF8;
+      --text-primary:   rgba(255,255,255,0.95);
+      --text-secondary: rgba(255,255,255,0.60);
+      --text-tertiary:  rgba(255,255,255,0.38);
+      --glass-border:   rgba(255,255,255,0.10);
+      --radius-md:      12px;
+      --radius-lg:      16px;
+      --radius-xl:      24px;
+      --font-display:   'Poppins', sans-serif;
+      --font-ui:        'Inter', sans-serif;
+      --success:        #10B981;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    .font-display { font-family: var(--font-display); }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16,185,129,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(6,182,212,0.10) 0%, transparent 50%),
+        var(--bg);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.12;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #10B981, transparent); top: -12%; left: -8%; animation-delay: 0s; }
+    .orb-2 { width: 380px; height: 380px; background: radial-gradient(circle, #06B6D4, transparent); top: 55%; right: -5%; animation-delay: -7s; }
+    .orb-3 { width: 260px; height: 260px; background: radial-gradient(circle, #34D399, transparent); bottom: 15%; left: 28%; animation-delay: -14s; }
+    @keyframes float {
+      0%,100% { transform: translate(0,0) scale(1); }
+      25%  { transform: translate(28px,-28px) scale(1.06); }
+      50%  { transform: translate(-16px,16px) scale(0.94); }
+      75%  { transform: translate(16px,24px) scale(1.02); }
+    }
+    .grid-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 54px 54px;
+      pointer-events: none;
+    }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,22,40,0.88);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; gap: 20px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .nav-logo img { width: 34px; height: 34px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.18); object-fit: cover; }
+    .nav-logo-name {
+      font-family: var(--font-display); font-size: 17px; font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--emerald-400));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-badge {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+      background: var(--emerald-500); color: white; padding: 2px 6px; border-radius: 4px;
+      align-self: flex-start; margin-top: 2px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .btn-ghost {
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      background: none; border: none; cursor: pointer; transition: color 0.2s;
+      text-decoration: none; padding: 6px 2px;
+    }
+    .btn-ghost:hover { color: var(--text-primary); }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: linear-gradient(135deg, var(--emerald-500), var(--cyan-500));
+      color: white; font-family: var(--font-ui); font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.14);
+      cursor: pointer; text-decoration: none; transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(16,185,129,0.35), inset 0 1px 0 rgba(255,255,255,0.12);
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--emerald-400), var(--cyan-400));
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(16,185,129,0.45), inset 0 1px 0 rgba(255,255,255,0.14);
+    }
+    .btn-primary-lg { font-size: 16px; padding: 14px 30px; border-radius: var(--radius-lg); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: transparent; color: var(--text-primary);
+      font-family: var(--font-ui); font-size: 16px; font-weight: 500;
+      padding: 14px 28px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.18);
+      cursor: pointer; text-decoration: none; transition: all 0.2s ease;
+    }
+    .btn-secondary:hover { border-color: var(--emerald-400); color: var(--emerald-300); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      color: var(--text-primary); padding: 6px;
+    }
+
+    .hero {
+      position: relative; min-height: 100svh;
+      display: flex; align-items: center; padding-top: 64px; overflow: hidden;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; padding: 80px 0; }
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 99px;
+      background: rgba(52,211,153,0.10); border: 1px solid rgba(52,211,153,0.25);
+      font-size: 13px; font-weight: 500; color: var(--emerald-400); margin-bottom: 24px;
+    }
+    .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--emerald-400); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+
+    .hero-title { font-size: clamp(36px,4.5vw,60px); font-weight: 800; margin-bottom: 20px; line-height: 1.1; }
+    .hero-title .gradient-text {
+      display: block;
+      background: linear-gradient(135deg, var(--emerald-400) 0%, var(--cyan-500) 50%, var(--blue-400) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle { font-size: 18px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 36px; max-width: 580px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+    .trust-badges { display: flex; flex-wrap: wrap; gap: 20px; }
+    .trust-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-tertiary); }
+    .trust-item svg { color: var(--emerald-400); flex-shrink: 0; }
+
+    .dashboard-preview {
+      border-radius: var(--radius-xl); padding: 1px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.18), rgba(6,182,212,0.18));
+    }
+    .dashboard-inner { background: #111827; border-radius: calc(var(--radius-xl) - 1px); overflow: hidden; }
+    .db-topbar {
+      display: flex; align-items: center; gap: 8px; padding: 12px 16px;
+      background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .db-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .db-urlbar {
+      flex: 1; margin: 0 12px; background: rgba(255,255,255,0.07);
+      border-radius: 6px; padding: 5px 12px; font-size: 11px; color: var(--text-tertiary);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .db-body { padding: 20px; }
+    .db-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+    .db-label { font-size: 10px; color: var(--text-tertiary); margin-bottom: 3px; }
+    .db-plan-name { font-size: 15px; font-weight: 600; }
+    .on-track { padding: 3px 10px; border-radius: 99px; background: rgba(52,211,153,0.15); color: var(--emerald-400); font-size: 11px; font-weight: 600; }
+    .mini-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 14px; }
+    .mini-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 12px; }
+    .mini-card-label { font-size: 10px; color: var(--text-tertiary); margin-bottom: 4px; }
+    .mini-card-value { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    .mini-bar { height: 3px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; }
+    .mini-fill { height: 100%; border-radius: 99px; }
+    .systems-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 14px; }
+    .systems-label { font-size: 10px; color: var(--text-tertiary); margin-bottom: 10px; }
+
+    .float-badge {
+      position: absolute; background: #1F2937;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 10px 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .float-badge-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .float-badge-title { font-size: 12px; font-weight: 600; }
+    .float-badge-sub { font-size: 11px; color: var(--text-tertiary); }
+    .float-right { right: -20px; top: 22%; animation: bob 3s ease-in-out infinite; }
+    .float-left  { left: -20px; bottom: 22%; animation: bob 4s ease-in-out infinite; animation-delay: -1.2s; }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    section { padding: 88px 0; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border-radius: 99px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+      margin-bottom: 14px;
+    }
+    .section-tag.emerald { background: rgba(52,211,153,0.10); border: 1px solid rgba(52,211,153,0.20); color: var(--emerald-400); }
+    .section-tag.indigo  { background: rgba(129,140,248,0.10); border: 1px solid rgba(129,140,248,0.20); color: var(--indigo-400); }
+    .section-tag.cyan    { background: rgba(6,182,212,0.10);   border: 1px solid rgba(6,182,212,0.20);   color: var(--cyan-500); }
+    .section-title { font-size: clamp(26px,3vw,38px); font-weight: 700; margin-bottom: 12px; }
+    .section-sub { font-size: 17px; color: var(--text-secondary); max-width: 600px; line-height: 1.6; }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 20px; margin-top: 48px; }
+    .feature-card {
+      background: linear-gradient(135deg, rgba(19,31,52,0.85), rgba(19,31,52,0.45));
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-xl);
+      padding: 28px; transition: all 0.35s ease; position: relative; overflow: hidden;
+    }
+    .feature-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .feature-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; transition: color 0.2s; }
+    .feature-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 24px; margin-top: 48px; position: relative; }
+    .step-card { background: linear-gradient(135deg, rgba(19,31,52,0.8),rgba(19,31,52,0.4)); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-xl); padding: 28px; text-align: center; }
+    .step-num {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--bg-surface); border: 2px solid var(--emerald-500);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 17px; color: var(--emerald-400); margin: 0 auto 18px;
+    }
+    .step-alt .step-num { border-color: var(--cyan-500); color: var(--cyan-400); }
+    .step-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .step-card p  { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    .audience-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 18px; margin-top: 48px; }
+    .audience-card { background: linear-gradient(135deg,rgba(19,31,52,0.85),rgba(19,31,52,0.4)); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-xl); padding: 28px; cursor: pointer; transition: all 0.3s ease; }
+    .audience-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.16); }
+    .audience-icon-wrap { width: 60px; height: 60px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; transition: transform 0.3s; }
+    .audience-card:hover .audience-icon-wrap { transform: scale(1.1); }
+    .audience-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    .audience-card p  { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+
+    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .benefit-list { display: flex; flex-direction: column; gap: 22px; }
+    .benefit-item { display: flex; align-items: flex-start; gap: 16px; }
+    .benefit-icon-wrap { width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .benefit-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .benefit-item p  { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-card { background: linear-gradient(135deg,rgba(19,31,52,0.85),rgba(19,31,52,0.4)); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-xl); padding: 28px; text-align: center; }
+    .stat-value {
+      font-size: 42px; font-weight: 700; line-height: 1;
+      background: linear-gradient(135deg, var(--emerald-400), var(--cyan-500));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;
+    }
+    .stat-card p { font-size: 13px; color: var(--text-secondary); }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(6,182,212,0.06));
+      border: 1px solid rgba(255,255,255,0.09); border-radius: 32px;
+      padding: 64px 48px; text-align: center; max-width: 780px; margin: 0 auto;
+      position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+      background: linear-gradient(135deg, rgba(16,185,129,0.35), transparent 50%, rgba(6,182,212,0.35));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+    }
+    .cta-box h2 { font-size: clamp(24px,2.8vw,36px); font-weight: 700; margin-bottom: 14px; }
+    .cta-box p  { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; }
+    .cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+    .cta-note { font-size: 12px; color: var(--text-tertiary); }
+
+    footer { padding: 40px 0 32px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-inner { display: flex; flex-direction: column; gap: 28px; }
+    .footer-top { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .footer-logo-wrap img { width: 34px; height: 34px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.18); object-fit: cover; }
+    .footer-logo-name { font-family: var(--font-display); font-size: 16px; font-weight: 700; background: linear-gradient(135deg,#fff,var(--emerald-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .footer-tagline { font-size: 13px; color: var(--text-tertiary); margin-top: 6px; max-width: 320px; }
+    .footer-powered { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .footer-powered span { font-size: 12px; color: var(--text-tertiary); }
+    .footer-powered img { height: 28px; object-fit: contain; filter: brightness(0.7); transition: filter 0.2s; }
+    .footer-powered img:hover { filter: brightness(1); }
+    .footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+    .footer-links a { font-size: 13px; color: var(--text-tertiary); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text-primary); }
+    .footer-copy { font-size: 12px; color: var(--text-tertiary); }
+
+    .mobile-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(10,22,40,0.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+    }
+    .mobile-overlay.open { display: flex; }
+    .mobile-overlay a { font-size: 22px; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+    .mobile-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; color: var(--text-secondary); font-size: 28px; line-height: 1; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.14); border-radius: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid    { grid-template-columns: 1fr; gap: 48px; padding: 60px 0 48px; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .footer-top   { grid-template-columns: 1fr; }
+      .footer-powered { align-items: flex-start; }
+      .float-right, .float-left { display: none; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .btn-ghost { display: none; }
+      .hamburger { display: flex; align-items: center; }
+      .hero-subtitle { font-size: 16px; }
+      section { padding: 64px 0; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .cta-box { padding: 44px 24px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-ctas   { flex-direction: column; }
+      .btn-primary-lg, .btn-secondary { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-overlay" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-close" onclick="closeMobileNav()" aria-label="Close menu">✕</button>
+  <a href="#features"     onclick="closeMobileNav()">Features</a>
+  <a href="#how-it-works" onclick="closeMobileNav()">How It Works</a>
+  <a href="#cities"       onclick="closeMobileNav()">Partner Cities</a>
+  <a href="#benefits"     onclick="closeMobileNav()">Benefits</a>
+  <a href="https://asilvainnovations.github.io/strat-planner-pwa/public/pricing.html">Pricing</a>
+  <a href="https://asilvainnovations.github.io/website/policies.html">Policies</a>
+  <a href="https://asilvainnovations.github.io/website/contact.html">Contact</a>
+  <a href="https://strategy-ai-planner.deploypad.app/mel-dashboard" class="btn-primary btn-primary-lg" style="margin-top:10px">Start Free — No Card Needed</a>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="https://asilvainnovations.github.io/strat-planner-pwa/public/index.html" aria-label="Strat Planner Pro home">
+      <img src="https://appimize.app/assets/apps/user_1097/images/46fe704cc227_595_1097.png" alt="Strat Planner Pro logo" onerror="this.style.display='none'">
+      <span class="nav-logo-name">Strat Planner Pro</span>
+      <span class="nav-badge">Circular LGU</span>
+    </a>
+    <div class="nav-links" role="list">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#cities">Partner Cities</a>
+      <a href="#benefits">Benefits</a>
+      <a href="https://contact-planning-consult.deploypad.app/solutions/strategic-planner-pro#pricing">Pricing</a>
+      <a href="https://asilvainnovations.github.io/website/policies.html">Policies</a>
+      <a href="https://asilvainnovations.github.io/website/contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://strategy-ai-planner.deploypad.app/" class="btn-ghost">Sign In</a>
+      <a href="https://strategy-ai-planner.deploypad.app/mel-dashboard" class="btn-primary">Start Free Trial</a>
+      <button class="hamburger" onclick="openMobileNav()" aria-label="Open navigation menu" aria-expanded="false" id="hamburger-btn">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M3 6h16M3 11h16M3 16h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero hero-bg">
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="orb orb-3" aria-hidden="true"></div>
+  <div class="grid-pattern" aria-hidden="true"></div>
+
+  <div class="container" style="position:relative; z-index:1; width:100%">
+    <div class="hero-grid">
+      <div>
+        <div class="badge-pill">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          EU-PH Green Economy Partnership
+        </div>
+        <h1 class="hero-title">
+          Empowering LGUs to Lead
+          <span class="gradient-text">Inclusive Circular Economy Transitions</span>
+        </h1>
+        <p class="hero-subtitle">
+          A digital enabling platform customized for Cagayan de Oro, Maasin, San Carlos, and Sorsogon Cities 
+          to plan, visualize, and track their transition to circular economies—reducing plastic and organic waste, 
+          creating green jobs, and building climate-resilient local systems.
+        </p>
+        <div class="hero-ctas">
+          <a href="https://strategy-ai-planner.deploypad.app/mel-dashboard" class="btn-primary btn-primary-lg">
+            Start Circular Planning
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
+          </a>
+          <a href="https://contact-planning-consult.deploypad.app/#contact" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+              <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Book a Demo for LGUs
+          </a>
+        </div>
+        <div class="trust-badges" role="list">
+          <div class="trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            DENR/DILG Compliance Ready
+          </div>
+          <div class="trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Works offline as a PWA
+          </div>
+          <div class="trust-item" role="listitem">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            UNDP Co-implemented
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: dashboard mockup -->
+      <div style="position:relative">
+        <div class="dashboard-preview" role="img" aria-label="Strat Planner Pro Circular Economy MEL dashboard preview">
+          <div class="dashboard-inner">
+            <div class="db-topbar">
+              <div class="db-dot" style="background:#FF5F57" aria-hidden="true"></div>
+              <div class="db-dot" style="background:#FEBC2E" aria-hidden="true"></div>
+              <div class="db-dot" style="background:#28C840" aria-hidden="true"></div>
+              <div class="db-urlbar">
+                <svg width="10" height="10" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12l-2-2m0 0l2-2m-2 2h8m-4-8a8 8 0 100 16" stroke-linecap="round"/></svg>
+                strategy-ai-planner.deploypad.app
+              </div>
+            </div>
+            <div class="db-body">
+              <div class="db-header">
+                <div>
+                  <div class="db-label">Circular Economy Dashboard</div>
+                  <div class="db-plan-name">Cagayan de Oro City · Q4 2025</div>
+                </div>
+                <span class="on-track">On Track</span>
+              </div>
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <div class="mini-card-label">Plastic Diverted</div>
+                  <div class="mini-card-value">142T</div>
+                  <div class="mini-bar"><div class="mini-fill" style="width:75%; background:linear-gradient(90deg,#34D399,#10B981)"></div></div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-card-label">Green Jobs</div>
+                  <div class="mini-card-value">48</div>
+                  <div class="mini-bar"><div class="mini-fill" style="width:60%; background:linear-gradient(90deg,#06B6D4,#3B82F6)"></div></div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-card-label">Organic Waste</div>
+                  <div class="mini-card-value">89%</div>
+                  <div class="mini-bar"><div class="mini-fill" style="width:89%; background:linear-gradient(90deg,#FCD34D,#F59E0B)"></div></div>
+                </div>
+              </div>
+              <div class="systems-box">
+                <div class="systems-label">Waste Management Systems Map</div>
+                <svg viewBox="0 0 280 100" width="100%" height="80" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ng1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#10B981"/></linearGradient>
+                    <linearGradient id="ng2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#06B6D4"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient>
+                    <linearGradient id="ng3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FCD34D"/><stop offset="100%" stop-color="#F59E0B"/></linearGradient>
+                    <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#34D399"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient>
+                  </defs>
+                  <circle cx="46" cy="50" r="18" fill="url(#ng1)" opacity="0.85"/>
+                  <circle cx="140" cy="24" r="14" fill="url(#ng2)" opacity="0.85"/>
+                  <circle cx="140" cy="76" r="14" fill="url(#ng2)" opacity="0.85"/>
+                  <circle cx="234" cy="50" r="18" fill="url(#ng3)" opacity="0.85"/>
+                  <path d="M64 45 Q102 24 126 28" stroke="url(#lg1)" stroke-width="1.5" fill="none" opacity="0.65"/>
+                  <path d="M64 55 Q102 76 126 72" stroke="url(#lg1)" stroke-width="1.5" fill="none" opacity="0.65"/>
+                  <path d="M154 28 Q190 42 216 46" stroke="url(#lg1)" stroke-width="1.5" fill="none" opacity="0.65"/>
+                  <path d="M154 72 Q190 58 216 54" stroke="url(#lg1)" stroke-width="1.5" fill="none" opacity="0.65"/>
+                  <text x="46" y="54" text-anchor="middle" fill="white" font-size="7" font-weight="700">MRF</text>
+                  <text x="140" y="28" text-anchor="middle" fill="white" font-size="7" font-weight="700">Plastic</text>
+                  <text x="140" y="80" text-anchor="middle" fill="white" font-size="7" font-weight="700">Organic</text>
+                  <text x="234" y="54" text-anchor="middle" fill="white" font-size="7" font-weight="700">Jobs</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="float-badge float-right" aria-hidden="true">
+          <div class="float-badge-icon" style="background:rgba(52,211,153,0.15)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <div class="float-badge-title">Impact Tracked</div>
+            <div class="float-badge-sub">24.7% waste diversion</div>
+          </div>
+        </div>
+        <div class="float-badge float-left" aria-hidden="true">
+          <div class="float-badge-icon" style="background:rgba(129,140,248,0.15)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="float-badge-title">Offline Ready</div>
+            <div class="float-badge-sub">Install as PWA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:28px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px;" aria-hidden="true">
+    <span style="font-size:11px; color:var(--text-tertiary)">Discover what's possible</span>
+    <div style="width:22px; height:36px; border-radius:11px; border:1.5px solid rgba(255,255,255,0.18); display:flex; justify-content:center; padding-top:6px;">
+      <div style="width:4px; height:10px; border-radius:2px; background:var(--emerald-400); animation:bob 1.6s ease-in-out infinite;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Value props -->
+<section style="padding:72px 0; background:linear-gradient(to bottom, transparent, rgba(13,31,60,0.4), transparent)">
+  <div class="container">
+    <div class="text-center reveal">
+      <h2 class="section-title">From Waste to Wealth: Strategy That Delivers Measurable Impact</h2>
+      <p class="section-sub mx-auto">Most LGU sustainability plans struggle with implementation. Strat Planner Pro closes the gap between circular economy ambitions and real-world results—tracking waste diversion, green jobs, and environmental impact across four integrated pillars.</p>
+    </div>
+    <div class="cards-grid reveal" style="transition-delay:0.15s; grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(52,211,153,0.12); border:1px solid rgba(52,211,153,0.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+        <h3>Diagnose Material Flows</h3>
+        <p>Map plastic leakage, organic waste streams, and informal waste picker integration to identify systemic bottlenecks before committing resources.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+        <h3>Plan Without the Gaps</h3>
+        <p>Go from circular readiness assessment to MRF optimization, composting programs, and green tourism strategies in one AI-guided workflow.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(129,140,248,0.12); border:1px solid rgba(129,140,248,0.25)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+        <h3>Execute With Confidence</h3>
+        <p>Track every recycling facility, composting site, and eco-tourism initiative with clear ownership, live environmental KPIs, and a MEL dashboard.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(37,99,235,0.12); border:1px solid rgba(37,99,235,0.28)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+        <h3>Field-Ready & Offline</h3>
+        <p>ENRO staff and field teams can monitor waste diversion, conduct audits, and update data even without connectivity—syncs when back online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag emerald">Built for LGUs</div>
+      <h2 class="section-title">One Platform. Every Tool for Circular Transitions.</h2>
+      <p class="section-sub mx-auto">Strat Planner Pro replaces fragmented spreadsheets and disconnected tools with an integrated system designed specifically for LGUs implementing circular economy programs—from plastics reduction to green job creation.</p>
+    </div>
+    <div class="cards-grid reveal" style="transition-delay:0.15s">
+      <div class="feature-card"><div class="feature-icon" style="background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.22)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><h3>Circular Economy MEL Dashboard</h3><p>Monitor waste diversion rates, plastic leakage reduction, organic waste composting, carbon footprint, and green job creation in real-time with LGU-specific KPIs.</p></div>
+      <div class="feature-card"><div class="feature-icon" style="background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.22)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div><h3>LGU Circular Readiness Assessment</h3><p>Structured diagnostics for plastics management infrastructure, organic waste collection systems, MRF capacity, and green tourism readiness—aligned with DENR/DILG standards.</p></div>
+      <div class="feature-card"><div class="feature-icon" style="background:rgba(167,139,250,0.12);border:1px solid rgba(167,139,250,0.22)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><h3>AI Strategy Generator</h3><p>Auto-generate context-specific strategies for MRF optimization, community composting, plastic buy-back programs, informal waste picker integration, and eco-tourism certification.</p></div>
+      <div class="feature-card"><div class="feature-icon" style="background:rgba(251,191,36,0.10);border:1px solid rgba(251,191,36,0.22)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16M4 10h6v10H4zM14 10h6v10h-6z"/></svg></div><h3>Waste Systems Mapping</h3><p>Visualize non-linear relationships in material flows, collection routes, informal sector integration, and market demand for recycled materials to pinpoint high-leverage interventions.</p></div>
+      <div class="feature-card"><div class="feature-icon" style="background:rgba(248,113,113,0.10);border:1px solid rgba(248,113,113,0.22)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h3>Environmental & Economic Scorecard</h3><p>Track KPIs across four perspectives: environmental impact (tons diverted, CO2 reduced), green jobs created, local revenue from circular enterprises, and community participation rates.</p></div>
+      <div class="feature-card"><div class="feature-icon" style="background:rgba(52,211,153,0.10);border:1px solid rgba(52,211,153,0.22)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div><h3>Circular Projects Management</h3><p>Create and track Programs, Activities, and Projects for waste diversion facilities, recycling cooperatives, composting hubs, and green tourism initiatives with automatic budget aggregation.</p></div>
+      <div class="feature-card"><div class="feature-icon" style="background:rgba(129,140,248,0.10);border:1px solid rgba(129,140,248,0.22)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div><h3>DENR/DILG Compliance Reports</h3><p>Generate print-ready Circular Economy Transition Roadmaps, sustainability reports, and RA 9003 compliance documentation for LGU councils and national agency submissions.</p></div>
+      <div class="feature-card"><div class="feature-icon" style="background:rgba(139,92,246,0.10);border:1px solid rgba(139,92,246,0.22)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></div><h3>Field-Ready Offline PWA</h3><p>Install on ENRO tablets or mobile devices and keep working through power outages, remote barangay audits, or unreliable connectivity—data syncs automatically when back online.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section id="how-it-works" style="background:linear-gradient(to bottom,transparent,rgba(13,31,60,0.35),transparent)">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag emerald">Simple Process</div>
+      <h2 class="section-title">From Assessment to Impact in 6 Steps</h2>
+      <p class="section-sub mx-auto">A structured, AI-assisted workflow that guides your LGU from circular economy readiness assessment all the way to measurable environmental and economic impact.</p>
+    </div>
+    <div class="steps-grid reveal" style="transition-delay:0.15s">
+      <div class="step-card">     <div class="step-num">1</div><h3>Assess Circular Readiness</h3><p>Input your LGU's current waste management infrastructure, MRF capacity, collection systems, and policy environment through structured forms built for completeness.</p></div>
+      <div class="step-card step-alt"><div class="step-num">2</div><h3>Map Material Flows</h3><p>Use interactive systems thinking tools to visualize plastic leakage points, organic waste streams, informal sector integration, and recycling market linkages.</p></div>
+      <div class="step-card">     <div class="step-num">3</div><h3>Generate Circular Strategies</h3><p>Let AI propose context-specific strategies for MRF optimization, community composting, plastic reduction programs, and green tourism—then refine with your ENRO team.</p></div>
+      <div class="step-card step-alt"><div class="step-num">4</div><h3>Build Impact Scorecard</h3><p>Auto-categorize objectives across environmental, economic, and social perspectives with AI-suggested KPIs: tons diverted, green jobs, carbon reduction, participation rates.</p></div>
+      <div class="step-card">     <div class="step-num">5</div><h3>Operationalize Initiatives</h3><p>Create PAPs for recycling facilities, composting hubs, and eco-tourism certifications; assign ENRO owners, set budgets, and establish milestones for accountability.</p></div>
+      <div class="step-card step-alt"><div class="step-num">6</div><h3>Monitor, Report & Adapt</h3><p>Track real-time environmental impact through the MEL dashboard, generate DENR/DILG compliance reports, and continuously learn and adapt based on performance data.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Partner Cities -->
+<section id="cities">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-tag" style="background:rgba(6,182,212,0.10);border:1px solid rgba(6,182,212,0.20);color:var(--cyan-500)">Partner LGUs</div>
+      <h2 class="section-title">Tailored for Four Pioneer Cities</h2>
+      <p class="section-sub mx-auto">Strat Planner Pro is customized to address the unique circular economy challenges and opportunities in each EU-PH Green Economy Partnership city.</p>
+    </div>
+    <div class="audience-grid reveal" style="transition-delay:0.15s">
+      <div class="audience-card"><div class="audience-icon-wrap" style="background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.22)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></div><h3>Cagayan de Oro City</h3><p>Focus on urban organic waste diversion from markets and residential areas, integrating informal waste pickers into green jobs, and scaling MRF capacity for plastics recycling.</p></div>
+      <div class="audience-card"><div class="audience-icon-wrap" style="background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.22)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h3>Maasin City, Southern Leyte</h3><p>Target coastal and marine plastic leakage through community-based buy-back programs, beach cleanup tracking, and circular tourism initiatives in island barangays.</p></div>
+      <div class="audience-card"><div class="audience-icon-wrap" style="background:rgba(251,191,36,0.10);border:1px solid rgba(251,191,36,0.22)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3>San Carlos City, Pangasinan</h3><p>Convert agricultural residue and agri-organic waste into value through composting cooperatives, bio-fertilizer production, and circular agri-enterprises.</p></div>
+      <div class="audience-card"><div class="audience-icon-wrap" style="background:rgba(248,113,113,0.10);border:1px solid rgba(248,113,113,0.22)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3>Sorsogon City, Sorsogon</h3><p>Drive green tourism adoption through zero-waste resort certifications, sustainable fisheries waste upcycling, and whale shark tourism circular economy integration.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section id="benefits" style="background:linear-gradient(to bottom,transparent,rgba(13,31,60,0.35),transparent)">
+  <div class="container">
+    <div class="benefits-grid">
+      <div class="reveal">
+        <div class="section-tag emerald">Why It Works</div>
+        <h2 class="section-title">Built for the Way LGUs Actually Implement Circular Programs</h2>
+        <p style="font-size:16px;color:var(--text-secondary);margin-bottom:32px;line-height:1.65">Strat Planner Pro isn't just another planning tool—it's the end-to-end digital system that empowers LGUs to permanently close the gap between circular economy policy and measurable on-the-ground impact.</p>
+        <div class="benefit-list">
+          <div class="benefit-item"><div class="benefit-icon-wrap" style="background:rgba(52,211,153,0.14)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></div><div><h3>Measurable Environmental Impact</h3><p>Track tons of plastic diverted, organic waste composted, carbon footprint reduced, and marine debris prevented with real-time data from ENRO field teams.</p></div></div>
+          <div class="benefit-item"><div class="benefit-icon-wrap" style="background:rgba(6,182,212,0.14)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div><div><h3>Green Jobs & Inclusive Growth</h3><p>Monitor employment generated through waste picker cooperatives, recycling enterprises, composting facilities, and eco-tourism ventures—ensuring no one is left behind.</p></div></div>
+          <div class="benefit-item"><div class="benefit-icon-wrap" style="background:rgba(129,140,248,0.14)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><div><h3>DENR/DILG Compliance Made Easy</h3><p>Auto-generate RA 9003 compliance reports, Circular Economy Transition Roadmaps, and sustainability documentation required for national agency submissions and EU-PH reporting.</p></div></div>
+          <div class="benefit-item"><div class="benefit-icon-wrap" style="background:rgba(251,191,36,0.12)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div><div><h3>Data-Driven Decision Making</h3><p>Systems maps and the live MEL dashboard reveal exactly which interventions are working, which aren't, and why—so you course-correct before problems become crises.</p></div></div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-value">24.7%</div><p>Avg. waste diversion increase</p></div>
+          <div class="stat-card"><div class="stat-value">48</div><p>Green jobs created per city</p></div>
+          <div class="stat-card"><div class="stat-value">100%</div><p>Offline capability for field teams</p></div>
+          <div class="stat-card"><div class="stat-value">∞</div><p>Compliance reports, no limits</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:72px 0 88px">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Your City's Circular Transition Starts Here.</h2>
+      <p>Join Cagayan de Oro, Maasin, San Carlos, and Sorsogon Cities in leveraging digital tools to reduce waste, create green jobs, and build climate-resilient local economies rooted in sustainability.</p>
+      <div class="cta-btns">
+        <a href="https://strategy-ai-planner.deploypad.app/mel-dashboard" class="btn-primary btn-primary-lg">
+          Launch Circular Planning
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M13 7l5 5-5 5M6 12h12"/></svg>
+        </a>
+        <a href="https://preview-a8aolz15--strategy-ai-planner.deploypad.app/" class="btn-secondary">Explore the Dashboard</a>
+      </div>
+      <p class="cta-note">Free for EU-PH Green Economy Partnership LGUs &nbsp;·&nbsp; UNDP Co-implemented &nbsp;·&nbsp; DENR/DILG Aligned</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div>
+        <a class="footer-logo-wrap" href="/">
+          <img src="https://appimize.app/assets/apps/user_1097/images/46fe704cc227_595_1097.png" alt="Strat Planner Pro logo" onerror="this.style.display='none'">
+          <span class="footer-logo-name">Strat Planner Pro</span>
+        </a>
+        <p class="footer-tagline">Digital enabling platform for LGUs transitioning to inclusive circular economies. Part of the EU-PH Green Economy Partnership.</p>
+      </div>
+      <div class="footer-powered">
+        <span>Powered by</span>
+        <img src="https://appimize.app/assets/apps/user_1097/images/2c7d825bf937_232_1097.png" alt="ASilva Innovations" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="https://asilvainnovations.github.io/website/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="https://asilvainnovations.github.io/website/terms.html"          target="_blank" rel="noopener noreferrer">Terms of Service</a>
+        <a href="https://contact-planning-consult.deploypad.app/#solutions"        target="_blank" rel="noopener noreferrer">Contact</a>
+        <a href="https://contact-planning-consult.deploypad.app/solutions/strategic-planner-pro#pricing">Pricing</a>
+        <a href="https://asilvainnovations.github.io/strat-planner-pwa/user-manual.html" target="_blank" rel="noopener noreferrer">User Manual</a>
+        <a href="https://asilvainnovations.github.io/strat-planner-pwa/developer-doc.html" target="_blank" rel="noopener noreferrer">Developer Docs</a>
+      </nav>
+      <p class="footer-copy">© 2026 ASilva Innovations. Co-implemented with UNDP Philippines · EU-PH Green Economy Partnership</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+   
